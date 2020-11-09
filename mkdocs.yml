@@ -11,8 +11,8 @@ theme:
   favicon: assets/images/dna-svgrepo-com.svg
 
 # Repository
-repo_name: sib-swiss/NGS-variant-training
-repo_url: https://github.com/sib-swiss/NGS-variant-training
+repo_name: GeertvanGeest/course_website_template
+repo_url: https://github.com/GeertvanGeest/course_website_template
 edit_uri: ""
 
 markdown_extensions:
