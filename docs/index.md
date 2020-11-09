@@ -1,11 +1,11 @@
-# NGS - Quality control, Alignment, Visualisation
+# Course website
 
 ## Material
 
 * This website
 * Zoom meeting (through mail)
 * Google doc (through mail)
-* [slack channel](https://join.slack.com/t/ngsqualitycon-c8g5456/shared_invite/zt-hwth7xrb-vYpga8sUye_7Ij9x6OkyKA)
+* Slack channel
 
 ## Learning outcomes
 
