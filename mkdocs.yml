@@ -6,9 +6,8 @@ nav:
 
 theme:
   name: material
-  icon:
-    logo: fontawesome/solid/dna
-  favicon: assets/images/dna-svgrepo-com.svg
+  logo: assets/images/SIB_logo.svg
+  favicon: assets/images/SIB_logo.svg
 
 # Repository
 repo_name: GeertvanGeest/course_website_template
