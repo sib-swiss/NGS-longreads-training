@@ -1,8 +1,14 @@
-site_name: My site
+site_name: Long reads and RNA
 nav:
     - Home: index.md
     - Precourse preparations: precourse.md
     - Course schedule: course_schedule.md
+    - Course material:
+      - Introduction: course_material/introduction.md
+      - Server login: course_material/server_login.md
+      - QC and alignment: course_material/qc_alignment.md
+      - Downstream analyses: course_material/downstream_analyses.md
+      - Group work: course_material/group_work.md
 
 theme:
   name: material
@@ -32,6 +38,13 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

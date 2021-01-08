@@ -11,10 +11,13 @@
 
 After this course, you will be able to:
 
-
+* Understand the basics behind PacBio SMRT sequencing and Oxford Nanopore Technology sequencing
+* Use the command line to perform quality control and read alignment of long-read sequencing data
+* Do a differential isoform expression analysis or a repeat expansion analysis
 
 ## Learning experiences
 
+This course will consist of lectures, exercises and polls. During exercises, you are free to discuss with other participants. During lectures, focus on the lecture only.
 
 ### Exercises
 
