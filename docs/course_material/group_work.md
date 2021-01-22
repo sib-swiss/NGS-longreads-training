@@ -17,7 +17,7 @@ In the afternoon of day 1, you will divide the initial tasks, and start on the p
 
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 
-In this project, you will be working with data from the resource as the data we have already worked on:
+In this project, you will be working with data from the same resource as the data we have already worked on:
 
 Clark, M. B. et al (2020). *Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain*. Molecular Psychiatry, 25(1), 37–47. [https://doi.org/10.1038/s41380-019-0583-1](https://doi.org/10.1038/s41380-019-0583-1).
 
@@ -87,7 +87,7 @@ You can start this project with dividing initial tasks. Because some intermediat
 * Align each sample separately with `minimap2` with default parameters. Set parameters `-x` and `-G` to the values we have used during the [QC and alignment exercises](../qc_alignment#3-read-alignment). You can use 4 threads (set the number of threads with `-t`)
 
 !!! danger "Start the alignment on day 1"
-    The alignment takes about 6 minutes per sample, so in total about one hour to run. Make sure you have started the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running.
+    The alignment takes about 6 minutes per sample, so in total about one hour to run. Make sure you have started the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running (`tmux` and `screen` are also available).
 
 * Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation.
 * Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
@@ -96,10 +96,10 @@ You can start this project with dividing initial tasks. Because some intermediat
 * Generate a count matrix with `flair.py quantify` by using the isoforms fasta and `reads_manifest.tsv`.
 
 !!! danger "Paths in `reads_manifest.tsv`"
-    The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair.py quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file to e.g. full paths otherwise.
+    The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair.py quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
 
 * Now you can do several things:
-    * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis.
+    * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis. Go to `[SERVERIP]:8787` to login to RStudio server.
     * Investigate the isoform usage with the flair script `plot_isoform_usage.py`
     * Investigate productivity of the different isoforms.
 
@@ -182,12 +182,13 @@ Alignment files to do an initial repeat analysis are in the `tar.gz` package. Ho
     * How is the read length?
 * Align the reads to hg38 with `minimap2`. For the option `-x` you can use `asm20`. Generate separate alignment files for each individual.
 
-!!! note "Alternatively use `pbmm2`"
+!!! note "Alternatively use [`pbmm2`](https://github.com/PacificBiosciences/pbmm2)"
     Pacific Biosciences has developed a wrapper for `minimap2` that contains settings specific for PacBio reads, named [`pbmm2`](https://github.com/PacificBiosciences/pbmm2). It might slightly improve your alignments. It is installed in the conda environment. Feel free to give it a try if you have time left.
 
 * Clone the PacBio [apps-scripts repository](https://github.com/PacificBiosciences/apps-scripts.git) to the server. The script apps-scripts/RepeatAnalysisTools/makeReports.sh generates repeat expansion reports. Check out the [documentation](https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports), and generate repeat expansion reports for all individuals on both gene1 and gene2.
 * Check out the report output and read the further [documentation of RepeatAnalysisTools](https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports).
     - How is the enrichment?
+    - Does the clustering make sense? How does the clustering look in IGV?
     - Which individual is affected with which disease?
     - Based on the size of the expansions, can you say something about expected disease severity?
 
