@@ -1,4 +1,4 @@
-site_name: Long reads and RNA
+site_name: Long-read sequencing analysis
 nav:
     - Home: index.md
     - Precourse preparations: precourse.md
@@ -14,11 +14,13 @@ theme:
   name: material
   logo: assets/images/SIB_logo.svg
   favicon: assets/images/SIB_logo.svg
+  icon:
+    repo: fontawesome/brands/github
 
 # Repository
-repo_name: GeertvanGeest/course_website_template
-repo_url: https://github.com/GeertvanGeest/course_website_template
-edit_uri: ""
+repo_name: sib-swiss/NGS-longreads-training
+repo_url: https://github.com/sib-swiss/NGS-longreads-training
+# edit_uri: ""
 
 markdown_extensions:
   - abbr
