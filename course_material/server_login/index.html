@@ -471,13 +471,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-conda" class="md-nav__link">
-    Use conda
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#a-unix-command-line-interface-cli-refresher" class="md-nav__link">
     A UNIX command line interface (CLI) refresher
   </a>
@@ -798,13 +791,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-conda" class="md-nav__link">
-    Use conda
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#a-unix-command-line-interface-cli-refresher" class="md-nav__link">
     A UNIX command line interface (CLI) refresher
   </a>
@@ -1004,7 +990,7 @@ Take therefore into account that great power comes with great responsibility. Ov
 <div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
 -v /full/path/to/local/workdir:/root/workdir <span class="se">\</span>
 -i -t <span class="se">\</span>
-geertvangeest/ngs-variants <span class="se">\</span>
+geertvangeest/ngs-longreads <span class="se">\</span>
 /bin/bash
 </code></pre></div>
 </div>
@@ -1012,7 +998,7 @@ geertvangeest/ngs-variants <span class="se">\</span>
 <div class="highlight"><pre><span></span><code><span class="n">docker</span> <span class="n">run</span> <span class="p">`</span>
 <span class="n">-v</span> <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">myusername</span><span class="err">:</span><span class="p">/</span><span class="n">root</span><span class="p">/</span><span class="n">workdir</span> <span class="p">`</span>
 <span class="n">-i</span> <span class="n">-t</span> <span class="p">`</span>
-<span class="n">geertvangeest</span><span class="p">/</span><span class="n">ngs-variants</span> <span class="p">`</span>
+<span class="n">geertvangeest</span><span class="p">/</span><span class="n">ngs-longreads</span> <span class="p">`</span>
 <span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">bash</span>
 </code></pre></div>
 </div>
@@ -1023,7 +1009,7 @@ geertvangeest/ngs-variants <span class="se">\</span>
 <p>Don&rsquo;t directly mount your local directory to the home directory (<code>/root</code>). This will lead to unexpected behaviour.</p>
 </div>
 <p>The options <code>-i</code> and <code>-t</code> let you approach the container interactively. Meaning that you can use the shell.</p>
-<p>The part <code>geertvangeest/ngs-intro</code> is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it&rsquo;s on your computer, it will start immediately.</p>
+<p>The part <code>geertvangeest/ngs-longreads</code> is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it&rsquo;s on your computer, it will start immediately.</p>
 <p>The last bit <code>/bin/bash</code> tells us which entrypoint we take. Which is the bash command line interpreter.</p>
 <p>You can exit the shell with <code>exit</code>.</p>
 <h3 id="working-with-a-running-container">Working with a running container</h3>
@@ -1050,24 +1036,35 @@ docker attach adoring_bell
 <p>If you have additional installations, and you want to keep them, you can save the image with:</p>
 <div class="highlight"><pre><span></span><code>docker commit adoring_bell my-image
 </code></pre></div>
-<h3 id="use-conda">Use conda</h3>
-<p>If you are in the container with shell, you can load the environment with the required software packages:</p>
-<div class="highlight"><pre><span></span><code>conda activate variants
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Activating the environment</p>
-<p>You will need to activate the ngs environment each time you login.</p>
-</div>
 </div>
 <input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><label for="__tabbed_1_4">conda</label><div class="tabbed-content">
 <p>If you have a conda installation on your local computer, you can install the required software using conda.</p>
-<p>You can build the environment from <a href="../assets/yaml/variants.yml">variants.yml</a></p>
+<p>You can build the environment from <a href="../../assets/yaml/ngs-longreads.yml">ngs-longreads.yml</a></p>
 <p>Generate the conda environment like this:</p>
-<div class="highlight"><pre><span></span><code>conda env create --name variants -f variants.yml
+<div class="highlight"><pre><span></span><code>conda env create --name ngs-longreads -f ngs-longreads.yml
 </code></pre></div>
-<p>This will create the conda environment <code>variants</code></p>
+<div class="admonition note">
+<p class="admonition-title">The <code>yaml</code> file probably only works for Linux systems</p>
+<p>If you want to use the conda environment on a different OS, use:</p>
+<div class="highlight"><pre><span></span><code>conda create -n ngs-longreads <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+
+conda activate ngs-longreads
+
+conda install -y -c bioconda <span class="se">\</span>
+samtools <span class="se">\</span>
+minimap2 <span class="se">\</span>
+fastqc <span class="se">\</span>
+pbmm2 <span class="se">\</span>
+
+conda install -y -c bioconda nanoplot
+</code></pre></div>
+<p>If the installation of <code>NanoPlot</code> fails, try to install it with <code>pip</code>:</p>
+<div class="highlight"><pre><span></span><code>pip install NanoPlot
+</code></pre></div>
+</div>
+<p>This will create the conda environment <code>ngs-longreads</code></p>
 <p>Activate it like so:</p>
-<div class="highlight"><pre><span></span><code>conda activate variants
+<div class="highlight"><pre><span></span><code>conda activate ngs-longreads
 </code></pre></div>
 <p>After successful installation and activating the environment all the software required to do the exercises should be available.</p>
 </div>
