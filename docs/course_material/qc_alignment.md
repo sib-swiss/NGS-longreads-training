@@ -1,6 +1,6 @@
 ## Material
 
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/qc_alignment.pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/QC_alignment.pdf){: .md-button }
 
 ## Exercises
 

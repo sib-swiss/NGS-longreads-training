@@ -7,7 +7,7 @@ nav:
       - Introduction: course_material/introduction.md
       - Server login: course_material/server_login.md
       - QC and alignment: course_material/qc_alignment.md
-      - Downstream analyses: course_material/downstream_analyses.md
+      - Applications: course_material/applications.md
       - Group work: course_material/group_work.md
 
 theme:
