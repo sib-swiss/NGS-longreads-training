@@ -165,7 +165,7 @@ In this part we will set up your computer to work on the remote AWS server or wi
         docker run \
         -v /full/path/to/local/workdir:/root/workdir \
         -i -t \
-        geertvangeest/ngs-variants \
+        geertvangeest/ngs-longreads \
         /bin/bash
         ```
 
@@ -174,7 +174,7 @@ In this part we will set up your computer to work on the remote AWS server or wi
         docker run `
         -v C:\Users\myusername:/root/workdir `
         -i -t `
-        geertvangeest/ngs-variants `
+        geertvangeest/ngs-longreads `
         /bin/bash
         ```
 
@@ -185,7 +185,7 @@ In this part we will set up your computer to work on the remote AWS server or wi
 
     The options `-i` and `-t` let you approach the container interactively. Meaning that you can use the shell.
 
-    The part `geertvangeest/ngs-intro` is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it's on your computer, it will start immediately.
+    The part `geertvangeest/ngs-longreads` is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it's on your computer, it will start immediately.
 
     The last bit `/bin/bash` tells us which entrypoint we take. Which is the bash command line interpreter.
 
@@ -233,35 +233,47 @@ In this part we will set up your computer to work on the remote AWS server or wi
     docker commit adoring_bell my-image
     ```
 
-    ### Use conda
-
-    If you are in the container with shell, you can load the environment with the required software packages:
-
-    ```sh
-    conda activate variants
-    ```
-
-    !!! note "Activating the environment"
-        You will need to activate the ngs environment each time you login.
-
 === "conda"
 
     If you have a conda installation on your local computer, you can install the required software using conda.
 
-    You can build the environment from [variants.yml](../assets/yaml/variants.yml)
+    You can build the environment from [ngs-longreads.yml](../assets/yaml/ngs-longreads.yml)
 
     Generate the conda environment like this:
 
     ```sh
-    conda env create --name variants -f variants.yml
+    conda env create --name ngs-longreads -f ngs-longreads.yml
     ```
 
-    This will create the conda environment `variants`
+    !!! note "The `yaml` file probably only works for Linux systems"
+        If you want to use the conda environment on a different OS, use:
+
+        ```sh
+        conda create -n ngs-longreads python=3.6
+
+        conda activate ngs-longreads
+
+        conda install -y -c bioconda \
+        samtools \
+        minimap2 \
+        fastqc \
+        pbmm2 \
+
+        conda install -y -c bioconda nanoplot
+        ```
+
+        If the installation of `NanoPlot` fails, try to install it with `pip`:
+
+        ```sh
+        pip install NanoPlot
+        ```
+
+    This will create the conda environment `ngs-longreads`
 
     Activate it like so:
 
     ```sh
-    conda activate variants
+    conda activate ngs-longreads
     ```
 
     After successful installation and activating the environment all the software required to do the exercises should be available.
