@@ -66,16 +66,16 @@ In this part we will set up your computer to work on the remote AWS server or wi
 
     Now, your shell should start with `(base)`, meaning that the conda `base` environment is loaded.
 
-    To load the environment `variants` with the required software packages, run:
+    To load the environment `longreads` with the required software packages, run:
 
     ```sh
-    conda activate variants
+    conda activate longreads
     ```
 
-    Which should change the start of your shell from `(base)` to `(variants)`
+    Which should change the start of your shell from `(base)` to `(longreads)`
 
     !!! note "Activating the environment"
-        You will need to activate the `variants` environment each time you login.
+        You will need to activate the `longreads` environment each time you login.
 
 === "Windows"
 
@@ -127,16 +127,16 @@ In this part we will set up your computer to work on the remote AWS server or wi
 
     Now, your shell should start with `(base)`, meaning that the conda `base` environment is loaded.
 
-    To load the environment `variants` with the required software packages, run:
+    To load the environment `longreads` with the required software packages, run:
 
     ```sh
-    conda activate variants
+    conda activate longreads
     ```
 
-    Which should change the start of your shell from `(base)` to `(variants)`
+    Which should change the start of your shell from `(base)` to `(longreads)`
 
     !!! note "Activating the environment"
-        You will need to activate the `variants` environment each time you login.
+        You will need to activate the `longreads` environment each time you login.
 
 === "Docker"
 
