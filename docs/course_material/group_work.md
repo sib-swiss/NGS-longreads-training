@@ -87,7 +87,7 @@ You can start this project with dividing initial tasks. Because some intermediat
 * Align each sample separately with `minimap2` with default parameters. Set parameters `-x` and `-G` to the values we have used during the [QC and alignment exercises](../qc_alignment#3-read-alignment). You can use 4 threads (set the number of threads with `-t`)
 
 !!! danger "Start the alignment on day 1"
-    The alignment takes about 6 minutes per sample, so in total about one hour to run. Make sure you have started the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running (`tmux` and `screen` are also available).
+    The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running (`tmux` and `screen` are also available).
 
 * Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation.
 * Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
