@@ -2,8 +2,8 @@
 
 * Perform a quality control on long-read data with `NanoPlot`
 * Interpret the quality report produced by `NanoPlot`
-* Perform a basic alignment of long reads with `minimap2`, and select argument to the option `-x` and `-G`
-* Visualize an alignment file in IGV on local computer
+* Perform a basic alignment of long reads with `minimap2`, and select arguments to the option `-x` and `-G`
+* Visualise an alignment file in IGV on local computer
 
 ## Material
 

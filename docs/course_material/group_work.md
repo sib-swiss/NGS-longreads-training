@@ -1,10 +1,6 @@
 ## Learning outcomes
 
-* Perform a differential isoform expression analysis based on a Oxford Nanopore sequencing dataset
-or
-* Perform a repeat expansion analysis based on a PacBio dataset
-
-* Develop a basic pipeline for reference-based analysis of a long-read sequencing dataset 
+* Develop a basic pipeline for reference-based analysis of a long-read sequencing dataset
 * Give context to the results of such an analysis
 
 ## Introduction
