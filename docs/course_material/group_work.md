@@ -1,3 +1,13 @@
+## Learning outcomes
+
+* Perform a differential isoform expression analysis based on a Oxford Nanopore sequencing dataset
+or
+* Perform a repeat expansion analysis based on a PacBio dataset
+
+* Develop a basic pipeline for reference-based analysis of a long-read sequencing dataset 
+* Give context to the results of such an analysis
+
+## Introduction
 
 The last part of this course will consist of project-based-learning. This means that you will work in groups on a single question. We will split up into groups of five people.
 

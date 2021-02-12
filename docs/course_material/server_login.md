@@ -1,4 +1,15 @@
 
+## Learning outcomes
+
+* Setup a connection with a local computer and remote host with `ssh`
+* Setup and use a script editor to add and modify scripts on a remote computer
+* Setup and use FileZilla to copy files from a remote machine to a local computer
+* Use the command line to:
+    * Make a directory
+    * Change file permissions to 'executable'
+    * Run a `bash` script
+    * Pipe data from and to a file or other executable
+* Program a loop in `bash`
 
 In this part we will set up your computer to work on the remote AWS server or with Docker (choose **Docker** or **conda** if you are doing this course independently).
 

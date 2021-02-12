@@ -1,3 +1,7 @@
+## Learning outcomes
+
+* Explain for what kind of questions long-read sequencing technologies are more suitable compared to short-read sequencing technologies.
+* Describe the basic steps required for a genome assembly 
 
 ## Material
 
