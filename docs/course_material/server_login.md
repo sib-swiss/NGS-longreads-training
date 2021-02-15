@@ -11,7 +11,18 @@
     * Pipe data from and to a file or other executable
 * Program a loop in `bash`
 
-In this part we will set up your computer to work on the remote AWS server or with Docker (choose **Docker** or **conda** if you are doing this course independently).
+!!! info "Choose your OS or platform"
+    In this part we will set up your computer to work on the remote AWS server, or setup your computer to do the exercises with conda or with Docker.
+
+    If you are doing the course **with a teacher**, you will have to login to the remote server. Therefore choose either:
+
+    * macOS/Linux
+    * Windows
+
+    If you are doing this course **independently** (i.e. without a teacher) choose either:
+
+    * conda
+    * Docker
 
 === "mac OS/Linux"
 
