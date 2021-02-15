@@ -1,7 +1,9 @@
 ## Learning outcomes
 
+**After having completed this chapter you will be able to:**
+
 * Develop a basic pipeline for reference-based analysis of a long-read sequencing dataset
-* Give context to the results of such an analysis
+* Answer biological questions based on the results of such an analysis
 
 ## Introduction
 

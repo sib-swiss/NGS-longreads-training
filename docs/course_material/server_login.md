@@ -1,7 +1,9 @@
 
 ## Learning outcomes
 
-* Setup a connection with a local computer and remote host with `ssh`
+**After having completed this chapter you will be able to:**
+
+* Setup a connection between a local computer and remote host with `ssh`
 * Setup and use a script editor to add and modify scripts on a remote computer
 * Setup and use FileZilla to copy files from a remote machine to a local computer
 * Use the command line to:

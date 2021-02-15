@@ -1,9 +1,15 @@
 ## Learning outcomes
 
+**After having completed this chapter you will be able to:**
+
+* Define how the fastq format stores sequence and base quality information
+* Calculate accuracy and probability based on base quality
+* Describe how alignment information is stored in a sequence alignment (`.sam`) file
+* Explain why the fastq format is limited for long-read sequencing data
 * Perform a quality control on long-read data with `NanoPlot`
 * Interpret the quality report produced by `NanoPlot`
-* Perform a basic alignment of long reads with `minimap2`, and select arguments to the option `-x` and `-G`
-* Visualise an alignment file in IGV on local computer
+* Perform a basic alignment of long reads with `minimap2`, and select arguments to the options `-x` and `-G`
+* Visualise an alignment file in IGV on a local computer
 
 ## Material
 
