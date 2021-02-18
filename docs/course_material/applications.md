@@ -3,7 +3,7 @@
 **After having completed this chapter you will be able to:**
 
 * Explain for what kind of questions long-read sequencing technologies are more suitable compared to short-read sequencing technologies.
-* Describe the basic steps required for a genome assembly
+* Describe the basic steps that are required to perform a genome assembly
 
 ## Material
 

@@ -2,8 +2,8 @@
 
 **After having completed this chapter you will be able to:**
 
-* Develop a basic pipeline for reference-based analysis of a long-read sequencing dataset
-* Answer biological questions based on the results of such an analysis
+* Develop a basic pipeline for alignment-based analysis of a long-read sequencing dataset
+* Answer biological questions based on the analysis resulting from the pipeline
 
 ## Introduction
 
@@ -30,6 +30,9 @@ In this project, you will be working with data from the same resource as the dat
 Clark, M. B. et al (2020). *Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain*. Molecular Psychiatry, 25(1), 37–47. [https://doi.org/10.1038/s41380-019-0583-1](https://doi.org/10.1038/s41380-019-0583-1).
 
 It is Oxford Nanopore Technology sequencing data of PCR amplicons of the gene CACNA1C. It is primarily used to discover new splice variants. We will use the dataset to do that and in addition do a differential isoform expression analysis with [FLAIR](https://github.com/BrooksLabUCSC/flair).
+
+!!! info "Project aim"
+    Discover new splice variants and identify differentially expressed isoforms.
 
 You can download the required data like this:
 
@@ -114,6 +117,9 @@ You can start this project with dividing initial tasks. Because some intermediat
 ## :fontawesome-solid-disease: Project 2: Repeat expansion analysis of PacBio data
 
 You will be working with data from an experiment in which DNA of 8 individuals was sequenced for five different targets by using Pacbio's no-Amp targeted sequencing system. Two of these targets contain repeat expansions that are related to a disease phenotype.
+
+!!! info "Project aim"
+    Estimate variation in repeat expansions in two target regions, and relate them to a disease phenotype.
 
 | individual 	| disease1 	| disease2 	|
 |------------	|----------	|----------	|

@@ -9,15 +9,24 @@
 
 ## Learning outcomes
 
+### General learning outcomes
+
 After this course, you will be able to:
 
-* Understand the basics behind PacBio SMRT sequencing and Oxford Nanopore Technology sequencing
+* Describe the basics behind PacBio SMRT sequencing and Oxford Nanopore Technology sequencing
 * Use the command line to perform quality control and read alignment of long-read sequencing data
-* Do a differential isoform expression analysis or a repeat expansion analysis
+* Develop and execute a bioinformatics pipeline to perform an alignment-based analysis
+* Answer biological questions based on the analysis resulting from the pipeline
+
+### Learning outcomes explained
+
+To reach the general learning outcomes above, we have set a number of smaller learning outcomes. Each chapter (found at [Course material](course_material/introduction.md)) starts with these smaller **learning outcomes**. Use these when we are starting a chapter to get an idea what you will learn. Use them also at the end of a chapter to evaluate whether you have learned what you were expected to learn.
 
 ## Learning experiences
 
-This course will consist of lectures, exercises and polls. During exercises, you are free to discuss with other participants. During lectures, focus on the lecture only.
+To reach the learning outcomes we will use lectures, exercises, polls and group work. During exercises, you are free to discuss with other participants. During lectures, focus on the lecture only.
+
+
 
 ### Exercises
 

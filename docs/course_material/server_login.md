@@ -1,6 +1,9 @@
 
 ## Learning outcomes
 
+!!! note
+    You might already be able to do some or all of these learning outcomes. If so, you can go through the corresponding exercises quickly. The general aim of this chapter is to work comfortably on a remote server by using the command line.
+
 **After having completed this chapter you will be able to:**
 
 * Setup a connection between a local computer and remote host with `ssh`
