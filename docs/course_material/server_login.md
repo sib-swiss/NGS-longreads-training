@@ -449,7 +449,7 @@ Make a shell script that automatically counts the number of system directories a
     ls | wc -l
     ```
 
-### 3. Loops
+### Loops
 
 >:fontawesome-regular-clock: 20 minutes
 
