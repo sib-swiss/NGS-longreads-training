@@ -23,6 +23,10 @@ Each project has **tasks** and **questions**. By performing the tasks, you shoul
 
 In the afternoon of day 1, you will divide the initial tasks, and start on the project. On day 2, you can work on the project in the morning and in the first part of the afternoon. We will conclude the projects with a **10-minute presentation** of each group.
 
+## Working directories
+
+Each group gets access to a shared working directory. You can find it under `/group_work/<group name>`. Use this as much as possible.
+
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 
 In this project, you will be working with data from the same resource as the data we have already worked on:
@@ -41,6 +45,9 @@ wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_ont.
 tar -xvf groupwork_ont.tar.gz
 rm groupwork_ont.tar.gz
 ```
+
+!!! note
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>`
 
 This will create a directory `groupwork_ont` with the following structure:
 
@@ -139,6 +146,9 @@ wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_pacb
 tar -xvf groupwork_pacbio.tar.gz
 rm groupwork_pacbio.tar.gz
 ```
+
+!!! note
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>`
 
 It has the following directory structure:
 

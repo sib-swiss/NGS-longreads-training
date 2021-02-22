@@ -25,15 +25,22 @@ We will be working with data from:
 
 The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.
 
-For the exercises of today, we will work with a single sample of this study.
+For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.
 
-**Exercise:** The data are in a folder in the root directory: `/data`. Check out what's in there.
+```sh
+cd ~
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
+tar -xvf ngs-longreads-training.tar.gz
+rm ngs-longreads-training.tar.gz
+```
+
+**Exercise:** This will create the directory `data`. Check out what's in there.
 
 ??? done "Answer"
-    Go to the `/data` folder:
+    Go to the `~/data` folder:
 
     ```sh
-    cd /data
+    cd ~/data
     ```
 
     The data folder contains the following:
@@ -54,10 +61,10 @@ For the exercises of today, we will work with a single sample of this study.
 
 We will evaluate the read quality with `NanoPlot`.
 
-**Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`, and run `NanoPlot` on `/data/reads/cerebellum-5238-batch2.fastq.gz`.
+**Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`, and run `NanoPlot` on `~/data/reads/cerebellum-5238-batch2.fastq.gz`.
 
 ??? hint "Hint"
-    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq`. Also note: the folder `/data` is read-only. Write the output into your home directory (`cd ~`).
+    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq`. 
 
 ??? done "Answer"
     We have a `fastq` file, so based on the manual and the example we can run:
@@ -65,7 +72,7 @@ We will evaluate the read quality with `NanoPlot`.
     ```sh
     cd ~
     NanoPlot \
-    --fastq /data/reads/cerebellum-5238-batch2.fastq.gz \
+    --fastq data/reads/cerebellum-5238-batch2.fastq.gz \
     --outdir nanoplot_output
     ```
 
@@ -172,8 +179,8 @@ minimap2 \
 -x [PARAMETER] \
 -G [PARAMETER] \
 -t 2 \
-/data/references/GRCh38.p13.chr12.fa \
-/data/reads/cerebellum-5238-batch2.fastq.gz \
+data/references/GRCh38.p13.chr12.fa \
+data/reads/cerebellum-5238-batch2.fastq.gz \
 | samtools sort \
 | samtools view -bh > alignments/cerebellum-5238-batch2.bam
 
@@ -200,8 +207,8 @@ samtools index alignments/cerebellum-5238-batch2.bam
     -x splice \
     -G 500k \
     -t 2 \
-    /data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-    /data/reads/cerebellum-5238-batch2.fastq.gz \
+    data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
+    data/reads/cerebellum-5238-batch2.fastq.gz \
     | samtools sort \
     | samtools view -bh > alignments/cerebellum-5238-batch2.bam
 

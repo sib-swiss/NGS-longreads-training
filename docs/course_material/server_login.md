@@ -1,4 +1,4 @@
-
+`\
 ## Learning outcomes
 
 !!! note
@@ -70,75 +70,39 @@
     === "Mac OS/Linux terminal"
         ```sh
         docker run \
-        -v /full/path/to/local/workdir:/root/workdir \
-        -i -t \
-        geertvangeest/ngs-longreads \
-        /bin/bash
+        --rm \
+        -v /full/path/to/dir:/home/jovyan \
+        -p 8888:8888 \
+        geertvangeest/ngs-longreads:v1 \
+        start-notebook.sh
         ```
 
     === "Windows powershell"
         ```powershell
         docker run `
-        -v C:\Users\myusername:/root/workdir `
-        -i -t `
-        geertvangeest/ngs-longreads `
-        /bin/bash
+        --rm `
+        -v C:\users\myusername\dir:/home/jovyan `
+        -p 8888:8888 `
+        geertvangeest/ngs-longreads:v1 `
+        start-notebook.sh
         ```
+
+    If this command has run successfully, you will find a link and token in the console, e.g.:
+
+    ```sh
+    http://127.0.0.1:8888/?token=4be8d916e89afad166923de5ce5th1s1san3xamp13
+    ```
+
+    Copy this URL into your browser, and you will be able to use the jupyter notebook.
 
     The option `-v` mounts a local directory in your computer to the directory `/root/workdir` in the docker container. In that way, you have files available both in the container and on your computer. Use this directory on your computer to e.g. edit scripts and visualise data with IGV. Change the first path to a path on your computer that you want to use as a working directory.
 
     !!! note "Don't mount directly in the home dir"
         Don't directly mount your local directory to the home directory (`/root`). This will lead to unexpected behaviour.
 
-    The options `-i` and `-t` let you approach the container interactively. Meaning that you can use the shell.
 
-    The part `geertvangeest/ngs-longreads` is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it's on your computer, it will start immediately.
+    The part `geertvangeest/ngs-longreads:v1` is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it's on your computer, it will start immediately.
 
-    The last bit `/bin/bash` tells us which entrypoint we take. Which is the bash command line interpreter.
-
-    You can exit the shell with `exit`.
-
-    ### Working with a running container
-
-    #### Restarting
-
-    After exiting, you can restart the container.
-
-    Find the container name:
-
-    ```sh
-    docker container ls -a
-    ```
-
-    The name is e.g. `adoring_bell`. To restart run:
-
-    ```sh
-    docker start adoring_bell
-    docker attach adoring_bell
-    ```
-
-    #### Second shell
-
-    If you want to have a second shell in your container, e.g. because your current shell is busy, you can use:
-
-    ```sh
-    docker exec -it adoring_bell /bin/bash
-    ```
-
-    !!! note "Difference `docker attach` and `docker exec`"
-        Difference between the commands is explainer [here](https://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec). Conclusion: do not run `docker attach` for a second shell in which you usually want to start a new process.
-
-    #### Lost the container
-
-    If you lost the container for whatever reason, no problem. If you did all your work in the mounted workdir, you can just remount it to a new container based on the same image. To do that, just rerun the `docker run` command (with the option `-v`, `-i`, `-t` and the entrypoint).
-
-    #### Save your own version
-
-    If you have additional installations, and you want to keep them, you can save the image with:
-
-    ```sh
-    docker commit adoring_bell my-image
-    ```
 
 === "conda"
 
