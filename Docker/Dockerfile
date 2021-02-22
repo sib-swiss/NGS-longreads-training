@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM jupyter/base-notebook
 
 RUN /opt/conda/bin/conda install -y --quiet -c bioconda \
 samtools \
