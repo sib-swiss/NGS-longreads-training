@@ -25,7 +25,7 @@ In the afternoon of day 1, you will divide the initial tasks, and start on the p
 
 ## Working directories
 
-Each group gets access to a shared working directory. You can find it under `/group_work/<group name>`. Use this as much as possible.
+Each group has access to a shared working directory. It is mounted in your home directory. You can find it at `~/group_work/<group name>`. Use this as much as possible.
 
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 

@@ -64,7 +64,7 @@ We will evaluate the read quality with `NanoPlot`.
 **Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`, and run `NanoPlot` on `~/data/reads/cerebellum-5238-batch2.fastq.gz`.
 
 ??? hint "Hint"
-    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq`. 
+    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq`.
 
 ??? done "Answer"
     We have a `fastq` file, so based on the manual and the example we can run:
@@ -104,10 +104,10 @@ The file `NanoPlot-report.html` contains a report with all the information store
 **C.** What is the average base quality and what kind of accuracy do we therefore expect?
 
 !!! hint "Download files from the notebook"
-    You can download files from the 'home page', by selecting a file and press the button **Download**:
+    You can download files from the file browser, by right-clicking a file and selecting **Download**:
 
     <figure>
-      <img src="../../assets/images/jupyter_download_file.png" width="500"/>
+      <img src="../../assets/images/jupyter_download_file.png" width="400"/>
     </figure>
 
 ??? done "Answer"
