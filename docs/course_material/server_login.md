@@ -44,6 +44,13 @@
       <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
     </figure>
 
+    Once you have opened a script you can change the code highlighting. This is convenient for writing the code. The text editor will automatically change the highlighting based on the file extension (e.g. `.py` extension will result in python syntax highlighting). You can change or set the syntax highlighting by clicking the button on the bottom of the page. We will be using mainly shell scripting in this course, so here's an example for adjusting it to shell syntax highlighting:
+
+    <figure>
+      <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
+    </figure>
+
+
 === "Docker"
 
     ## Material
