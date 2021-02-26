@@ -524,14 +524,14 @@
 </blockquote>
 <p>The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.</p>
 <p>For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
 wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
 tar -xvf ngs-longreads-training.tar.gz
 rm ngs-longreads-training.tar.gz
 </code></pre></div>
 
 <p><strong>Exercise:</strong> This will create the directory <code>data</code>. Check out what&rsquo;s in there.</p>
-<details class="done"><summary>Answer</summary><p>Go to the <code>~/data</code> folder:</p>
+<details class="done"><summary>Answer</summary><p>Go to the <code>~/workdir/data</code> folder:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/data
 </code></pre></div>
 
@@ -554,7 +554,7 @@ In the reads folder a fastq file with reads, in the reference folder, a gtf with
 <details class="hint"><summary>Hint</summary><p>For a basic output of <code>NanoPlot</code> on a <code>fastq.gz</code> file you can use the options <code>--outdir</code> and <code>--fastq</code>.</p>
 </details>
 <details class="done"><summary>Answer</summary><p>We have a <code>fastq</code> file, so based on the manual and the example we can run:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
 NanoPlot <span class="se">\</span>
 --fastq data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
 --outdir nanoplot_output
@@ -630,7 +630,7 @@ We are working with ONT data so we could choose <code>map-ont</code>. However, o
 <p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span> ~
+<span class="nb">cd</span> ~/workdir
 
 minimap2 <span class="se">\</span>
 -a <span class="se">\</span>
@@ -653,7 +653,7 @@ samtools index alignments/cerebellum-5238-batch2.bam
 <p>Modify the script to set the <code>-x</code> and <code>-G</code> options:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span> ~
+<span class="nb">cd</span> ~/workdir
 
 minimap2 <span class="se">\</span>
 -a <span class="se">\</span>
