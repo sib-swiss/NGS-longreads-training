@@ -25,7 +25,14 @@ In the afternoon of day 1, you will divide the initial tasks, and start on the p
 
 ## Working directories
 
-Each group has access to a shared working directory. It is mounted in your home directory. You can find it at `~/group_work/<group name>`. Use this as much as possible.
+Each group has access to a shared working directory. It is mounted in the root directory (`/`). Make a soft link in your home directory:
+
+```sh
+cd ~
+ln -s /group_work ./
+```
+
+Now you can find your group directory at `~/group_work/<group name>`. Use this as much as possible.
 
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 
@@ -52,7 +59,7 @@ rm groupwork_ont.tar.gz
 This will create a directory `groupwork_ont` with the following structure:
 
 ```
-groupwork_ont
+groupwork_ont/
 ├── alignments
 │   ├── cerebellum-5238-batch2.bam
 │   ├── cerebellum-5298-batch2.bam
@@ -72,10 +79,11 @@ groupwork_ont
 │   ├── striatum-5238-batch2.fastq.gz
 │   ├── striatum-5298-batch2.fastq.gz
 │   └── striatum-5346-batch2.fastq.gz
+├── reads_manifest.tsv
 └── scripts
     └── differential_expression_example.Rmd
 
-4 directories, 17 files
+4 directories, 18 files
 ```
 
 Download the fasta file and gtf like this:
@@ -83,6 +91,7 @@ Download the fasta file and gtf like this:
 ```sh
 cd groupwork_ont/
 mkdir reference
+cd reference
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.12.fa.gz
 wget ftp://ftp.ensembl.org/pub/release-102/gtf/homo_sapiens/Homo_sapiens.GRCh38.102.gtf.gz
 gunzip *.gz
@@ -107,7 +116,7 @@ You can start this project with dividing initial tasks. Because some intermediat
 !!! danger "Start the alignment on day 1"
     The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running (`tmux` and `screen` are also available).
 
-* Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation.
+* Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
 * Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
 * Run `flair.py correct` on the `bed12` file. Add the `gtf` to the options to improve the alignments.
 * Run `flair.py collapse` to generate isoforms from corrected reads. This steps takes ~1 hour to run.
@@ -117,7 +126,7 @@ You can start this project with dividing initial tasks. Because some intermediat
     The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair.py quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
 
 * Now you can do several things:
-    * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis. Go to `[SERVERIP]:8787` to login to RStudio server.
+    * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis. Go to your specified IP and port to login to RStudio server (the username is `rstudio`).
     * Investigate the isoform usage with the flair script `plot_isoform_usage.py`
     * Investigate productivity of the different isoforms.
 
@@ -181,6 +190,7 @@ You can download the reference genome like this:
 ```sh
 cd groupwork_pacbio
 mkdir reference
+cd reference
 wget ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 ```
@@ -206,10 +216,13 @@ Alignment files to do an initial repeat analysis are in the `tar.gz` package. Ho
     * How is the read length?
 * Align the reads to hg38 with `minimap2`. For the option `-x` you can use `asm20`. Generate separate alignment files for each individual.
 
+!!! note "The alignment is memory intensive"
+    The alignment takes about 16 Gb of RAM. Therefore, try to run it only once per group.
+
 !!! note "Alternatively use [`pbmm2`](https://github.com/PacificBiosciences/pbmm2)"
     Pacific Biosciences has developed a wrapper for `minimap2` that contains settings specific for PacBio reads, named [`pbmm2`](https://github.com/PacificBiosciences/pbmm2). It might slightly improve your alignments. It is installed in the conda environment. Feel free to give it a try if you have time left.
 
-* Clone the PacBio [apps-scripts repository](https://github.com/PacificBiosciences/apps-scripts.git) to the server. The script apps-scripts/RepeatAnalysisTools/makeReports.sh generates repeat expansion reports. Check out the [documentation](https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports), and generate repeat expansion reports for all individuals on both gene1 and gene2.
+* Clone the PacBio [apps-scripts repository](https://github.com/PacificBiosciences/apps-scripts.git) to the server. All dependencies are in the conda environment `pacbio`. Activate it with `conda activate pacbio`. The script apps-scripts/RepeatAnalysisTools/makeReports.sh generates repeat expansion reports. Check out the [documentation](https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports), and generate repeat expansion reports for all individuals on both gene1 and gene2.
 * Check out the report output and read the further [documentation of RepeatAnalysisTools](https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports).
     - How is the enrichment?
     - Does the clustering make sense? How does the clustering look in IGV?

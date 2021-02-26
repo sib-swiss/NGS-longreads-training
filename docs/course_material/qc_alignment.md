@@ -26,7 +26,7 @@ The authors used full-transcript amplicon sequencing with Oxford Nanopore Techno
 For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.
 
 ```sh
-cd ~
+cd ~/workdir
 wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
 tar -xvf ngs-longreads-training.tar.gz
 rm ngs-longreads-training.tar.gz
@@ -35,7 +35,7 @@ rm ngs-longreads-training.tar.gz
 **Exercise:** This will create the directory `data`. Check out what's in there.
 
 ??? done "Answer"
-    Go to the `~/data` folder:
+    Go to the `~/workdir/data` folder:
 
     ```sh
     cd ~/data
@@ -68,7 +68,7 @@ We will evaluate the read quality with `NanoPlot`.
     We have a `fastq` file, so based on the manual and the example we can run:
 
     ```sh
-    cd ~
+    cd ~/workdir
     NanoPlot \
     --fastq data/reads/cerebellum-5238-batch2.fastq.gz \
     --outdir nanoplot_output
@@ -170,7 +170,7 @@ Introns can be quite long in mammals; up to a few hundred kb.
 ```sh
 #!/usr/bin/env bash
 
-cd ~
+cd ~/workdir
 
 minimap2 \
 -a \
@@ -198,7 +198,7 @@ samtools index alignments/cerebellum-5238-batch2.bam
     ```sh
     #!/usr/bin/env bash
 
-    cd ~
+    cd ~/workdir
 
     minimap2 \
     -a \
