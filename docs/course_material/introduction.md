@@ -11,10 +11,12 @@
 
 ## Material
 
-### The introduction presentation:
+* The introduction presentation:
 
 [:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/introduction.pdf){: .md-button }
 
-### The sequencing technologies presentation:
+* The sequencing technologies presentation:
 
 [:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/sequencing_technologies.pdf){: .md-button }
+
+* Nice [review](https://www.nature.com/articles/s41576-020-0236-x) on long read sequencing in humans (also relevant for other species)
