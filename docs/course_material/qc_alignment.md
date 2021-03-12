@@ -47,13 +47,11 @@ rm ngs-longreads-training.tar.gz
     ├── reads
     │   └── cerebellum-5238-batch2.fastq.gz
     └── reference
-        ├── Homo_sapiens.GRCh38.102.gtf
-        ├── Homo_sapiens.GRCh38.dna.chromosome.12.fa
-        └── Homo_sapiens.GRCh38.dna.chromosome.12.fa.fai
+        └── Homo_sapiens.GRCh38.dna.chromosome.12.fa
 
-    2 directories, 4 files
+    2 directories, 2 files
     ```
-    In the reads folder a fastq file with reads, in the reference folder, a gtf with annotations, the reference sequence and an index of the reference sequence.
+    In the reads folder a fastq file with reads, in the reference folder the reference sequence.
 
 ### 2. Quality control
 

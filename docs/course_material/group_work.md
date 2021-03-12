@@ -29,10 +29,10 @@ Each group has access to a shared working directory. It is mounted in the root d
 
 ```sh
 cd ~
-ln -s /group_work ./
+ln -s /group_work/<group name> ./
 ```
 
-Now you can find your group directory at `~/group_work/<group name>`. Use this as much as possible.
+Now you can find your group directory at `~/<group name>`. Use this as much as possible.
 
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 
@@ -54,7 +54,7 @@ rm groupwork_ont.tar.gz
 ```
 
 !!! note
-    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>`
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>` or `~/<group name>`. Only one group member has to do this.
 
 This will create a directory `groupwork_ont` with the following structure:
 
@@ -157,7 +157,7 @@ rm groupwork_pacbio.tar.gz
 ```
 
 !!! note
-    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>`
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>` or `~/<group name>`. Only one group member has to do this.
 
 It has the following directory structure:
 
