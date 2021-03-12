@@ -581,10 +581,14 @@
 <h2 id="working-directories">Working directories</h2>
 <p>Each group has access to a shared working directory. It is mounted in the root directory (<code>/</code>). Make a soft link in your home directory:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~
-ln -s /group_work ./
+ln -s /group_work/&lt;group name&gt; ./
 </code></pre></div>
 
-<p>Now you can find your group directory at <code>~/group_work/&lt;group name&gt;</code>. Use this as much as possible.</p>
+<p>Now you can find your group directory at <code>~/&lt;group name&gt;</code>. Use this as much as possible.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not remove the soft link with <code>rm -r</code>, this will delete the entire source directory. If you want to remove only the softlink, use <code>rm</code> (without <code>-r</code>), or <code>unlink</code>. More info <a href="https://linuxize.com/post/how-to-remove-symbolic-links-in-linux/">here</a>.</p>
+</div>
 <h2 id="project-1-differential-isoform-expression-analysis-of-ont-data"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M208 0c-29.9 0-54.7 20.5-61.8 48.2-.8 0-1.4-.2-2.2-.2-35.3 0-64 28.7-64 64 0 4.8.6 9.5 1.7 14C52.5 138 32 166.6 32 200c0 12.6 3.2 24.3 8.3 34.9C16.3 248.7 0 274.3 0 304c0 33.3 20.4 61.9 49.4 73.9-.9 4.6-1.4 9.3-1.4 14.1 0 39.8 32.2 72 72 72 4.1 0 8.1-.5 12-1.2 9.6 28.5 36.2 49.2 68 49.2 39.8 0 72-32.2 72-72V64c0-35.3-28.7-64-64-64zm368 304c0-29.7-16.3-55.3-40.3-69.1 5.2-10.6 8.3-22.3 8.3-34.9 0-33.4-20.5-62-49.7-74 1-4.5 1.7-9.2 1.7-14 0-35.3-28.7-64-64-64-.8 0-1.5.2-2.2.2C422.7 20.5 397.9 0 368 0c-35.3 0-64 28.6-64 64v376c0 39.8 32.2 72 72 72 31.8 0 58.4-20.7 68-49.2 3.9.7 7.9 1.2 12 1.2 39.8 0 72-32.2 72-72 0-4.8-.5-9.5-1.4-14.1 29-12 49.4-40.6 49.4-73.9z"/></svg></span> Project 1: Differential isoform expression analysis of ONT data</h2>
 <p>In this project, you will be working with data from the same resource as the data we have already worked on:</p>
 <p>Clark, M. B. et al (2020). <em>Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain</em>. Molecular Psychiatry, 25(1), 37–47. <a href="https://doi.org/10.1038/s41380-019-0583-1">https://doi.org/10.1038/s41380-019-0583-1</a>.</p>
@@ -601,7 +605,7 @@ rm groupwork_ont.tar.gz
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code></p>
+<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
 </div>
 <p>This will create a directory <code>groupwork_ont</code> with the following structure:</p>
 <div class="highlight"><pre><span></span><code>groupwork_ont/
@@ -658,8 +662,24 @@ gunzip *.gz
 <li>Align each sample separately with <code>minimap2</code> with default parameters. Set parameters <code>-x</code> and <code>-G</code> to the values we have used during the <a href="../qc_alignment#3-read-alignment">QC and alignment exercises</a>. You can use 4 threads (set the number of threads with <code>-t</code>)</li>
 </ul>
 <div class="admonition danger">
-<p class="admonition-title">Start the alignment on day 1</p>
-<p>The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment at day 1, so you don&rsquo;t have to wait for the results on day 2. Use <code>nohup myscript.sh &amp;</code> to be able to logout while <code>myscript.sh</code> is running (<code>tmux</code> and <code>screen</code> are also available).</p>
+<p class="admonition-title">Start the alignment as soon as possible</p>
+<p>The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:</p>
+<div class="highlight"><pre><span></span><code>minimap2 <span class="se">\</span>
+-x splice <span class="se">\</span>
+-d reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi <span class="se">\</span>
+reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa
+</code></pre></div>
+
+<p>Refer to the generated index (<code>.mmi</code> file) as reference in the alignment command, e.g.:</p>
+<div class="highlight"><pre><span></span><code>minimap2 \
+-a \
+-x splice \
+-G 500k \
+-t 4 \
+reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
+reads/&lt;my_reads.fastq.gz&gt;
+</code></pre></div>
+
 </div>
 <ul>
 <li>Clone the <a href="https://github.com/BrooksLabUCSC/flair">FLAIR repository</a> to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named <code>flair</code>. You can activate it with <code>conda activate flair</code>.</li>
@@ -745,7 +765,7 @@ rm groupwork_pacbio.tar.gz
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code></p>
+<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
 </div>
 <p>It has the following directory structure:</p>
 <div class="highlight"><pre><span></span><code>groupwork_pacbio
@@ -801,9 +821,24 @@ gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 </li>
 <li>Align the reads to hg38 with <code>minimap2</code>. For the option <code>-x</code> you can use <code>asm20</code>. Generate separate alignment files for each individual.</li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">The alignment is memory intensive</p>
-<p>The alignment takes about 16 Gb of RAM. Therefore, try to run it only once per group.</p>
+<div class="admonition danger">
+<p class="admonition-title">Start the alignment as soon as possible</p>
+<p>The alignment takes quite some time. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:</p>
+<div class="highlight"><pre><span></span><code>minimap2 <span class="se">\</span>
+-x asm20 <span class="se">\</span>
+-d reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi <span class="se">\</span>
+reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+</code></pre></div>
+
+<p>Refer to the generated index (<code>.mmi</code> file) as reference in the alignment command, e.g.:</p>
+<div class="highlight"><pre><span></span><code>minimap2 \
+-a \
+-x asm20 \
+-t 4 \
+reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
+reads/&lt;my_reads.fastq.gz&gt;
+</code></pre></div>
+
 </div>
 <div class="admonition note">
 <p class="admonition-title">Alternatively use <a href="https://github.com/PacificBiosciences/pbmm2"><code>pbmm2</code></a></p>
