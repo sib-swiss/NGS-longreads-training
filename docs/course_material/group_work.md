@@ -5,6 +5,10 @@
 * Develop a basic pipeline for alignment-based analysis of a long-read sequencing dataset
 * Answer biological questions based on the analysis resulting from the pipeline
 
+## Material
+
+[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/group_work.pdf){: .md-button }
+
 ## Introduction
 
 The last part of this course will consist of project-based-learning. This means that you will work in groups on a single question. We will split up into groups of five people.
