@@ -34,6 +34,9 @@ ln -s /group_work/<group name> ./
 
 Now you can find your group directory at `~/<group name>`. Use this as much as possible.
 
+!!! warning
+    Do not remove the soft link with `rm -r`, this will delete the entire source directory. If you want to remove only the softlink, use `rm` (without `-r`), or `unlink`. More info [here](https://linuxize.com/post/how-to-remove-symbolic-links-in-linux/).
+
 ## :fontawesome-solid-brain: Project 1: Differential isoform expression analysis of ONT data
 
 In this project, you will be working with data from the same resource as the data we have already worked on:
@@ -113,8 +116,27 @@ You can start this project with dividing initial tasks. Because some intermediat
     * How is the read quality compared to the publication?
 * Align each sample separately with `minimap2` with default parameters. Set parameters `-x` and `-G` to the values we have used during the [QC and alignment exercises](../qc_alignment#3-read-alignment). You can use 4 threads (set the number of threads with `-t`)
 
-!!! danger "Start the alignment on day 1"
-    The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment at day 1, so you don't have to wait for the results on day 2. Use `nohup myscript.sh &` to be able to logout while `myscript.sh` is running (`tmux` and `screen` are also available).
+!!! danger "Start the alignment as soon as possible"
+    The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:
+
+    ```sh
+    minimap2 \
+    -x splice \
+    -d reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
+    reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa
+    ```
+
+    Refer to the generated index (`.mmi` file) as reference in the alignment command, e.g.:
+
+    ```
+    minimap2 \
+    -a \
+    -x splice \
+    -G 500k \
+    -t 4 \
+    reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
+    reads/<my_reads.fastq.gz>
+    ```
 
 * Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
 * Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
@@ -216,8 +238,26 @@ Alignment files to do an initial repeat analysis are in the `tar.gz` package. Ho
     * How is the read length?
 * Align the reads to hg38 with `minimap2`. For the option `-x` you can use `asm20`. Generate separate alignment files for each individual.
 
-!!! note "The alignment is memory intensive"
-    The alignment takes about 16 Gb of RAM. Therefore, try to run it only once per group.
+!!! danger "Start the alignment as soon as possible"
+    The alignment takes quite some time. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:
+
+    ```sh
+    minimap2 \
+    -x asm20 \
+    -d reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
+    reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    ```
+
+    Refer to the generated index (`.mmi` file) as reference in the alignment command, e.g.:
+
+    ```
+    minimap2 \
+    -a \
+    -x asm20 \
+    -t 4 \
+    reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
+    reads/<my_reads.fastq.gz>
+    ```
 
 !!! note "Alternatively use [`pbmm2`](https://github.com/PacificBiosciences/pbmm2)"
     Pacific Biosciences has developed a wrapper for `minimap2` that contains settings specific for PacBio reads, named [`pbmm2`](https://github.com/PacificBiosciences/pbmm2). It might slightly improve your alignments. It is installed in the conda environment. Feel free to give it a try if you have time left.
