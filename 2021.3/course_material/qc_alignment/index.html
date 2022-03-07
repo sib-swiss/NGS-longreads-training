@@ -1,0 +1,765 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/SIB_logo.svg">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
+    
+    
+      
+        <title>QC and alignment - Long-read sequencing analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.be71726b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-outcomes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Long-read sequencing analysis" class="md-header__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+      
+  <img src="../../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Long-read sequencing analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              QC and alignment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/sib-swiss/NGS-longreads-training/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/NGS-longreads-training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Long-read sequencing analysis" class="md-nav__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+      
+  <img src="../../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    Long-read sequencing analysis
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/sib-swiss/NGS-longreads-training/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/NGS-longreads-training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../precourse/" class="md-nav__link">
+        Precourse preparations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_schedule/" class="md-nav__link">
+        Course schedule
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Course material
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Course material" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Course material
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server_login/" class="md-nav__link">
+        Server login
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          QC and alignment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        QC and alignment
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    Learning outcomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    Material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retrieve-data" class="md-nav__link">
+    1. Retrieve data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-control" class="md-nav__link">
+    2. Quality control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-alignment" class="md-nav__link">
+    3. Read alignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-visualisation" class="md-nav__link">
+    4. Visualisation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        Applications
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group_work/" class="md-nav__link">
+        Group work
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    Learning outcomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    Material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retrieve-data" class="md-nav__link">
+    1. Retrieve data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-control" class="md-nav__link">
+    2. Quality control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-alignment" class="md-nav__link">
+    3. Read alignment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-visualisation" class="md-nav__link">
+    4. Visualisation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/sib-swiss/NGS-longreads-training/edit/master/docs/course_material/qc_alignment.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>QC and alignment</h1>
+                
+                <h2 id="learning-outcomes">Learning outcomes</h2>
+<p><strong>After having completed this chapter you will be able to:</strong></p>
+<ul>
+<li>Explain how the fastq format stores sequence and base quality information and why this is limited for long-read sequencing data</li>
+<li>Calculate base accuracy and probability based on base quality</li>
+<li>Describe how alignment information is stored in a sequence alignment (<code>.sam</code>) file</li>
+<li>Perform a quality control on long-read data with <code>NanoPlot</code></li>
+<li>Perform a basic alignment of long reads with <code>minimap2</code></li>
+<li>Visualise an alignment file in IGV on a local computer</li>
+</ul>
+<h2 id="material">Material</h2>
+<p><a class="md-button" href="../../assets/pdf/QC_alignment.pdf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105 279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"/></svg></span> Download the presentation</a></p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="1-retrieve-data">1. Retrieve data</h3>
+<p>We will be working with data from:</p>
+<blockquote>
+<p>Clark, M. B. et al (2020). <strong>Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain</strong>. Molecular Psychiatry, 25(1), 37–47. https://doi.org/10.1038/s41380-019-0583-1</p>
+</blockquote>
+<p>The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.</p>
+<p>For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
+tar -xvf ngs-longreads-training.tar.gz
+rm ngs-longreads-training.tar.gz
+</code></pre></div>
+<p><strong>Exercise:</strong> This will create the directory <code>data</code>. Check out what&rsquo;s in there.</p>
+<details class="done"><summary>Answer</summary><p>Go to the <code>~/workdir/data</code> folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/data
+</code></pre></div>
+<p>The data folder contains the following:
+<div class="highlight"><pre><span></span><code>data/
+├── reads
+│   └── cerebellum-5238-batch2.fastq.gz
+└── reference
+    └── Homo_sapiens.GRCh38.dna.chromosome.12.fa
+
+2 directories, 2 files
+</code></pre></div>
+In the reads folder a fastq file with reads, in the reference folder the reference sequence.</p>
+</details>
+<h3 id="2-quality-control">2. Quality control</h3>
+<p>We will evaluate the read quality with <code>NanoPlot</code>.</p>
+<p><strong>Exercise:</strong> Check out the manual of <code>NanoPlot</code> with the command <code>NanoPlot --help</code>, and run <code>NanoPlot</code> on <code>~/data/reads/cerebellum-5238-batch2.fastq.gz</code>.</p>
+<details class="hint"><summary>Hint</summary><p>For a basic output of <code>NanoPlot</code> on a <code>fastq.gz</code> file you can use the options <code>--outdir</code> and <code>--fastq</code>.</p>
+</details>
+<details class="done"><summary>Answer</summary><p>We have a <code>fastq</code> file, so based on the manual and the example we can run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
+NanoPlot <span class="se">\</span>
+--fastq data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
+--outdir nanoplot_output
+</code></pre></div>
+</details>
+<p>You will now have a directory with the following files:</p>
+<div class="highlight"><pre><span></span><code>├── Dynamic_Histogram_Read_length.html
+├── Dynamic_Histogram_Read_length.png
+├── HistogramReadlength.png
+├── LengthvsQualityScatterPlot_dot.png
+├── LengthvsQualityScatterPlot_kde.png
+├── LogTransformed_HistogramReadlength.png
+├── NanoPlot_20210105_1339.log
+├── NanoPlot-report.html
+├── NanoStats.txt
+├── Weighted_HistogramReadlength.png
+├── Weighted_LogTransformed_HistogramReadlength.png
+└── Yield_By_Length.png
+</code></pre></div>
+<p>The file <code>NanoPlot-report.html</code> contains a report with all the information stored in the other files.</p>
+<p><strong>Exercise:</strong> Download <code>NanoPlot-report.html</code> to your local computer and answer the following questions:</p>
+<p><strong>A.</strong> How many reads are in the file?</p>
+<p><strong>B.</strong> What is the average read length? Is there a wide distribution? Given that these sequences are generated from a long-range PCR, is that expected?</p>
+<p><strong>C.</strong> What is the average base quality and what kind of accuracy do we therefore expect?</p>
+<div class="admonition hint">
+<p class="admonition-title">Download files from the notebook</p>
+<p>You can download files from the file browser, by right-clicking a file and selecting <strong>Download</strong>:</p>
+<p><figure>
+  <img src="../../assets/images/jupyter_download_file.png" width="400"/>
+</figure></p>
+</div>
+<details class="done"><summary>Answer</summary><p>A. 3735</p>
+<p>B. The average read length is 6,003.3 base pairs. From the read length histogram we can see that there is a very narrow distribution. As a PCR will generate sequences of approximately the same length, this is expected.</p>
+<p>C. The average base quality is 7.3. We have learned that <span class="arithmatex">\(p=10^{\frac{-baseQ}{10}}\)</span>, so the average probability that the base is wrong is <span class="arithmatex">\(10^{\frac{-7.3}{10}} = 0.186\)</span>. The expected accuracy is <span class="arithmatex">\(1-0.186=0.814\)</span> or 81.4%.</p>
+</details>
+<h3 id="3-read-alignment">3. Read alignment</h3>
+<p>The sequence aligner <a href="https://github.com/lh3/minimap2"><code>minimap2</code></a> is specifically developed for (splice-aware) alignment of long reads.</p>
+<p><strong>Exercise:</strong> Checkout the helper <code>minimap2 --help</code> and/or the <a href="https://github.com/lh3/minimap2">github readme</a>. We are working with reads generated from cDNA. Considering we are aligning to a reference genome (DNA), what would be the most logical parameter for our dataset to the option <code>-x</code>?</p>
+<details class="done"><summary>Answer</summary><p>The option <code>-x</code> can take the following arguments:</p>
+<p><div class="highlight"><pre><span></span><code>-x STR       preset (always applied before other options; see minimap2.1 for details) []
+           - map-pb/map-ont: PacBio/Nanopore vs reference mapping
+           - ava-pb/ava-ont: PacBio/Nanopore read overlap
+           - asm5/asm10/asm20: asm-to-ref mapping, for ~0.1/1/5% sequence divergence
+           - splice: long-read spliced alignment
+           - sr: genomic short-read mapping
+</code></pre></div>
+We are working with ONT data so we could choose <code>map-ont</code>. However, our data is also spliced. Therefore, we should choose <code>splice</code>.</p>
+</details>
+<p>Introns can be quite long in mammals; up to a few hundred kb.</p>
+<p><strong>Exercise:</strong> Look up the CACNA1C gene in hg38 in IGV, and roughly estimate the length of the longest intron.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>First load hg38 in IGV, by clicking the topleft drop-down menu:</p>
+<p><figure>
+  <img src="../../assets/images/IGV_choose_hg38.png" width="200"/>
+</figure></p>
+<p>After that type <code>CACNA1C</code> in the search box:</p>
+<p><figure>
+  <img src="../../assets/images/IGV_choose_CACNA1C.png" width="300"/>
+</figure></p>
+</div>
+<details class="done"><summary>Answer</summary><p>The longest intron is about 350 kilo bases (350,000 base pairs)</p>
+</details>
+<p><strong>Exercise:</strong> Check out the <code>-G</code> option of <code>minimap2</code>. How does this relate to the the largest intron size of CACNA1C?</p>
+<details class="done"><summary>Answer</summary><p>This is what the manual says:</p>
+<div class="highlight"><pre><span></span><code>-G NUM       max intron length (effective with -xsplice; changing -r) [200k]
+</code></pre></div>
+<p>We found an intron size of approximately 350k, so the default is set too small. We should be increase it to at least 350k.</p>
+</details>
+<p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">cd</span> ~/workdir
+
+minimap2 <span class="se">\</span>
+-a <span class="se">\</span>
+-x <span class="o">[</span>PARAMETER<span class="o">]</span> <span class="se">\</span>
+-G <span class="o">[</span>PARAMETER<span class="o">]</span> <span class="se">\</span>
+-t <span class="m">2</span> <span class="se">\</span>
+data/references/GRCh38.p13.chr12.fa <span class="se">\</span>
+data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
+<span class="p">|</span> samtools sort <span class="se">\</span>
+<span class="p">|</span> samtools view -bh &gt; alignments/cerebellum-5238-batch2.bam
+
+<span class="c1">## indexing for IGV</span>
+samtools index alignments/cerebellum-5238-batch2.bam
+</code></pre></div>
+<details class="done"><summary>Answer</summary><p>Make a directory like this:</p>
+<div class="highlight"><pre><span></span><code>mkdir ~/workdir/alignments
+</code></pre></div>
+<p>Modify the script to set the <code>-x</code> and <code>-G</code> options:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">cd</span> ~/workdir
+
+minimap2 <span class="se">\</span>
+-a <span class="se">\</span>
+-x splice <span class="se">\</span>
+-G 500k <span class="se">\</span>
+-t <span class="m">2</span> <span class="se">\</span>
+data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa <span class="se">\</span>
+data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
+<span class="p">|</span> samtools sort <span class="se">\</span>
+<span class="p">|</span> samtools view -bh &gt; alignments/cerebellum-5238-batch2.bam
+
+<span class="c1">## indexing for IGV</span>
+samtools index alignments/cerebellum-5238-batch2.bam
+</code></pre></div>
+<p>And run it (e.g. if you named the script <code>ont_alignment.sh</code>):</p>
+<div class="highlight"><pre><span></span><code>chmod u+x ont_alignment.sh
+./ont_alignment.sh
+</code></pre></div>
+</details>
+<h3 id="4-visualisation">4. Visualisation</h3>
+<p>Let&rsquo;s have a look at the alignments. Download the files <code>cerebellum-5238-batch2.bam</code> and <code>cerebellum-5238-batch2.bam.bai</code> to your local computer and load the <code>.bam</code> file into IGV (<strong>File &gt; Load from File&hellip;</strong>).</p>
+<p><strong>Exercise:</strong> Have a look at the region <code>chr12:2,632,655-2,635,447</code> by typing it into the search box. Do you see any evidence for alternative splicing already?</p>
+<details class="done"><summary>Answer</summary><p>The two exons seem to be mutually exclusive:</p>
+<p><figure>
+  <img src="../../assets/images/IGV_alternative_splicing.png" width="300"/>
+</figure></p>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../server_login/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Server login" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Server login
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../applications/" class="md-footer__link md-footer__link--next" aria-label="Next: Applications" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Applications
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56a63758.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
