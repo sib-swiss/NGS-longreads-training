@@ -14,13 +14,10 @@ theme:
   name: material
   logo: assets/images/SIB_logo.svg
   favicon: assets/images/SIB_logo.svg
-  icon:
-    repo: fontawesome/brands/github
 
 # Repository
 repo_name: sib-swiss/NGS-longreads-training
 repo_url: https://github.com/sib-swiss/NGS-longreads-training
-# edit_uri: ""
 
 markdown_extensions:
   - abbr
@@ -40,11 +37,18 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.arithmatex:
       generic: true
 
 extra_css:
   - stylesheets/extra.css
+
+extra:
+  version:
+    provider: mike
 
 extra_javascript:
   - javascripts/config.js
