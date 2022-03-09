@@ -1,4 +1,15 @@
-# Course website
+# Long read sequencing analysis
+
+## Teachers
+
+- Geert van Geest [:custom-orcid:](https://orcid.org/0000-0002-1561-078X)
+- Marco Kreuzer [:custom-orcid:](https://orcid.org/0000-0001-6784-0854)
+
+## Authors
+
+- Geert van Geest [:custom-orcid:](https://orcid.org/0000-0002-1561-078X)
+- Marco Kreuzer [:custom-orcid:](https://orcid.org/0000-0001-6784-0854)
+- Patricia Palagi [:custom-orcid:](https://orcid.org/0000-0001-9062-6303)
 
 ## Material
 
