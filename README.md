@@ -1,4 +1,5 @@
-![build workflow](https://github.com/sib-swiss/NGS-longreads-training/actions/workflows/jupyter/push_jupyter_container.yml/badge.svg)
+![jupyter build and push CI](https://github.com/sib-swiss/NGS-longreads-training/actions/workflows/push_jupyter_container.yml/badge.svg)
+![rstudio build and push CI](https://github.com/sib-swiss/NGS-longreads-training/actions/workflows/push_rstudio_container.yml/badge.svg)
 ![GitHub Release Date](https://img.shields.io/github/release-date/sib-swiss/NGS-longreads-training)
 [![DOI](https://zenodo.org/badge/335204160.svg)](https://zenodo.org/badge/latestdoi/335204160)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
