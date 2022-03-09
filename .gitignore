@@ -1,2 +1,8 @@
 .DS_Store
 site
+.ipynb_checkpoints/
+.jupyter/
+.local/
+workdir/
+.cache/
+.pki/
