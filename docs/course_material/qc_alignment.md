@@ -184,6 +184,9 @@ data/reads/cerebellum-5238-batch2.fastq.gz \
 samtools index alignments/cerebellum-5238-batch2.bam
 ```
 
+!!! note 
+    One your script is running, it will take a while to finish. Have a ☕. 
+
 ??? done "Answer"
     Make a directory like this:
 

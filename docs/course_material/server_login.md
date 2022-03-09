@@ -248,11 +248,11 @@ More on `chmod` and file permissions [here](https://www.howtogeek.com/437958/how
 
 #### Redirection: `>` and `|`
 
-In the root directory (go there like this: `cd /`) there are a range of system directories and files. Write the names of all directories and files to a file called `system_dirs.txt` in your home directory (use `ls` and `>`).
+In the root directory (go there like this: `cd /`) there are a range of system directories and files. Write the names of all directories and files to a file called `system_dirs.txt` in your working directory (`~/workdir`; use `ls` and `>`).
 
 ??? done "Answer"
     ```sh
-    ls / > ~/system_dirs.txt
+    ls / > ~/workdir/system_dirs.txt
     ```
 
 The command `wc -l` counts the number of lines, and can read from stdin. Make a one-liner with a pipe `|` symbol to find out how many system directories and files there are.
@@ -268,6 +268,7 @@ Store `system_dirs.txt` as variable (like this: `VAR=variable`), and use `wc -l`
 
 ??? done "Answer"
     ```sh
+    cd ~/workdir
     FILE=system_dirs.txt
     wc -l $FILE
     ```
