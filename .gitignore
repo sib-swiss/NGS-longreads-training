@@ -6,3 +6,5 @@ site
 workdir/
 .cache/
 .pki/
+.Rproj.user
+.parallel
