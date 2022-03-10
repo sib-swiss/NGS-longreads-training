@@ -27,3 +27,8 @@ RUN rm flair_env.yml
 COPY pacbio_env.yml ./
 RUN /opt/conda/bin/conda env create -f pacbio_env.yml
 RUN rm pacbio_env.yml
+
+# install assembly environment from .yml file
+COPY assembly_env.yml ./
+RUN /opt/conda/bin/conda env create -f assembly_env.yml
+RUN rm assembly_env.yml
