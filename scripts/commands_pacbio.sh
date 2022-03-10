@@ -11,6 +11,13 @@
 # --ubam reads/m64012_191221_044659.demux.bc1020--bc1020.bam \
 # --outdir nanoplot_reports
 
+cd ~/workdir/groupwork_pacbio/
+
+minimap2 \
+-x asm20 \
+-d reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
+reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+
 mkdir alignments
 
 for sample in `seq 1015 1022`
@@ -18,7 +25,7 @@ do
   minimap2 \
   -a \
   -x asm20 \
-  reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
+  reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
   reads/$sample.fastq.gz \
   | samtools sort \
   | samtools view -bh \
