@@ -1,0 +1,508 @@
+[
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7262956",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I had some introduction in unix and/or R/python and ready to get started!"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7262957",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I analyzed some datasets for which I used the command line"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7262958",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I regularly analyze datasets with the command line"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7262959",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I\u2019m a bioinformatician"
+            }
+        ],
+        "correctAnswerExplanation": null,
+        "distributableWeight": null,
+        "id": "1874692",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "How comfortable are you with bioinformatic analyses?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263026",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I might be working with long reads in the future"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263027",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I will probably work with long reads in one of my current research projects"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263028",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "There is a long-read dataset waiting to be analyzed"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263029",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "I already analyzed one or more long-read dataset(s)"
+            }
+        ],
+        "correctAnswerExplanation": null,
+        "distributableWeight": null,
+        "id": "1874700",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "In which stage of working with long reads are you?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "OpenTextQuestion",
+        "alias": "",
+        "correctAnswerExplanation": null,
+        "correctAnswers": [],
+        "id": "1874706",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxLength": 2000,
+        "maxWordCount": null,
+        "maxWordLength": null,
+        "maxWords": 150,
+        "resultFormat": "WORD_CLOUD",
+        "text": "Write three topics you want to learn more about during this course",
+        "wordCloudQuestion": true
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263156",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Finishing a book with > 1000 pages"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263157",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "A sequence read coming from a PacBio sequencer"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263158",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Any sequence read longer than reads from an Illumina sequencer"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263159",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "A read that is generated from a single-molecule (3rd generation) sequencer"
+            }
+        ],
+        "correctAnswerExplanation": "Although using the word 'long' is subjective, most people mean 3rd generation sequencing reads, if talking about 'long' reads.",
+        "distributableWeight": null,
+        "id": "1874722",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "How would you define a long read?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263174",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "You get twice as much sequencing data"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263175",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "It helps the aligner where to start the alignment"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263176",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Reads are sequenced twice, so you get a lower error rate"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263177",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "Because two reads come from the same fragment, you know they are  physically linked"
+            }
+        ],
+        "correctAnswerExplanation": "In addition to physical linkage, you also often have an idea of the approximate size of the fragment. This helps to identify e.g. large indels, alignment problems and identify splice variants. ",
+        "distributableWeight": null,
+        "id": "1874729",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "How can paired-end sequencing data give more information compared to single-end?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263200",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "There would be no PCR, so the amount of input would be too low"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263201",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "The signal of a single base incorporation would be too low to read from an Illumina sequencing lane"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263202",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "You could, but you would miss the throughput"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263203",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Single-molecule sequencing is propriety to Nanopore technologies and PacBio"
+            }
+        ],
+        "correctAnswerExplanation": "An Illumina sequencer is not designed to pick up signals of single base incorporation. ",
+        "distributableWeight": null,
+        "id": "1874737",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "Why can\u2019t Illumina sequencing be adjusted to read from a single molecule?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263232",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Hi-Fi reads from PacBio"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263233",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Continuous Long Reads (CLR) from PacBio"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263234",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "ONT sequencing - PromethIon"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263235",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "ONT sequencing - MinIon"
+            }
+        ],
+        "correctAnswerExplanation": "Getting information on a single PCR product in a few samples only requires a relatively low number of sequencing reads. In addition you want information on splice variants, which probably requires quite long reads. Therefore sequencing with a ONT Minion will probably enough and give you long reads. ",
+        "distributableWeight": null,
+        "id": "1874745",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "You want to analyze splice variants in a single PCR product in a few samples. Which platform would you use?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263260",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "Hi-Fi reads from PacBio"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263261",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "ONT sequencing"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263262",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "Illumina sequencing"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263263",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Any of the three will be good"
+            }
+        ],
+        "correctAnswerExplanation": "Hi-Fi PacBio reads have very high accuracy, which can be higher compared to Illumina reads. ",
+        "distributableWeight": null,
+        "id": "1874756",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 2,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "You want to detect low-frequency variants in pooled samples. Which platform would you use?\n",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263291",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "P = -10*log10(0.1) = 10; accuracy = 0.9"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263292",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "P = 10^-1/10 = 0.8; accuracy = 0.8"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263293",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "P = 10^-10/10 = 0.1; accuracy = 0.1"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263294",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "P = 10^-10/10 = 0.1; accuracy = 0.9"
+            }
+        ],
+        "correctAnswerExplanation": "P=10^(-PHRED/10); accuracy=1-P",
+        "distributableWeight": null,
+        "id": "1874764",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "You have a base call with a quality of 10, what is the probability the base call is wrong, and what is the accuracy?",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263301",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Overrepresented sequences"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263302",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "Read length"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263303",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "GC content"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263304",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "Adapter content"
+            }
+        ],
+        "correctAnswerExplanation": "Read length is usually fixed for Illumina sequencing (unless there has  been heavy trimming). For long reads this often variable and a long as possible read length an important aim. ",
+        "distributableWeight": null,
+        "id": "1874768",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "What kind quality characteristic is important to check for long-read sequencing data but less important for Illumina sequencing?\n",
+        "weightingFactor": null,
+        "weightingSetting": null
+    },
+    {
+        "@type": "MultipleChoiceQuestion",
+        "alias": "",
+        "choices": [
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263310",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "CIGAR string"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263311",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "base quality"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7263312",
+                "image": null,
+                "isCorrectAnswer": false,
+                "text": "mapping quality"
+            },
+            {
+                "alias": null,
+                "excludeFromResults": false,
+                "id": "7273923",
+                "image": null,
+                "isCorrectAnswer": true,
+                "text": "start position mate"
+            }
+        ],
+        "correctAnswerExplanation": "There are no paired-end long read sequencing techniques, so the start position of the mate becomes obsolete. ",
+        "distributableWeight": null,
+        "id": "1874770",
+        "image": null,
+        "lowerCaseAlias": "",
+        "maxNumberSelections": 1,
+        "minNumberSelections": 1,
+        "resultFormat": "%",
+        "text": "Which column of the sam file become obsolete for long-read sequencing data?\n",
+        "weightingFactor": null,
+        "weightingSetting": null
+    }
+]
