@@ -8,7 +8,11 @@ nav:
       - Server login: course_material/server_login.md
       - QC and alignment: course_material/qc_alignment.md
       - Applications: course_material/applications.md
-      - Group work: course_material/group_work.md
+      - Group work: 
+        - Introduction: course_material/group_work/group_work.md
+        - Project 1: course_material/group_work/project1.md
+        - Project 2: course_material/group_work/project2.md
+        - Project 3: course_material/group_work/project3.md
 
 theme:
   name: material
