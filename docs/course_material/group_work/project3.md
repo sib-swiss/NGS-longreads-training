@@ -75,7 +75,7 @@ You can do this for both the CLR reads and HiFi reads and compare the results.
     ```
 
     **Before you run `prokka`**
-    
+
     The `conda` installation misses a perl module. Install it in the `assembly` environment like this:
 
     ```sh
@@ -90,7 +90,7 @@ You can do this for both the CLR reads and HiFi reads and compare the results.
     * Check out the output. Where is the assembly? How is the quality? For that, check out `assembly_info.txt`. 
 * Check the completeness with `BUSCO`. Have a good look at the manual first. You can use automated lineage selecton by specifying `--auto-lineage-prok`. After you have run `BUSCO`, you can generate a nice completeness plot with `generate_plot.py`. You can check its usage with `generate_plot.py --help`. 
     * How is the completeness? Is this expected?
-* Perform an annotation with `prokka`. Again, check the manual first. Have a look at for example the statistics in `PROKKA_[date].txt`, and for a nice table of annotated genes in `PROKKA_[data].tsv`. 
+* Perform an annotation with `prokka`. Again, check the manual first. After the run, have a look at for example the statistics in `PROKKA_[date].txt`. For a nice table of annotated genes have a look in `PROKKA_[data].tsv`. 
 
 
 

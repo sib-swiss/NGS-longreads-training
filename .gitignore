@@ -10,3 +10,4 @@ workdir/
 .parallel
 .conda
 .cpanm/
+.bash_history
