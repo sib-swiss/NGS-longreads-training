@@ -707,25 +707,27 @@
 <li>Docker</li>
 </ul>
 </div>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Cloud notebook</label><div class="tabbed-content">
-<p>If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: <code>http://18.195.156.25:10002</code>) in your browser. This should result in the following page:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cloud notebook</label><label for="__tabbed_1_2">Docker</label><label for="__tabbed_1_3">conda</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: <code>http://12.345.789.10:10002</code>) in your browser. This should result in the following page:</p>
 <p><figure>
-  <img src="../../assets/images/jupyter_login_page.png" width="300"/>
+    <img src="../../assets/images/jupyter_login_page.png" width="300"/>
 </figure></p>
 <p>Type your password, and proceed to the notebook home page. This page contains all the files in your working directory (if there are any). Most of the exercises will be executed through the command line. We use the terminal for this. Find it at <strong>New &gt; Terminal</strong>:</p>
 <p><figure>
-  <img src="../../assets/images/jupyter_choose_terminal.png" width="500"/>
+    <img src="../../assets/images/jupyter_choose_terminal.png" width="500"/>
 </figure></p>
 <p>For a.o. efficiency and reproducibility it makes sense to execute your commands from a script. You can generate and edit scripts with <strong>New &gt; Text File</strong>:</p>
 <p><figure>
-  <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
+    <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
 </figure></p>
 <p>Once you have opened a script you can change the code highlighting. This is convenient for writing the code. The text editor will automatically change the highlighting based on the file extension (e.g. <code>.py</code> extension will result in python syntax highlighting). You can change or set the syntax highlighting by clicking the button on the bottom of the page. We will be using mainly shell scripting in this course, so here&rsquo;s an example for adjusting it to shell syntax highlighting:</p>
 <p><figure>
-  <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
+    <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
 </figure></p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Docker</label><div class="tabbed-content">
+<div class="tabbed-block">
 <h2 id="material">Material</h2>
 <ul>
 <li>Instructions to <a href="https://docs.docker.com/get-docker/">install docker</a></li>
@@ -740,7 +742,6 @@
 <div class="admonition warning">
 <p class="admonition-title">Modify the script</p>
 <p>Modify the path after <code>-v</code> to the working directory on your computer before running it.</p>
-</div>
 <div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
 --rm <span class="se">\</span>
 -e <span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes <span class="se">\</span>
@@ -749,6 +750,7 @@
 geertvangeest/ngs-longreads-jupyter:latest <span class="se">\</span>
 start-notebook.sh
 </code></pre></div>
+</div>
 <p>If this command has run successfully, you will find a link and token in the console, e.g.:</p>
 <div class="highlight"><pre><span></span><code>http://127.0.0.1:8888/?token<span class="o">=</span>4be8d916e89afad166923de5ce5th1s1san3xamp13
 </code></pre></div>
@@ -760,7 +762,7 @@ start-notebook.sh
 </div>
 <p>The part <code>geertvangeest/ngs-longreads-jupyter:latest</code> is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it&rsquo;s on your computer, it will start immediately.</p>
 </div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">conda</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>If you have a conda installation on your local computer, you can install the required software using conda.</p>
 <p>You can build the environment from <a href="../../assets/yaml/ngs-longreads.yml">ngs-longreads.yml</a></p>
 <p>Generate the conda environment like this:</p>
@@ -790,6 +792,7 @@ conda install -y -c bioconda nanoplot
 <div class="highlight"><pre><span></span><code>conda activate ngs-longreads
 </code></pre></div>
 <p>After successful installation and activating the environment all the software required to do the exercises should be available.</p>
+</div>
 </div>
 </div>
 <h3 id="a-unix-command-line-interface-cli-refresher">A UNIX command line interface (CLI) refresher</h3>
