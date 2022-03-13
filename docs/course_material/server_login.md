@@ -1,3 +1,4 @@
+
 ## Learning outcomes
 
 !!! note
@@ -26,28 +27,28 @@
 
 === "Cloud notebook"
 
-    If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: `http://18.195.156.25:10002`) in your browser. This should result in the following page:
+    If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: `http://12.345.789.10:10002`) in your browser. This should result in the following page:
 
     <figure>
-      <img src="../../assets/images/jupyter_login_page.png" width="300"/>
+        <img src="../../assets/images/jupyter_login_page.png" width="300"/>
     </figure>
 
     Type your password, and proceed to the notebook home page. This page contains all the files in your working directory (if there are any). Most of the exercises will be executed through the command line. We use the terminal for this. Find it at **New > Terminal**:
 
     <figure>
-      <img src="../../assets/images/jupyter_choose_terminal.png" width="500"/>
+        <img src="../../assets/images/jupyter_choose_terminal.png" width="500"/>
     </figure>
 
     For a.o. efficiency and reproducibility it makes sense to execute your commands from a script. You can generate and edit scripts with **New > Text File**:
 
     <figure>
-      <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
+        <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
     </figure>
 
     Once you have opened a script you can change the code highlighting. This is convenient for writing the code. The text editor will automatically change the highlighting based on the file extension (e.g. `.py` extension will result in python syntax highlighting). You can change or set the syntax highlighting by clicking the button on the bottom of the page. We will be using mainly shell scripting in this course, so here's an example for adjusting it to shell syntax highlighting:
 
     <figure>
-      <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
+        <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
     </figure>
 
 
@@ -73,15 +74,15 @@
     !!! warning "Modify the script"
         Modify the path after `-v` to the working directory on your computer before running it.
 
-      ```sh
-      docker run \
-      --rm \
-      -e JUPYTER_ENABLE_LAB=yes \
-      -v /path/to/workingdir/:/home/jovyan \
-      -p 8888:8888 \
-      geertvangeest/ngs-longreads-jupyter:latest \
-      start-notebook.sh
-      ```
+        ```sh
+        docker run \
+        --rm \
+        -e JUPYTER_ENABLE_LAB=yes \
+        -v /path/to/workingdir/:/home/jovyan \
+        -p 8888:8888 \
+        geertvangeest/ngs-longreads-jupyter:latest \
+        start-notebook.sh
+        ```
 
 
     If this command has run successfully, you will find a link and token in the console, e.g.:
@@ -99,7 +100,6 @@
 
 
     The part `geertvangeest/ngs-longreads-jupyter:latest` is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it's on your computer, it will start immediately.
-
 
 === "conda"
 
