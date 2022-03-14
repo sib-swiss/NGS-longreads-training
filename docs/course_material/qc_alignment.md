@@ -185,7 +185,7 @@ samtools index alignments/cerebellum-5238-batch2.bam
 ```
 
 !!! note 
-    One your script is running, it will take a while to finish. Have a ☕. 
+    Once your script is running, it will take a while to finish. Have a ☕. 
 
 ??? done "Answer"
     Make a directory like this:
