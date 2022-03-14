@@ -174,7 +174,7 @@ minimap2 \
 -a \
 -x [PARAMETER] \
 -G [PARAMETER] \
--t 2 \
+-t 4 \
 data/references/GRCh38.p13.chr12.fa \
 data/reads/cerebellum-5238-batch2.fastq.gz \
 | samtools sort \
@@ -205,7 +205,7 @@ samtools index alignments/cerebellum-5238-batch2.bam
     -a \
     -x splice \
     -G 500k \
-    -t 2 \
+    -t 4 \
     data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
     data/reads/cerebellum-5238-batch2.fastq.gz \
     | samtools sort \
