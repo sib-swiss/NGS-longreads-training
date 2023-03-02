@@ -8,11 +8,7 @@ You will be working with PacBio sequencing data of five different bacterial stra
 
 There are five different strains: 
 
-- LMB2
-- LWH12
-- LWH7
-- LWO12
-- LWO14
+
 
 Each strain has a tarfile available. Download only the data for the strains that you will require: 
 
@@ -31,25 +27,8 @@ rm "$STRAIN".tar.gz
 The downloaded directory has the following structure (here's an example for LWH7):
 
 ```
-LWH7
-├── CLR
-│   └── reads
-│       └── LWH7_CLR.fasta.gz
-├── HiFi
-│   └── reads
-│       ├── LWH7_HiFi.fasta.gz
-│       └── LWH7_HiFi.fastq.gz
-└── Illumina
-    ├── assembly
-    │   └── scaffolds_200.fasta
-    └── reads
-        ├── LWH7_1.fastq.gz
-        └── LWH7_2.fastq.gz
 
-7 directories, 6 files
 ```
-
-The directories `CLR` and `HiFi` contain the CLR and HiFi reads respectively. The directories in `Illumina` contain an assembly as produced by `SPAdes`. 
 
 ### Before you start
 
