@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook:9fe5186aba96
+FROM jupyter/minimal-notebook:e407f93c8dcc
 
 USER root
 RUN cat /etc/skel/.bashrc >> /etc/bash.bashrc
@@ -6,29 +6,26 @@ USER $NB_UID
 
 RUN rm -r /home/jovyan/work
 
-RUN /opt/conda/bin/conda install -y --quiet -c bioconda \
-samtools=1.10 \
-minimap2=2.17 \
-fastqc=0.11.9 \
-pbmm2=1.4.0 \
-parallel=20170422
+RUN /opt/conda/bin/conda config --add channels bioconda
+RUN /opt/conda/bin/conda config --add channels conda-forge
 
-RUN parallel --citation <<< 'will cite'
+RUN /opt/conda/bin/conda install mamba -y -n base -c conda-forge
+
+RUN mamba install -y --quiet \
+samtools>=1.10 \
+minimap2 \
+fastqc \
+pbmm2 \
+parallel
 
 # install nanoplot with pip (with conda gives errors)
 RUN pip install NanoPlot
 
-# install flair environment from .yml file
-COPY flair_env.yml ./
-RUN /opt/conda/bin/conda env create -f flair_env.yml
-RUN rm flair_env.yml
+RUN mamba create -y -n flair -c conda-forge -c bioconda flair
 
-# install pacbio environment from .yml file
-COPY pacbio_env.yml ./
-RUN /opt/conda/bin/conda env create -f pacbio_env.yml
-RUN rm pacbio_env.yml
+RUN mamba create -y -n pacbio \
+    pbccs lima pbmm2 matplotlib numpy \
+    pandas seaborn mappy pysam scikit-learn pbcore
 
-# install assembly environment from .yml file
-COPY assembly_env.yml ./
-RUN /opt/conda/bin/conda env create -f assembly_env.yml
-RUN rm assembly_env.yml
+RUN mamba create -y -n assembly \
+    prokka flye busco

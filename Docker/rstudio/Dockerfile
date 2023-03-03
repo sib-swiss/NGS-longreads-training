@@ -1,4 +1,4 @@
-FROM rocker/rstudio:4.0.3
+FROM rocker/rstudio:4.2.0
 
 # non interactive for installing dependencies
 ENV DEBIAN_FRONTEND=noninteractive

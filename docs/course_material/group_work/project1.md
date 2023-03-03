@@ -102,12 +102,12 @@ You can start this project with dividing initial tasks. Because some intermediat
 
 * Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
 * Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
-* Run `flair.py correct` on the `bed12` file. Add the `gtf` to the options to improve the alignments.
-* Run `flair.py collapse` to generate isoforms from corrected reads. This steps takes ~1 hour to run.
-* Generate a count matrix with `flair.py quantify` by using the isoforms fasta and `reads_manifest.tsv`.
+* Run `flair correct` on the `bed12` file. Add the `gtf` to the options to improve the alignments.
+* Run `flair collapse` to generate isoforms from corrected reads. This steps takes ~1 hour to run.
+* Generate a count matrix with `flair quantify` by using the isoforms fasta and `reads_manifest.tsv`.
 
 !!! danger "Paths in `reads_manifest.tsv`"
-    The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair.py quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
+    The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
 
 * Now you can do several things:
     * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis. Go to your specified IP and port to login to RStudio server (the username is `rstudio`).
