@@ -560,35 +560,31 @@
   <h1>Project 3</h1>
 
 <h2 id="project-3-assembly-and-annotation-of-bacterial-genomes"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16c0-.5-.05-.92-.12-1.32l1.57-.78-.9-1.8-1.37.69c-.55-.83-1.27-1.29-1.89-1.51l.66-1.96-1.9-.64-.76 2.28c-1.33-.13-2.12-.64-2.59-1.19l1.75-.87-.9-1.8-1.55.79a4.39 4.39 0 0 0-.72-2.02l1.55-2.32-1.66-1.11-1.41 2.12c-.48-.23-1.06-.41-1.76-.5V2H7v2.1c-.71.15-1.27.44-1.68.81L2.7 2.29 1.29 3.71l2.95 2.94C4 7.39 4 8 4 8H2v2h2.04c.06.63.17 1.36.36 2.15l-2.72.9.63 1.9 2.69-.9c.24.51.5 1.03.82 1.53l-2.38 1.59 1.11 1.66 2.52-1.68c.56.56 1.22 1.06 1.99 1.49l-.96 1.91 1.79.9 1-2-.16-.09c.95.32 2.03.54 3.27.61V22h2v-2.07c.76-.09 1.81-.29 2.77-.74l1.52 1.52 1.41-1.42-1.33-1.34c.38-.51.63-1.15.63-1.95M8.5 11A1.5 1.5 0 0 1 7 9.5 1.5 1.5 0 0 1 8.5 8 1.5 1.5 0 0 1 10 9.5 1.5 1.5 0 0 1 8.5 11m2.5 3a1 1 0 0 1-1-1 1 1 0 0 1 1-1 1 1 0 0 1 1 1 1 1 0 0 1-1 1m4.5 3a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5Z"/></svg></span> Project 3: Assembly and annotation of bacterial genomes</h2>
-<p>You will be working with PacBio sequencing data of five different bacterial strains. Divide the strains over the members of the group and generate an assembly and annotation.</p>
+<p>You will be working with PacBio sequencing data of eight different bacterial species. Divide the species over the members of the group and generate an assembly and annotation. After that, guess the species. </p>
 <div class="admonition info">
 <p class="admonition-title">Project aim</p>
 <p>Generate and evaluate an assembly of a bacterial genome out of PacBio reads. </p>
 </div>
-<p>There are five different strains: </p>
-<p>Each strain has a tarfile available. Download only the data for the strains that you will require: </p>
+<p>There are eight different species: <code>sample_[1-8].fastq.gz</code> </p>
+<p>Each species has a fastq file available. Download only the data for the species that you will require: </p>
 <div class="highlight"><pre><span></span><code>mkdir -p ~/workdir/groupwork_assembly
 <span class="nb">cd</span> ~/workdir/groupwork_assembly
 
-<span class="c1"># change this to your strain:</span>
-<span class="nv">STRAIN</span><span class="o">=</span><span class="s2">&quot;LWX12&quot;</span>
+<span class="c1"># change this to your species:</span>
+<span class="nv">species</span><span class="o">=</span><span class="s2">&quot;sample_1&quot;</span>
 
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/group_work_assembly/<span class="s2">&quot;</span><span class="nv">$STRAIN</span><span class="s2">&quot;</span>.tar.gz
-tar -xvf <span class="s2">&quot;</span><span class="nv">$STRAIN</span><span class="s2">&quot;</span>.tar.gz
-rm <span class="s2">&quot;</span><span class="nv">$STRAIN</span><span class="s2">&quot;</span>.tar.gz
-</code></pre></div>
-<p>The downloaded directory has the following structure (here&rsquo;s an example for LWH7):</p>
-<div class="highlight"><pre><span></span><code>
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/group_work_assembly/<span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
+tar -xvf <span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
+rm <span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
 </code></pre></div>
 <h3 id="before-you-start">Before you start</h3>
-<p>You can start this project with dividing the strains over the different group members. In principle, each group member will go through all the steps of assembly and annotation:</p>
+<p>You can start this project with dividing the species over the different group members. In principle, each group member will go through all the steps of assembly and annotation:</p>
 <ol>
 <li>Quality control with <code>NanoPlot</code></li>
 <li>Assembly with <code>flye</code></li>
 <li>Assembly QC with <code>BUSCO</code></li>
 <li>Annotation with <code>prokka</code></li>
 </ol>
-<p>You can do this for both the CLR reads and HiFi reads and compare the results. </p>
 <h3 id="tasks-and-questions">Tasks and questions</h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -598,10 +594,6 @@ rm <span class="s2">&quot;</span><span class="nv">$STRAIN</span><span class="s2"
 <p class="admonition-title">Note</p>
 <p>All require software can be found in the conda environment <code>assembly</code>. Load it like this:</p>
 <div class="highlight"><pre><span></span><code>conda activate assembly
-</code></pre></div>
-<p><strong>Before you run <code>prokka</code></strong></p>
-<p>The <code>conda</code> installation misses a perl module. Install it in the <code>assembly</code> environment like this:</p>
-<div class="highlight"><pre><span></span><code>cpanm Bio::SearchIO::hmmer --force
 </code></pre></div>
 </div>
 <ul>
@@ -613,24 +605,19 @@ rm <span class="s2">&quot;</span><span class="nv">$STRAIN</span><span class="s2"
 <li>Perform an assembly with <code>flye</code>. <ul>
 <li>Have a look at the helper first with <code>flye --help</code>. Make sure you pick the correct mode (i.e. <code>--pacbio-??</code>). </li>
 <li>Check out the output. Where is the assembly? How is the quality? For that, check out <code>assembly_info.txt</code>. </li>
+<li>Did flye assemble any plasmid sequences?</li>
 </ul>
 </li>
 <li>Check the completeness with <code>BUSCO</code>. Have a good look at the manual first. You can use automated lineage selecton by specifying <code>--auto-lineage-prok</code>. After you have run <code>BUSCO</code>, you can generate a nice completeness plot with <code>generate_plot.py</code>. You can check its usage with <code>generate_plot.py --help</code>. <ul>
 <li>How is the completeness? Is this expected?</li>
 </ul>
 </li>
-<li>
-<p>Perform an annotation with <code>prokka</code>. Again, check the manual first. After the run, have a look at for example the statistics in <code>PROKKA_[date].txt</code>. For a nice table of annotated genes have a look in <code>PROKKA_[data].tsv</code>. </p>
-</li>
-<li>
-<p>Compare the assembly and annotation between the Illumina, CLR and HiFi reads. Do you see any differences? </p>
-</li>
-<li>Compare the assemblies of the different strains. Are assembly qualities similar? Can you think of reasons why?</li>
-<li><strong>BONUS</strong>: Polish the CLR assembly with the Illumina reads by using <code>pilon</code>. For this you will need to align the Illumina reads to the assembly first. Use <code>minimap2</code> for that while setting <code>-x</code> to <code>sr</code>. For pilon, specify the resulting bam file by using the option <code>--frags</code>. <ul>
-<li>Does the polishing improve the assembly? Why (not)?</li>
+<li>Perform an annotation with <code>prokka</code>. Again, check the manual first. After the run, have a look at for example the statistics in <code>PROKKA_[date].txt</code>. For a nice table of annotated genes have a look in <code>PROKKA_[date].tsv</code>. </li>
+<li>Compare the assemblies of the different species. Are assembly qualities similar? Can you think of reasons why?</li>
 </ul>
-</li>
-</ul>
+<blockquote>
+<p>This tutorial is based on data provided by Pacific Biosciences at https://downloads.pacbcloud.com/public/dataset/2021-11-Microbial-96plex/</p>
+</blockquote>
 
 
 
