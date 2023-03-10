@@ -75,17 +75,23 @@ We will evaluate the read quality with `NanoPlot`.
 You will now have a directory with the following files:
 
 ```
-├── Dynamic_Histogram_Read_length.html
-├── Dynamic_Histogram_Read_length.png
-├── HistogramReadlength.png
+nanoplot_output
+├── LengthvsQualityScatterPlot_dot.html
 ├── LengthvsQualityScatterPlot_dot.png
+├── LengthvsQualityScatterPlot_kde.html
 ├── LengthvsQualityScatterPlot_kde.png
-├── LogTransformed_HistogramReadlength.png
-├── NanoPlot_20210105_1339.log
 ├── NanoPlot-report.html
+├── NanoPlot_20230309_1332.log
 ├── NanoStats.txt
-├── Weighted_HistogramReadlength.png
-├── Weighted_LogTransformed_HistogramReadlength.png
+├── Non_weightedHistogramReadlength.html
+├── Non_weightedHistogramReadlength.png
+├── Non_weightedLogTransformed_HistogramReadlength.html
+├── Non_weightedLogTransformed_HistogramReadlength.png
+├── WeightedHistogramReadlength.html
+├── WeightedHistogramReadlength.png
+├── WeightedLogTransformed_HistogramReadlength.html
+├── WeightedLogTransformed_HistogramReadlength.png
+├── Yield_By_Length.html
 └── Yield_By_Length.png
 ```
 

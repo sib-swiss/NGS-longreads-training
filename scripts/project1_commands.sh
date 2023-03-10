@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd ~/workdir/groupwork_ont/reads
+cd ~/workdir/project1/reads
 # get a variable with sample names out of fastq file names
 BASENAMES=`ls *.fastq.gz | cut -f 1 -d "."`
 
@@ -31,18 +31,15 @@ done
 samtools merge alignments/merged.bam alignments/*.bam
 samtools index alignments/merged.bam
 
-# clone the FLAIR git repo
-git clone https://github.com/BrooksLabUCSC/flair.git
-
 # convert the bam file to a bed file
-python flair/bin/bam2Bed12.py \
+bam2Bed12 \
 -i alignments/merged.bam \
 > alignments/merged.bed
 
 mkdir flair_output
 
 # correct the bed files based on the gtf and genome
-python flair/flair.py correct \
+flair correct \
 -q alignments/merged.bed \
 -g reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
 -f reference/Homo_sapiens.GRCh38.102.gtf \
@@ -53,7 +50,7 @@ READS=`ls reads/*.fastq.gz | tr "\n" ","`
 READS="${READS%?}" #remove last comma
 
 # collapse the individual reads to corrected splice variants
-python flair/flair.py collapse \
+flair collapse \
 -g reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
 -f reference/Homo_sapiens.GRCh38.102.gtf \
 -r $READS \
@@ -61,12 +58,12 @@ python flair/flair.py collapse \
 -o flair_output/CACNA1C.collapse
 
 # quantify the splice variants per sample
-python flair/flair.py quantify \
+flair quantify \
 -r reads_manifest.tsv \
 -i flair_output/CACNA1C.collapse.isoforms.fa
 
 # nice plot for general overview of isoform usage
-python flair/bin/plot_isoform_usage.py \
+plot_isoform_usage \
 flair_output/CACNA1C.collapse.isoforms.bed \
-counts_matrix.tsv \
+flair.quantify.counts.tsv \
 ENSG00000151067

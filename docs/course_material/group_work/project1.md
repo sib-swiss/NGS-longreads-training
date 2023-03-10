@@ -100,11 +100,12 @@ You can start this project with dividing initial tasks. Because some intermediat
     reads/<my_reads.fastq.gz>
     ```
 
-* Clone the [FLAIR repository](https://github.com/BrooksLabUCSC/flair) to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
-* Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the script `flair/bin/bam2Bed12.py`
+* Have a look at the [FLAIR documentation](https://flair.readthedocs.io/en/latest/index.html).
+* FLAIR and all its dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
+* Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the command `bam2Bed12`
 * Run `flair correct` on the `bed12` file. Add the `gtf` to the options to improve the alignments.
-* Run `flair collapse` to generate isoforms from corrected reads. This steps takes ~1 hour to run.
-* Generate a count matrix with `flair quantify` by using the isoforms fasta and `reads_manifest.tsv`.
+* Run `flair collapse` to generate isoforms from corrected reads. This steps takes ~1.5 hours to run.
+* Generate a count matrix with `flair quantify` by using the isoforms fasta and `reads_manifest.tsv` (takes ~45 mins to run).
 
 !!! danger "Paths in `reads_manifest.tsv`"
     The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
