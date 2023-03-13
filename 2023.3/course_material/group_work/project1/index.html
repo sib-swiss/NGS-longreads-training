@@ -568,16 +568,16 @@
 <p>Discover new splice variants and identify differentially expressed isoforms.</p>
 </div>
 <p>You can download the required data like this:</p>
-<div class="highlight"><pre><span></span><code>wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_ont.tar.gz
-tar -xvf groupwork_ont.tar.gz
-rm groupwork_ont.tar.gz
+<div class="highlight"><pre><span></span><code>wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar -xvf project1.tar.gz
+rm project1.tar.gz
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
 </div>
-<p>This will create a directory <code>groupwork_ont</code> with the following structure:</p>
-<div class="highlight"><pre><span></span><code>groupwork_ont/
+<p>This will create a directory <code>project1</code> with the following structure:</p>
+<div class="highlight"><pre><span></span><code>project1/
 ├── alignments
 │   ├── cerebellum-5238-batch2.bam
 │   ├── cerebellum-5298-batch2.bam
@@ -604,7 +604,7 @@ rm groupwork_ont.tar.gz
 4 directories, 18 files
 </code></pre></div>
 <p>Download the fasta file and gtf like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> groupwork_ont/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> project1/
 mkdir reference
 <span class="nb">cd</span> reference
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.12.fa.gz
@@ -647,11 +647,12 @@ reads/&lt;my_reads.fastq.gz&gt;
 </code></pre></div>
 </div>
 <ul>
-<li>Clone the <a href="https://github.com/BrooksLabUCSC/flair">FLAIR repository</a> to the server, and check out the documentation. All FLAIR dependencies are in the the pre-installed conda environment named <code>flair</code>. You can activate it with <code>conda activate flair</code>.</li>
-<li>Merge the separate alignments with <code>samtools merge</code>, index the merged bam file, and generate a <code>bed12</code> file with the script <code>flair/bin/bam2Bed12.py</code></li>
+<li>Have a look at the <a href="https://flair.readthedocs.io/en/latest/index.html">FLAIR documentation</a>.</li>
+<li>FLAIR and all its dependencies are in the the pre-installed conda environment named <code>flair</code>. You can activate it with <code>conda activate flair</code>.</li>
+<li>Merge the separate alignments with <code>samtools merge</code>, index the merged bam file, and generate a <code>bed12</code> file with the command <code>bam2Bed12</code></li>
 <li>Run <code>flair correct</code> on the <code>bed12</code> file. Add the <code>gtf</code> to the options to improve the alignments.</li>
-<li>Run <code>flair collapse</code> to generate isoforms from corrected reads. This steps takes ~1 hour to run.</li>
-<li>Generate a count matrix with <code>flair quantify</code> by using the isoforms fasta and <code>reads_manifest.tsv</code>.</li>
+<li>Run <code>flair collapse</code> to generate isoforms from corrected reads. This steps takes ~1.5 hours to run.</li>
+<li>Generate a count matrix with <code>flair quantify</code> by using the isoforms fasta and <code>reads_manifest.tsv</code> (takes ~45 mins to run).</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">Paths in <code>reads_manifest.tsv</code></p>

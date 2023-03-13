@@ -566,16 +566,27 @@
 <p>Generate and evaluate an assembly of a bacterial genome out of PacBio reads. </p>
 </div>
 <p>There are eight different species: <code>sample_[1-8].fastq.gz</code> </p>
-<p>Each species has a fastq file available. Download only the data for the species that you will require: </p>
-<div class="highlight"><pre><span></span><code>mkdir -p ~/workdir/groupwork_assembly
-<span class="nb">cd</span> ~/workdir/groupwork_assembly
+<p>Each species has a fastq file available. You can download all fastq files like this: </p>
+<div class="highlight"><pre><span></span><code>wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project3.tar.gz
+tar -xvf project3.tar.gz
+rm project3.tar.gz
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
+</div>
+<p>This will create a directory <code>project3</code> with the following structure:</p>
+<div class="highlight"><pre><span></span><code>project3
+|-- sample_1.fastq.gz
+|-- sample_2.fastq.gz
+|-- sample_3.fastq.gz
+|-- sample_4.fastq.gz
+|-- sample_5.fastq.gz
+|-- sample_6.fastq.gz
+|-- sample_7.fastq.gz
+`-- sample_8.fastq.gz
 
-<span class="c1"># change this to your species:</span>
-<span class="nv">species</span><span class="o">=</span><span class="s2">&quot;sample_1&quot;</span>
-
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/group_work_assembly/<span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
-tar -xvf <span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
-rm <span class="s2">&quot;</span><span class="nv">$species</span><span class="s2">&quot;</span>.fastq.gz
+0 directories, 8 files
 </code></pre></div>
 <h3 id="before-you-start">Before you start</h3>
 <p>You can start this project with dividing the species over the different group members. In principle, each group member will go through all the steps of assembly and annotation:</p>
@@ -605,6 +616,27 @@ rm <span class="s2">&quot;</span><span class="nv">$species</span><span class="s2
 <li>Perform an assembly with <code>flye</code>. <ul>
 <li>Have a look at the helper first with <code>flye --help</code>. Make sure you pick the correct mode (i.e. <code>--pacbio-??</code>). </li>
 <li>Check out the output. Where is the assembly? How is the quality? For that, check out <code>assembly_info.txt</code>. </li>
+<li>What species did you assemble? Choose from this list:
+<div class="highlight"><pre><span></span><code>Acinetobacter baumannii
+Bacillus cereus
+Bacillus subtilis
+Burkholderia cepacia
+Burkholderia multivorans
+Enterococcus faecalis
+Escherichia coli
+Helicobacter pylori
+Klebsiella pneumoniae
+Listeria monocytogenes
+Methanocorpusculum labreanum
+Neisseria meningitidis
+Rhodopseudomonas palustris
+Salmonella enterica
+Staphylococcus aureus
+Streptococcus pyogenes
+Thermanaerovibrio acidaminovorans
+Treponema denticola
+Vibrio parahaemolyticus
+</code></pre></div></li>
 <li>Did flye assemble any plasmid sequences?</li>
 </ul>
 </li>
