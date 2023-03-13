@@ -12,7 +12,7 @@ RUN /opt/conda/bin/conda config --add channels conda-forge
 RUN /opt/conda/bin/conda install mamba -y -n base -c conda-forge
 
 RUN mamba install -y --quiet \
-samtools>=1.10 \
+"samtools>=1.10" \
 minimap2 \
 fastqc \
 pbmm2 \
