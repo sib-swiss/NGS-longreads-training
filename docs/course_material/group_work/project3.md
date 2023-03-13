@@ -10,20 +10,32 @@ There are eight different species: `sample_[1-8].fastq.gz`
 
 
 
-Each species has a fastq file available. Download only the data for the species that you will require: 
+Each species has a fastq file available. You can download all fastq files like this: 
 
 ```sh
-mkdir -p ~/workdir/groupwork_assembly
-cd ~/workdir/groupwork_assembly
-
-# change this to your species:
-species="sample_1"
-
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/group_work_assembly/"$species".fastq.gz
-tar -xvf "$species".fastq.gz
-rm "$species".fastq.gz
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project3.tar.gz
+tar -xvf project3.tar.gz
+rm project3.tar.gz
 ```
 
+!!! note
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>` or `~/<group name>`. Only one group member has to do this.
+
+This will create a directory `project3` with the following structure:
+
+```
+project3
+|-- sample_1.fastq.gz
+|-- sample_2.fastq.gz
+|-- sample_3.fastq.gz
+|-- sample_4.fastq.gz
+|-- sample_5.fastq.gz
+|-- sample_6.fastq.gz
+|-- sample_7.fastq.gz
+`-- sample_8.fastq.gz
+
+0 directories, 8 files
+```
 
 ### Before you start
 
@@ -46,13 +58,34 @@ You can start this project with dividing the species over the different group me
     conda activate assembly
     ```
 
-
 * Perform a quality control with `NanoPlot`.
     * How is the read quality? Is this quality expected?
     * How is the read length?
 * Perform an assembly with `flye`. 
     * Have a look at the helper first with `flye --help`. Make sure you pick the correct mode (i.e. `--pacbio-??`). 
     * Check out the output. Where is the assembly? How is the quality? For that, check out `assembly_info.txt`. 
+    * What species did you assemble? Choose from this list:
+    ```
+    Acinetobacter baumannii
+    Bacillus cereus
+    Bacillus subtilis
+    Burkholderia cepacia
+    Burkholderia multivorans
+    Enterococcus faecalis
+    Escherichia coli
+    Helicobacter pylori
+    Klebsiella pneumoniae
+    Listeria monocytogenes
+    Methanocorpusculum labreanum
+    Neisseria meningitidis
+    Rhodopseudomonas palustris
+    Salmonella enterica
+    Staphylococcus aureus
+    Streptococcus pyogenes
+    Thermanaerovibrio acidaminovorans
+    Treponema denticola
+    Vibrio parahaemolyticus
+    ```
     * Did flye assemble any plasmid sequences?
 * Check the completeness with `BUSCO`. Have a good look at the manual first. You can use automated lineage selecton by specifying `--auto-lineage-prok`. After you have run `BUSCO`, you can generate a nice completeness plot with `generate_plot.py`. You can check its usage with `generate_plot.py --help`. 
     * How is the completeness? Is this expected?

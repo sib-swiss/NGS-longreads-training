@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd ~/workdir/groupwork_pacbio/
+cd ~/workdir/project2/
 
 # generate reference for minimap2
 minimap2 \
