@@ -13,18 +13,18 @@ It is Oxford Nanopore Technology sequencing data of PCR amplicons of the gene CA
 You can download the required data like this:
 
 ```sh
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_ont.tar.gz
-tar -xvf groupwork_ont.tar.gz
-rm groupwork_ont.tar.gz
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar -xvf project1.tar.gz
+rm project1.tar.gz
 ```
 
 !!! note
     Download the data file package in your shared working directory, i.e. : `/group_work/<group name>` or `~/<group name>`. Only one group member has to do this.
 
-This will create a directory `groupwork_ont` with the following structure:
+This will create a directory `project1` with the following structure:
 
 ```
-groupwork_ont/
+project1/
 ├── alignments
 │   ├── cerebellum-5238-batch2.bam
 │   ├── cerebellum-5298-batch2.bam
@@ -54,7 +54,7 @@ groupwork_ont/
 Download the fasta file and gtf like this:
 
 ```sh
-cd groupwork_ont/
+cd project1/
 mkdir reference
 cd reference
 wget ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.12.fa.gz
