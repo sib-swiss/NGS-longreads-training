@@ -13,7 +13,7 @@
     
     
       
-        <title>Project 2 - Long-read sequencing analysis</title>
+        <title>Project 2 - Long-read sequence analysis</title>
       
     
     
@@ -82,7 +82,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Long-read sequencing analysis" class="md-header__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../../.." title="Long-read sequence analysis" class="md-header__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../../assets/images/SIB_logo.svg" alt="logo">
 
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Long-read sequencing analysis
+            Long-read sequence analysis
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -179,12 +179,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Long-read sequencing analysis" class="md-nav__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../../.." title="Long-read sequence analysis" class="md-nav__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../../assets/images/SIB_logo.svg" alt="logo">
 
     </a>
-    Long-read sequencing analysis
+    Long-read sequence analysis
   </label>
   
     <div class="md-nav__source">
@@ -617,9 +617,9 @@
 </tbody>
 </table>
 <p>You can get the reads and sequence targets with:</p>
-<div class="highlight"><pre><span></span><code>wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_pacbio.tar.gz
-tar -xvf groupwork_pacbio.tar.gz
-rm groupwork_pacbio.tar.gz
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_pacbio.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>groupwork_pacbio.tar.gz
+rm<span class="w"> </span>groupwork_pacbio.tar.gz
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -648,11 +648,11 @@ rm groupwork_pacbio.tar.gz
 </code></pre></div>
 <p>The targets in gene1 and gene2 are described in <code>targets/target_gene1_hg38.bed</code> and <code>targets/target_gene2_hg38.bed</code> respectively. The columns in these <code>.bed</code> files describe the chromosome, start, end, name, motifs, and whether the motifs are in reverse complement.</p>
 <p>You can download the reference genome like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> groupwork_pacbio
-mkdir reference
-<span class="nb">cd</span> reference
-wget ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>groupwork_pacbio
+mkdir<span class="w"> </span>reference
+<span class="nb">cd</span><span class="w"> </span>reference
+wget<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+gunzip<span class="w"> </span>Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 </code></pre></div>
 <h3 id="before-you-start">Before you start</h3>
 <p>You can start this project with dividing initial tasks. Because some intermediate files are already given, participants can develop scripts/analyses at different steps of the full analysis from the start. Possible starting points are:</p>
@@ -680,9 +680,9 @@ gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 <div class="admonition danger">
 <p class="admonition-title">Start the alignment as soon as possible</p>
 <p>The alignment takes quite some time. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:</p>
-<div class="highlight"><pre><span></span><code>minimap2 <span class="se">\</span>
--x asm20 <span class="se">\</span>
--d reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>minimap2<span class="w"> </span><span class="se">\</span>
+-x<span class="w"> </span>asm20<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi<span class="w"> </span><span class="se">\</span>
 reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 </code></pre></div>
 <p>Refer to the generated index (<code>.mmi</code> file) as reference in the alignment command, e.g.:</p>

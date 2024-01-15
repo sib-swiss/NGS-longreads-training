@@ -13,7 +13,7 @@
     
     
       
-        <title>Server login - Long-read sequencing analysis</title>
+        <title>Server login - Long-read sequence analysis</title>
       
     
     
@@ -82,7 +82,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Long-read sequencing analysis" class="md-header__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../.." title="Long-read sequence analysis" class="md-header__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../assets/images/SIB_logo.svg" alt="logo">
 
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Long-read sequencing analysis
+            Long-read sequence analysis
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -179,12 +179,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Long-read sequencing analysis" class="md-nav__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../.." title="Long-read sequence analysis" class="md-nav__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../assets/images/SIB_logo.svg" alt="logo">
 
     </a>
-    Long-read sequencing analysis
+    Long-read sequence analysis
   </label>
   
     <div class="md-nav__source">
@@ -745,12 +745,12 @@
 <div class="admonition warning">
 <p class="admonition-title">Modify the script</p>
 <p>Modify the path after <code>-v</code> to the working directory on your computer before running it.</p>
-<div class="highlight"><pre><span></span><code>docker run <span class="se">\</span>
---rm <span class="se">\</span>
--e <span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes <span class="se">\</span>
--v /path/to/workingdir/:/home/jovyan <span class="se">\</span>
--p <span class="m">8888</span>:8888 <span class="se">\</span>
-geertvangeest/ngs-longreads-jupyter:latest <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+--rm<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/path/to/workingdir/:/home/jovyan<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
+geertvangeest/ngs-longreads-jupyter:latest<span class="w"> </span><span class="se">\</span>
 start-notebook.sh
 </code></pre></div>
 </div>
@@ -769,30 +769,30 @@ start-notebook.sh
 <p>If you have a conda installation on your local computer, you can install the required software using conda.</p>
 <p>You can build the environment from <a href="../../assets/yaml/ngs-longreads.yml">ngs-longreads.yml</a></p>
 <p>Generate the conda environment like this:</p>
-<div class="highlight"><pre><span></span><code>conda env create --name ngs-longreads -f ngs-longreads.yml
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>ngs-longreads<span class="w"> </span>-f<span class="w"> </span>ngs-longreads.yml
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">The <code>yaml</code> file probably only works for Linux systems</p>
 <p>If you want to use the conda environment on a different OS, use:</p>
-<div class="highlight"><pre><span></span><code>conda create -n ngs-longreads <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>ngs-longreads<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
 
-conda activate ngs-longreads
+conda<span class="w"> </span>activate<span class="w"> </span>ngs-longreads
 
-conda install -y -c bioconda <span class="se">\</span>
-samtools <span class="se">\</span>
-minimap2 <span class="se">\</span>
-fastqc <span class="se">\</span>
-pbmm2 <span class="se">\</span>
+conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span><span class="se">\</span>
+samtools<span class="w"> </span><span class="se">\</span>
+minimap2<span class="w"> </span><span class="se">\</span>
+fastqc<span class="w"> </span><span class="se">\</span>
+pbmm2<span class="w"> </span><span class="se">\</span>
 
-conda install -y -c bioconda nanoplot
+conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>nanoplot
 </code></pre></div>
 <p>If the installation of <code>NanoPlot</code> fails, try to install it with <code>pip</code>:</p>
-<div class="highlight"><pre><span></span><code>pip install NanoPlot
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>NanoPlot
 </code></pre></div>
 </div>
 <p>This will create the conda environment <code>ngs-longreads</code></p>
 <p>Activate it like so:</p>
-<div class="highlight"><pre><span></span><code>conda activate ngs-longreads
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>ngs-longreads
 </code></pre></div>
 <p>After successful installation and activating the environment all the software required to do the exercises should be available.</p>
 </div>
@@ -809,20 +809,20 @@ conda install -y -c bioconda nanoplot
 <details class="done">
 <summary>Answer</summary>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-mkdir workdir
+mkdir<span class="w"> </span>workdir
 </code></pre></div>
 </details>
 <p>Make a directory <code>scripts</code> within <code>~/workdir</code> and make it your current directory.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> workdir
-mkdir scripts
-<span class="nb">cd</span> scripts
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>workdir
+mkdir<span class="w"> </span>scripts
+<span class="nb">cd</span><span class="w"> </span>scripts
 </code></pre></div>
 </details>
 <h4 id="file-permissions">File permissions</h4>
 <p>Generate an empty script in your newly made directory <code>~/workdir/scripts</code> like this:</p>
-<div class="highlight"><pre><span></span><code>touch new_script.sh
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>new_script.sh
 </code></pre></div>
 <p>Add a command to this script that writes &ldquo;SIB courses are great!&rdquo; (or something you can better relate to.. <img alt="😉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f609.svg" title=":wink:" />) to stdout, and try to run it.</p>
 <details class="done">
@@ -830,7 +830,7 @@ mkdir scripts
 <p>The script should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;SIB courses are great!&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SIB courses are great!&quot;</span>
 </code></pre></div>
 </details>
 <p>Usually, you can run it like this:</p>
@@ -846,10 +846,10 @@ mkdir scripts
 </div>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code>ls -lh new_script.sh
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span>new_script.sh
 </code></pre></div>
 <p>gives:</p>
-<div class="highlight"><pre><span></span><code>-rw-r--r--  <span class="m">1</span> user  group    51B Nov <span class="m">11</span> <span class="m">16</span>:21 new_script.sh
+<div class="highlight"><pre><span></span><code>-rw-r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>user<span class="w">  </span>group<span class="w">    </span>51B<span class="w"> </span>Nov<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">16</span>:21<span class="w"> </span>new_script.sh
 </code></pre></div>
 <p>There&rsquo;s no <code>x</code> in the permissions string. You should change at least the permissions of the user.</p>
 </details>
@@ -871,22 +871,22 @@ mkdir scripts
 <p>In the root directory (go there like this: <code>cd /</code>) there are a range of system directories and files. Write the names of all directories and files to a file called <code>system_dirs.txt</code> in your working directory (<code>~/workdir</code>; use <code>ls</code> and <code>&gt;</code>).</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code>ls / &gt; ~/workdir/system_dirs.txt
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/<span class="w"> </span>&gt;<span class="w"> </span>~/workdir/system_dirs.txt
 </code></pre></div>
 </details>
 <p>The command <code>wc -l</code> counts the number of lines, and can read from stdin. Make a one-liner with a pipe <code>|</code> symbol to find out how many system directories and files there are.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code>ls / <span class="p">|</span> wc -l
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div>
 </details>
 <h4 id="variables">Variables</h4>
 <p>Store <code>system_dirs.txt</code> as variable (like this: <code>VAR=variable</code>), and use <code>wc -l</code> on that variable to count the number of lines in the file.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
 <span class="nv">FILE</span><span class="o">=</span>system_dirs.txt
-wc -l <span class="nv">$FILE</span>
+wc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$FILE</span>
 </code></pre></div>
 </details>
 <h4 id="shell-scripts">shell scripts</h4>
@@ -895,8 +895,8 @@ wc -l <span class="nv">$FILE</span>
 <summary>Answer</summary>
 <p>Make a script called e.g. <code>current_system_dirs.sh</code>:
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
-<span class="nb">cd</span> /
-ls <span class="p">|</span> wc -l
+<span class="nb">cd</span><span class="w"> </span>/
+ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div></p>
 </details>
 <h3 id="loops">Loops</h3>
@@ -906,18 +906,18 @@ ls <span class="p">|</span> wc -l
 <p>If you want to run the same command on a range of arguments, it&rsquo;s not very convenient to type the command for each individual argument. For example, you could write <code>dog</code>, <code>fox</code>, <code>bird</code> to stdout in a script like this:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">echo</span> dog
-<span class="nb">echo</span> fox
-<span class="nb">echo</span> bird
+<span class="nb">echo</span><span class="w"> </span>dog
+<span class="nb">echo</span><span class="w"> </span>fox
+<span class="nb">echo</span><span class="w"> </span>bird
 </code></pre></div>
 <p>However, if you want to change the command (add an option for example), you would have to change it for all the three command calls. Amongst others for that reason, you want to write the command only once. You can do this with a for-loop, like this:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="nv">ANIMALS</span><span class="o">=</span><span class="s2">&quot;dog fox bird&quot;</span>
 
-<span class="k">for</span> animal <span class="k">in</span> <span class="nv">$ANIMALS</span>
+<span class="k">for</span><span class="w"> </span>animal<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$ANIMALS</span>
 <span class="k">do</span>
-  <span class="nb">echo</span> <span class="nv">$animal</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$animal</span>
 <span class="k">done</span>
 </code></pre></div>
 <p>Which results in:</p>
@@ -930,7 +930,7 @@ bird
 <p class="admonition-title">Hint</p>
 <p>Removing the letter &ldquo;e&rdquo; from a string can be done with <code>tr</code> like this:
 <div class="highlight"><pre><span></span><code><span class="nv">word</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
-<span class="nb">echo</span> <span class="nv">$word</span> <span class="p">|</span> tr -d <span class="s2">&quot;e&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$word</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;e&quot;</span>
 </code></pre></div></p>
 <p>Which would result in:</p>
 <div class="highlight"><pre><span></span><code>tst
@@ -943,10 +943,10 @@ bird
 
 <span class="nv">WORDLIST</span><span class="o">=</span><span class="s2">&quot;here is a list of words resulting in a sentence&quot;</span>
 
-<span class="k">for</span> word <span class="k">in</span> <span class="nv">$WORDLIST</span>
+<span class="k">for</span><span class="w"> </span>word<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$WORDLIST</span>
 <span class="k">do</span>
-  <span class="nb">echo</span> <span class="s2">&quot;&#39;</span><span class="nv">$word</span><span class="s2">&#39; with e&#39;s removed looks like:&quot;</span>
-  <span class="nb">echo</span> <span class="nv">$word</span> <span class="p">|</span> tr -d <span class="s2">&quot;e&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&#39;</span><span class="nv">$word</span><span class="s2">&#39; with e&#39;s removed looks like:&quot;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$word</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;e&quot;</span>
 <span class="k">done</span>
 </code></pre></div>
 <p>resulting in:</p>

@@ -13,7 +13,7 @@
     
     
       
-        <title>QC and alignment - Long-read sequencing analysis</title>
+        <title>QC and alignment - Long-read sequence analysis</title>
       
     
     
@@ -82,7 +82,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Long-read sequencing analysis" class="md-header__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../.." title="Long-read sequence analysis" class="md-header__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../assets/images/SIB_logo.svg" alt="logo">
 
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Long-read sequencing analysis
+            Long-read sequence analysis
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -179,12 +179,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Long-read sequencing analysis" class="md-nav__button md-logo" aria-label="Long-read sequencing analysis" data-md-component="logo">
+    <a href="../.." title="Long-read sequence analysis" class="md-nav__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
       
   <img src="../../assets/images/SIB_logo.svg" alt="logo">
 
     </a>
-    Long-read sequencing analysis
+    Long-read sequence analysis
   </label>
   
     <div class="md-nav__source">
@@ -633,16 +633,16 @@
 </blockquote>
 <p>The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.</p>
 <p>For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
-tar -xvf ngs-longreads-training.tar.gz
-rm ngs-longreads-training.tar.gz
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
+wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>ngs-longreads-training.tar.gz
+rm<span class="w"> </span>ngs-longreads-training.tar.gz
 </code></pre></div>
 <p><strong>Exercise:</strong> This will create the directory <code>data</code>. Check out what&rsquo;s in there.</p>
 <details class="done">
 <summary>Answer</summary>
 <p>Go to the <code>~/workdir/data</code> folder:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/data
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/data
 </code></pre></div>
 <p>The data folder contains the following:
 <div class="highlight"><pre><span></span><code>data/
@@ -665,10 +665,10 @@ In the reads folder a fastq file with reads, in the reference folder the referen
 <details class="done">
 <summary>Answer</summary>
 <p>We have a <code>fastq</code> file, so based on the manual and the example we can run:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/workdir
-NanoPlot <span class="se">\</span>
---fastq data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
---outdir nanoplot_output
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
+NanoPlot<span class="w"> </span><span class="se">\</span>
+--fastq<span class="w"> </span>data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
+--outdir<span class="w"> </span>nanoplot_output
 </code></pre></div>
 </details>
 <p>You will now have a directory with the following files:</p>
@@ -752,20 +752,20 @@ We are working with ONT data so we could choose <code>map-ont</code>. However, o
 <p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span> ~/workdir
+<span class="nb">cd</span><span class="w"> </span>~/workdir
 
-minimap2 <span class="se">\</span>
--a <span class="se">\</span>
--x <span class="o">[</span>PARAMETER<span class="o">]</span> <span class="se">\</span>
--G <span class="o">[</span>PARAMETER<span class="o">]</span> <span class="se">\</span>
--t <span class="m">4</span> <span class="se">\</span>
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa <span class="se">\</span>
-data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
-<span class="p">|</span> samtools sort <span class="se">\</span>
-<span class="p">|</span> samtools view -bh &gt; alignments/cerebellum-5238-batch2.bam
+minimap2<span class="w"> </span><span class="se">\</span>
+-a<span class="w"> </span><span class="se">\</span>
+-x<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+-G<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa<span class="w"> </span><span class="se">\</span>
+data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
 
 <span class="c1">## indexing for IGV</span>
-samtools index alignments/cerebellum-5238-batch2.bam
+samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -774,28 +774,28 @@ samtools index alignments/cerebellum-5238-batch2.bam
 <details class="done">
 <summary>Answer</summary>
 <p>Make a directory like this:</p>
-<div class="highlight"><pre><span></span><code>mkdir ~/workdir/alignments
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/workdir/alignments
 </code></pre></div>
 <p>Modify the script to set the <code>-x</code> and <code>-G</code> options:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span> ~/workdir
+<span class="nb">cd</span><span class="w"> </span>~/workdir
 
-minimap2 <span class="se">\</span>
--a <span class="se">\</span>
--x splice <span class="se">\</span>
--G 500k <span class="se">\</span>
--t <span class="m">4</span> <span class="se">\</span>
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa <span class="se">\</span>
-data/reads/cerebellum-5238-batch2.fastq.gz <span class="se">\</span>
-<span class="p">|</span> samtools sort <span class="se">\</span>
-<span class="p">|</span> samtools view -bh &gt; alignments/cerebellum-5238-batch2.bam
+minimap2<span class="w"> </span><span class="se">\</span>
+-a<span class="w"> </span><span class="se">\</span>
+-x<span class="w"> </span>splice<span class="w"> </span><span class="se">\</span>
+-G<span class="w"> </span>500k<span class="w"> </span><span class="se">\</span>
+-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa<span class="w"> </span><span class="se">\</span>
+data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
 
 <span class="c1">## indexing for IGV</span>
-samtools index alignments/cerebellum-5238-batch2.bam
+samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
 </code></pre></div>
 <p>And run it (e.g. if you named the script <code>ont_alignment.sh</code>):</p>
-<div class="highlight"><pre><span></span><code>chmod u+x ont_alignment.sh
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>u+x<span class="w"> </span>ont_alignment.sh
 ./ont_alignment.sh
 </code></pre></div>
 </details>
