@@ -1,4 +1,4 @@
-site_name: Long-read sequencing analysis
+site_name: Long-read sequence analysis
 nav:
     - Home: index.md
     - Precourse preparations: precourse.md

@@ -181,13 +181,15 @@ minimap2 \
 -x [PARAMETER] \
 -G [PARAMETER] \
 -t 4 \
-data/references/GRCh38.p13.chr12.fa \
+data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
 data/reads/cerebellum-5238-batch2.fastq.gz \
 | samtools sort \
 | samtools view -bh > alignments/cerebellum-5238-batch2.bam
 
 ## indexing for IGV
 samtools index alignments/cerebellum-5238-batch2.bam
+
+
 ```
 
 !!! note 

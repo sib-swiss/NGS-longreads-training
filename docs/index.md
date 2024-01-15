@@ -1,4 +1,3 @@
-# Long read sequencing analysis
 
 ## Teachers
 
