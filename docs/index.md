@@ -9,13 +9,6 @@
 - Marco Kreuzer [:custom-orcid:](https://orcid.org/0000-0001-6784-0854)
 - Patricia Palagi [:custom-orcid:](https://orcid.org/0000-0001-9062-6303)
 
-## Material
-
-* This website
-* Zoom meeting (through mail)
-* Google doc (through mail)
-* Slack channel
-
 ## Learning outcomes
 
 ### General learning outcomes
