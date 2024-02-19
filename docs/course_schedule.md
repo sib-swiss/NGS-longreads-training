@@ -9,7 +9,7 @@
 |         	| 12:30 PM 	|  1:30 PM 	| BREAK                          	|
 | block 3 	|  1:30 PM 	|  3:00 PM 	| Applicationns - PacBio          	|
 |         	|  3:00 PM 	|  3:30 PM 	| BREAK                          	|
-| block 4 	|  3:30 PM 	|  5:00 PM 	| [Quality control and Read alignment](course_material/qc_alignment.md)	|
+| block 4 	|  3:30 PM 	|  5:15 PM 	| [Quality control and Read alignment](course_material/qc_alignment.md)	|
 
 
 ## Day 2
@@ -23,4 +23,4 @@
 |         	| 12:30 PM 	| 1:30 PM  	| BREAK                    	|
 | block 4 	| 1:30 PM  	| 3:00 PM  	| [Group work](course_material/group_work/group_work.md) 	|
 |         	| 3:00 PM  	| 3:30 PM  	| BREAK                    	|
-| block 5 	| 3:30 PM  	| 5:00 PM  	| Presentations               	|
+| block 5 	| 3:30 PM  	| 5:15 PM  	| Presentations               	|
