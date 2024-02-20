@@ -25,15 +25,5 @@ In the afternoon of day 1, you will divide the initial tasks, and start on the p
 
 ## Working directories
 
-Each group has access to a shared working directory. It is mounted in the root directory (`/`). Make a soft link in your home directory:
-
-```sh
-cd ~
-ln -s /group_work/<group name> ./
-```
-
-Now you can find your group directory at `~/<group name>`. Use this as much as possible.
-
-!!! warning
-    Do not remove the soft link with `rm -r`, this will delete the entire source directory. If you want to remove only the softlink, use `rm` (without `-r`), or `unlink`. More info [here](https://linuxize.com/post/how-to-remove-symbolic-links-in-linux/).
+Each group has access to a shared working directory. It is mounted in the root directory (`/`). 
 
