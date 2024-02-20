@@ -1,69 +1,37 @@
-#!/usr/bin/env bash
 
-cd ~/workdir/project1/reads
-# get a variable with sample names out of fastq file names
-BASENAMES=`ls *.fastq.gz | cut -f 1 -d "."`
+cd ~/workdir/workdir/project1/
 
-cd ..
+mkdir -p flair_align
 
-# generate a minimap2 reference, so it is not rerun every time
-minimap2 \
--x splice \
--d reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
-reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa
+flair align \
+-g references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+-r reads/*.fastq.gz \
+--output flair_align/flair.aligned
 
-# loop over the sample names
-# and perform the alignment (set -x to splice for spliced alignment)
-for name in $BASENAMES
-do
-  minimap2 \
-  -a \
-  -x splice \
-  -G 500k \
-  -t 4 \
-  reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
-  reads/$name.fastq.gz \
-  | samtools sort \
-  | samtools view -bh > alignments/$name.bam
-done
+mkdir -p flair_correct
 
-# merge all alignments in order to annotate the splice variants together:
-samtools merge alignments/merged.bam alignments/*.bam
-samtools index alignments/merged.bam
+flair correct -q flair_align/flair.aligned.bed \
+-f references/Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf \
+-g references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+--output flair_correct/flair
 
-# convert the bam file to a bed file
-bam2Bed12 \
--i alignments/merged.bam \
-> alignments/merged.bed
+mkdir -p flair_collapse
 
-mkdir flair_output
-
-# correct the bed files based on the gtf and genome
-flair correct \
--q alignments/merged.bed \
--g reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
--f reference/Homo_sapiens.GRCh38.102.gtf \
--o flair_output/CACNA1C
-
-# generate a comma-seperated list of fastq files
-READS=`ls reads/*.fastq.gz | tr "\n" ","`
-READS="${READS%?}" #remove last comma
-
-# collapse the individual reads to corrected splice variants
 flair collapse \
--g reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
--f reference/Homo_sapiens.GRCh38.102.gtf \
--r $READS \
--q flair_output/CACNA1C_all_corrected.bed \
--o flair_output/CACNA1C.collapse
+-g references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+-q flair_correct/flair_all_corrected.bed \
+-r reads/*.fastq.gz \
+--gtf references/Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf \
+--output flair_collapse/flair.collapse
 
-# quantify the splice variants per sample
+mkdir -p flair_quantify
+
 flair quantify \
 -r reads_manifest.tsv \
--i flair_output/CACNA1C.collapse.isoforms.fa
+-i flair_collapse/flair.collapse.isoforms.fa \
+--output flair_quantify/flair.quantify \
+--sample_id_only
 
-# nice plot for general overview of isoform usage
 plot_isoform_usage \
-flair_output/CACNA1C.collapse.isoforms.bed \
-flair.quantify.counts.tsv \
-ENSG00000151067
+flair_collapse/flair.collapse.isoforms.bed \
+flair_quantify/flair.quantify.counts.tsv ENSG00000113013
