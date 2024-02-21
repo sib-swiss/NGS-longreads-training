@@ -561,8 +561,10 @@
 
 <h2 id="project-1-differential-isoform-expression-analysis-of-ont-data"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M184 0c30.9 0 56 25.1 56 56v400c0 30.9-25.1 56-56 56-28.9 0-52.7-21.9-55.7-50.1-5.2 1.4-10.7 2.1-16.3 2.1-35.3 0-64-28.7-64-64 0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1 3-28 26.8-49.9 55.7-49.9zm144 0c28.9 0 52.6 21.9 55.7 49.9C411.5 56.9 432 82 432 112c0 6-.8 11.9-2.4 17.4 28.8 6.2 50.4 31.9 50.4 62.6 0 15-5.1 28.8-13.8 39.7 27.1 12.8 45.8 40.4 45.8 72.3 0 34.2-21.4 63.4-51.6 74.8 2.3 6.6 3.6 13.8 3.6 21.2 0 35.3-28.7 64-64 64-5.6 0-11.1-.7-16.3-2.1-3 28.2-26.8 50.1-55.7 50.1-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/></svg></span> Project 1: Differential isoform expression analysis of ONT data</h2>
 <p>In this project, you will be working with data from the same resource as the data we have already worked on:</p>
-<p>Clark, M. B. et al (2020). <em>Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain</em>. Molecular Psychiatry, 25(1), 37–47. <a href="https://doi.org/10.1038/s41380-019-0583-1">https://doi.org/10.1038/s41380-019-0583-1</a>.</p>
-<p>It is Oxford Nanopore Technology sequencing data of PCR amplicons of the gene CACNA1C. It is primarily used to discover new splice variants. We will use the dataset to do that and in addition do a differential isoform expression analysis with <a href="https://github.com/BrooksLabUCSC/flair">FLAIR</a>.</p>
+<blockquote>
+<p>Padilla, Juan-Carlos A., Seda Barutcu, Ludovic Malet, Gabrielle Deschamps-Francoeur, Virginie Calderon, Eunjeong Kwon, and Eric Lécuyer. “Profiling the Polyadenylated Transcriptome of Extracellular Vesicles with Long-Read Nanopore Sequencing.” BMC Genomics 24, no. 1 (September 22, 2023): 564. https://doi.org/10.1186/s12864-023-09552-6.</p>
+</blockquote>
+<p>It is Oxford Nanopore Technology sequencing data of cDNA from extracellular vesicles and whole cells. It is primarily used to discover new splice variants. We will use the dataset to do that and in addition do a differential isoform expression analysis with <a href="https://github.com/BrooksLabUCSC/flair">FLAIR</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Project aim</p>
 <p>Discover new splice variants and identify differentially expressed isoforms.</p>
@@ -574,43 +576,25 @@ rm<span class="w"> </span>project1.tar.gz
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
+<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code>. Only one group member has to do this. You can add the group work directory to the workspace in VScode by opening the menu on the top right (hamburger symbol), click <strong>File</strong> &gt; <strong>Add folder to workspace</strong> and type the path to the group work directory.</p>
 </div>
 <p>This will create a directory <code>project1</code> with the following structure:</p>
 <div class="highlight"><pre><span></span><code>project1/
-├── alignments
-│   ├── cerebellum-5238-batch2.bam
-│   ├── cerebellum-5298-batch2.bam
-│   ├── cerebellum-5346-batch2.bam
-│   ├── parietal_cortex-5238-batch1.bam
-│   ├── parietal_cortex-5298-batch1.bam
-│   └── parietal_cortex-5346-batch1.bam
-├── counts
-│   └── counts_matrix_test.tsv
 ├── reads
-│   ├── cerebellum-5238-batch2.fastq.gz
-│   ├── cerebellum-5298-batch2.fastq.gz
-│   ├── cerebellum-5346-batch2.fastq.gz
-│   ├── parietal_cortex-5238-batch1.fastq.gz
-│   ├── parietal_cortex-5298-batch1.fastq.gz
-│   ├── parietal_cortex-5346-batch1.fastq.gz
-│   ├── striatum-5238-batch2.fastq.gz
-│   ├── striatum-5298-batch2.fastq.gz
-│   └── striatum-5346-batch2.fastq.gz
+│   ├── Cell_1.fastq.gz
+│   ├── Cell_2.fastq.gz
+│   ├── Cell_3.fastq.gz
+│   ├── EV_1.fastq.gz
+│   ├── EV_2.fastq.gz
+│   └── EV_3.fastq.gz
 ├── reads_manifest.tsv
-└── scripts
-    └── differential_expression_example.Rmd
+└── references
+    ├── Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf
+    └── Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa
 
-4 directories, 18 files
+2 directories, 9 files
 </code></pre></div>
-<p>Download the fasta file and gtf like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>project1/
-mkdir<span class="w"> </span>reference
-<span class="nb">cd</span><span class="w"> </span>reference
-wget<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.12.fa.gz
-wget<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-102/gtf/homo_sapiens/Homo_sapiens.GRCh38.102.gtf.gz
-gunzip<span class="w"> </span>*.gz
-</code></pre></div>
+<p>In the reads folder a fastq file with reads, which are described in <code>reads_manifest.csv</code>. EV means &lsquo;extracellular vesicle&rsquo;, Cell means &lsquo;entire cells&rsquo;. In the references folder you can find the reference sequence and annotation.</p>
 <h3 id="before-you-start">Before you start</h3>
 <p>You can start this project with dividing initial tasks. Because some intermediate files are already given, participants can develop scripts/analyses at different steps of the full analysis from the start. Possible starting points are:</p>
 <ul>
