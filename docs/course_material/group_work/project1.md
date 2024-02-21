@@ -3,9 +3,9 @@
 
 In this project, you will be working with data from the same resource as the data we have already worked on:
 
-Clark, M. B. et al (2020). *Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain*. Molecular Psychiatry, 25(1), 37–47. [https://doi.org/10.1038/s41380-019-0583-1](https://doi.org/10.1038/s41380-019-0583-1).
+> Padilla, Juan-Carlos A., Seda Barutcu, Ludovic Malet, Gabrielle Deschamps-Francoeur, Virginie Calderon, Eunjeong Kwon, and Eric Lécuyer. “Profiling the Polyadenylated Transcriptome of Extracellular Vesicles with Long-Read Nanopore Sequencing.” BMC Genomics 24, no. 1 (September 22, 2023): 564. https://doi.org/10.1186/s12864-023-09552-6.
 
-It is Oxford Nanopore Technology sequencing data of PCR amplicons of the gene CACNA1C. It is primarily used to discover new splice variants. We will use the dataset to do that and in addition do a differential isoform expression analysis with [FLAIR](https://github.com/BrooksLabUCSC/flair).
+It is Oxford Nanopore Technology sequencing data of cDNA from extracellular vesicles and whole cells. It is primarily used to discover new splice variants. We will use the dataset to do that and in addition do a differential isoform expression analysis with [FLAIR](https://github.com/BrooksLabUCSC/flair).
 
 !!! info "Project aim"
     Discover new splice variants and identify differentially expressed isoforms.
@@ -19,48 +19,28 @@ rm project1.tar.gz
 ```
 
 !!! note
-    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>` or `~/<group name>`. Only one group member has to do this.
+    Download the data file package in your shared working directory, i.e. : `/group_work/<group name>`. Only one group member has to do this. You can add the group work directory to the workspace in VScode by opening the menu on the top right (hamburger symbol), click **File** > **Add folder to workspace** and type the path to the group work directory.
 
 This will create a directory `project1` with the following structure:
 
 ```
 project1/
-├── alignments
-│   ├── cerebellum-5238-batch2.bam
-│   ├── cerebellum-5298-batch2.bam
-│   ├── cerebellum-5346-batch2.bam
-│   ├── parietal_cortex-5238-batch1.bam
-│   ├── parietal_cortex-5298-batch1.bam
-│   └── parietal_cortex-5346-batch1.bam
-├── counts
-│   └── counts_matrix_test.tsv
 ├── reads
-│   ├── cerebellum-5238-batch2.fastq.gz
-│   ├── cerebellum-5298-batch2.fastq.gz
-│   ├── cerebellum-5346-batch2.fastq.gz
-│   ├── parietal_cortex-5238-batch1.fastq.gz
-│   ├── parietal_cortex-5298-batch1.fastq.gz
-│   ├── parietal_cortex-5346-batch1.fastq.gz
-│   ├── striatum-5238-batch2.fastq.gz
-│   ├── striatum-5298-batch2.fastq.gz
-│   └── striatum-5346-batch2.fastq.gz
+│   ├── Cell_1.fastq.gz
+│   ├── Cell_2.fastq.gz
+│   ├── Cell_3.fastq.gz
+│   ├── EV_1.fastq.gz
+│   ├── EV_2.fastq.gz
+│   └── EV_3.fastq.gz
 ├── reads_manifest.tsv
-└── scripts
-    └── differential_expression_example.Rmd
+└── references
+    ├── Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf
+    └── Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa
 
-4 directories, 18 files
+2 directories, 9 files
 ```
 
-Download the fasta file and gtf like this:
-
-```sh
-cd project1/
-mkdir reference
-cd reference
-wget ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.chromosome.12.fa.gz
-wget ftp://ftp.ensembl.org/pub/release-102/gtf/homo_sapiens/Homo_sapiens.GRCh38.102.gtf.gz
-gunzip *.gz
-```
+In the reads folder a fastq file with reads, which are described in `reads_manifest.csv`. EV means 'extracellular vesicle', Cell means 'entire cells'. In the references folder you can find the reference sequence and annotation.
 
 ### Before you start
 

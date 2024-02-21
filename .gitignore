@@ -13,3 +13,5 @@ workdir/
 .bash_history
 /generate_data_main/
 slurm-*
+project*/
+
