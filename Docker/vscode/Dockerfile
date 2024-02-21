@@ -21,13 +21,16 @@ RUN conda config --add channels conda-forge
 
 RUN conda install mamba -y -n base -c conda-forge
 
-RUN mamba install -y --quiet \
+RUN mamba create -y \
+-c conda-forge -c bioconda \
+-n lr-tools \
 "samtools>=1.10" \
 minimap2 \
 fastqc \
 pbmm2 \
 parallel \
-trgt
+trgt \
+ncurses
 
 # install nanoplot with pip (with conda gives errors)
 RUN pip install NanoPlot
@@ -45,8 +48,6 @@ RUN mamba create -y -n assembly \
 # RUN conda env create \
 #     -n ngs-tools \
 #     -f environment.yml
-
-RUN conda install -c conda-forge ncurses
 
 RUN conda init 
 
