@@ -604,13 +604,19 @@ rm<span class="w"> </span>project1.tar.gz
 <li>Differential expression analysis.</li>
 </ul>
 <h3 id="tasks-questions">Tasks &amp; questions</h3>
+<div class="admonition info">
+<p class="admonition-title">Activate the conda environment</p>
+<p>The tools you will be needed for these exercises are in the conda environment <code>flair</code>. Every time you open a new terminal, activate it with:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>flair
+</code></pre></div>
+</div>
 <ul>
-<li>Perform QC with <code>fastqc</code> and with <code>NanoPlot</code>.<ul>
-<li>Do you see a difference between them?</li>
-<li>How is the read quality compared to the publication?</li>
-</ul>
+<li>
+<p>Perform QC with <code>fastqc</code> and with <code>NanoPlot</code>. Is <code>fastqc</code> appropriate enough for long reads? Do you see a difference between the programs?</p>
 </li>
-<li>Align each sample separately with <code>minimap2</code> with default parameters. Set parameters <code>-x</code> and <code>-G</code> to the values we have used during the <a href="../qc_alignment#3-read-alignment">QC and alignment exercises</a>. You can use 4 threads (set the number of threads with <code>-t</code>)</li>
+<li>
+<p>Align each sample separately with <code>minimap2</code> with default parameters. Set parameters <code>-x</code> and <code>-G</code> to the values we have used during the <a href="../qc_alignment#3-read-alignment">QC and alignment exercises</a>. You can use 4 threads (set the number of threads with <code>-t</code>)</p>
+</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">Start the alignment as soon as possible</p>
