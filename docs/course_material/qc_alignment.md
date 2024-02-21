@@ -19,105 +19,142 @@
 
 We will be working with data from:
 
-> Clark, M. B. et al (2020). **Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain**. Molecular Psychiatry, 25(1), 37–47. https://doi.org/10.1038/s41380-019-0583-1
+> Padilla, Juan-Carlos A., Seda Barutcu, Ludovic Malet, Gabrielle Deschamps-Francoeur, Virginie Calderon, Eunjeong Kwon, and Eric Lécuyer. “Profiling the Polyadenylated Transcriptome of Extracellular Vesicles with Long-Read Nanopore Sequencing.” BMC Genomics 24, no. 1 (September 22, 2023): 564. https://doi.org/10.1186/s12864-023-09552-6.
 
-The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.
+The authors used RNA sequencing with Oxford Nanopore Technology of both extracellular vesicles and whole cells from cell culture.
 
-For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.
+For the exercises of today, we will work with two samples of this study. Download and unpack the data files in your home directory.
 
 ```sh
-cd ~/workdir
-wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
-tar -xvf ngs-longreads-training.tar.gz
-rm ngs-longreads-training.tar.gz
+cd ~/project
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar -xvf project1.tar.gz
+rm project1.tar.gz
 ```
 
-**Exercise:** This will create the directory `data`. Check out what's in there.
+**Exercise:** This will create the directory called `project1`. Check out what's in there.
 
 ??? done "Answer"
-    Go to the `~/workdir/data` folder:
+    Go to the `~/project/project1` folder:
 
     ```sh
-    cd ~/data
+    cd ~/project/project1
     ```
 
     The data folder contains the following:
     ```
-    data/
+    project1/
     ├── reads
-    │   └── cerebellum-5238-batch2.fastq.gz
-    └── reference
-        └── Homo_sapiens.GRCh38.dna.chromosome.12.fa
+    │   ├── Cell_1.fastq.gz
+    │   ├── Cell_2.fastq.gz
+    │   ├── Cell_3.fastq.gz
+    │   ├── EV_1.fastq.gz
+    │   ├── EV_2.fastq.gz
+    │   └── EV_3.fastq.gz
+    ├── reads_manifest.tsv
+    └── references
+        ├── Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf
+        └── Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa
 
-    2 directories, 2 files
+    2 directories, 9 files
+
     ```
-    In the reads folder a fastq file with reads, in the reference folder the reference sequence.
+    In the reads folder a fastq file with reads, which are described in `reads_manifest.csv`. EV means 'extracellular vesicle', Cell means 'entire cells'. In the references folder you can find the reference sequence and annotation.
 
 ### 2. Quality control
 
-We will evaluate the read quality with `NanoPlot`.
+We will evaluate the read quality of two fastq files with `NanoPlot`.
 
-**Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`, and run `NanoPlot` on `~/data/reads/cerebellum-5238-batch2.fastq.gz`.
+**Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`. After that run `NanoPlot` on 
+
+- `reads/Cell_2.fastq.gz`
+- `reads/EV_2.fastq.gz`. 
+
+Your fastq files are in the 'rich' format, meaning they have additional information regarding the ONT run. 
 
 ??? hint "Hint"
-    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq`.
+    For a basic output of `NanoPlot` on a `fastq.gz` file you can use the options `--outdir` and `--fastq_rich`.
 
 ??? done "Answer"
-    We have a `fastq` file, so based on the manual and the example we can run:
+    We have a rich `fastq` file, so based on the manual and the example we can run:
 
     ```sh
-    cd ~/workdir
+    cd ~/project/project1
+
+    mkdir -p nanoplot
+
     NanoPlot \
-    --fastq data/reads/cerebellum-5238-batch2.fastq.gz \
-    --outdir nanoplot_output
+    --fastq_rich reads/Cell_2.fastq.gz \
+    --outdir nanoplot/Cell_2
+
+    NanoPlot \
+    --fastq_rich reads/EV_2.fastq.gz \
+    --outdir nanoplot/EV_2
     ```
 
-You will now have a directory with the following files:
+In both directories you will now have a directory with the following files:
 
 ```
-nanoplot_output
+.
+├── ActivePores_Over_Time.html
+├── ActivePores_Over_Time.png
+├── ActivityMap_ReadsPerChannel.html
+├── ActivityMap_ReadsPerChannel.png
+├── CumulativeYieldPlot_Gigabases.html
+├── CumulativeYieldPlot_Gigabases.png
+├── CumulativeYieldPlot_NumberOfReads.html
+├── CumulativeYieldPlot_NumberOfReads.png
 ├── LengthvsQualityScatterPlot_dot.html
 ├── LengthvsQualityScatterPlot_dot.png
 ├── LengthvsQualityScatterPlot_kde.html
 ├── LengthvsQualityScatterPlot_kde.png
+├── NanoPlot_20240221_1219.log
 ├── NanoPlot-report.html
-├── NanoPlot_20230309_1332.log
 ├── NanoStats.txt
 ├── Non_weightedHistogramReadlength.html
 ├── Non_weightedHistogramReadlength.png
 ├── Non_weightedLogTransformed_HistogramReadlength.html
 ├── Non_weightedLogTransformed_HistogramReadlength.png
+├── NumberOfReads_Over_Time.html
+├── NumberOfReads_Over_Time.png
+├── TimeLengthViolinPlot.html
+├── TimeLengthViolinPlot.png
+├── TimeQualityViolinPlot.html
+├── TimeQualityViolinPlot.png
 ├── WeightedHistogramReadlength.html
 ├── WeightedHistogramReadlength.png
 ├── WeightedLogTransformed_HistogramReadlength.html
 ├── WeightedLogTransformed_HistogramReadlength.png
 ├── Yield_By_Length.html
 └── Yield_By_Length.png
+
+0 directories, 31 files
 ```
 
-The file `NanoPlot-report.html` contains a report with all the information stored in the other files.
+The file `NanoPlot-report.html` contains a report with all the information stored in the other files, and `NanoStats.txt` in text format.
 
-**Exercise:** Download `NanoPlot-report.html` to your local computer and answer the following questions:
+**Exercise:** Check out some of the .png plots and the contents of `NanoStats.txt`. Also, download `NanoPlot-report.html` for both files to your local computer and answer the following questions:
 
-**A.** How many reads are in the file?
+**A.** How many reads are in the files?
 
-**B.** What is the average read length? Is there a wide distribution? Given that these sequences are generated from a long-range PCR, is that expected?
+**B.** What are the average read lengths? What does this tell us about the quality of both runs?
 
 **C.** What is the average base quality and what kind of accuracy do we therefore expect?
 
 !!! hint "Download files from the notebook"
-    You can download files from the file browser, by right-clicking a file and selecting **Download**:
+    You can download files from the file browser, by right-clicking a file and selecting **Download...**:
 
     <figure>
-      <img src="../../assets/images/jupyter_download_file.png" width="400"/>
+      <img src="../../assets/images/download_file.gif" width="400"/>
     </figure>
 
 ??? done "Answer"
-    A. 3735
+    **A.** Cell_2: 49,808 reads; EV_2: 6,214 reads 
 
-    B. The average read length is 6,003.3 base pairs. From the read length histogram we can see that there is a very narrow distribution. As a PCR will generate sequences of approximately the same length, this is expected.
+    **B.** Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite for EV_2. 
 
-    C. The average base quality is 7.3. We have learned that $p=10^{\frac{-baseQ}{10}}$, so the average probability that the base is wrong is $10^{\frac{-7.3}{10}} = 0.186$. The expected accuracy is $1-0.186=0.814$ or 81.4%.
+    **C.** The median base quality is for both around 12. This means that the error probability is about 10^(-12/10) = 0.06, so an accuracy of 94%. 
+
 
 ### 3. Read alignment
 
@@ -138,57 +175,28 @@ The sequence aligner [`minimap2`](https://github.com/lh3/minimap2) is specifical
     ```
     We are working with ONT data so we could choose `map-ont`. However, our data is also spliced. Therefore, we should choose `splice`.
 
-Introns can be quite long in mammals; up to a few hundred kb.
-
-**Exercise:** Look up the CACNA1C gene in hg38 in IGV, and roughly estimate the length of the longest intron.
-
-!!! hint "Hint"
-    First load hg38 in IGV, by clicking the topleft drop-down menu:
-
-    <figure>
-      <img src="../../assets/images/IGV_choose_hg38.png" width="200"/>
-    </figure>
-
-    After that type `CACNA1C` in the search box:
-
-    <figure>
-      <img src="../../assets/images/IGV_choose_CACNA1C.png" width="300"/>
-    </figure>
-
-??? done "Answer"
-    The longest intron is about 350 kilo bases (350,000 base pairs)
-
-**Exercise:** Check out the `-G` option of `minimap2`. How does this relate to the the largest intron size of CACNA1C?
-
-??? done "Answer"
-    This is what the manual says:
-
-    ```
-    -G NUM       max intron length (effective with -xsplice; changing -r) [200k]
-    ```
-
-    We found an intron size of approximately 350k, so the default is set too small. We should be increase it to at least 350k.
-
 **Exercise:** Make a directory called `alignments` in your working directory. After that, modify the command below for `minimap2` and run it from a script.
 
 ```sh
 #!/usr/bin/env bash
 
-cd ~/workdir
+cd ~/project/project1
 
-minimap2 \
--a \
--x [PARAMETER] \
--G [PARAMETER] \
--t 4 \
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-data/reads/cerebellum-5238-batch2.fastq.gz \
-| samtools sort \
-| samtools view -bh > alignments/cerebellum-5238-batch2.bam
+mkdir -p alignments
 
-## indexing for IGV
-samtools index alignments/cerebellum-5238-batch2.bam
+for sample in EV_2 Cell_2; do
+    minimap2 \
+    -a \
+    -x [PARAMETER] \
+    -t 4 \
+    references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+    reads/"$sample".fastq.gz \
+    | samtools sort \
+    | samtools view -bh > alignments/"$sample".bam
 
+    ## indexing for IGV
+    samtools index alignments/"$sample".bam
+done
 
 ```
 
@@ -196,31 +204,29 @@ samtools index alignments/cerebellum-5238-batch2.bam
     Once your script is running, it will take a while to finish. Have a ☕. 
 
 ??? done "Answer"
-    Make a directory like this:
 
-    ```sh
-    mkdir ~/workdir/alignments
-    ```
-
-    Modify the script to set the `-x` and `-G` options:
+    Modify the script to set the `-x` option:
 
     ```sh
     #!/usr/bin/env bash
 
-    cd ~/workdir
+    cd ~/project/project1
 
-    minimap2 \
-    -a \
-    -x splice \
-    -G 500k \
-    -t 4 \
-    data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-    data/reads/cerebellum-5238-batch2.fastq.gz \
-    | samtools sort \
-    | samtools view -bh > alignments/cerebellum-5238-batch2.bam
+    mkdir -p alignments
 
-    ## indexing for IGV
-    samtools index alignments/cerebellum-5238-batch2.bam
+    for sample in EV_2 Cell_2; do
+        minimap2 \
+        -a \
+        -x splice \
+        -t 4 \
+        references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+        reads/"$sample".fastq.gz \
+        | samtools sort \
+        | samtools view -bh > alignments/"$sample".bam
+
+        ## indexing for IGV
+        samtools index alignments/"$sample".bam
+    done
     ```
 
     And run it (e.g. if you named the script `ont_alignment.sh`):
@@ -232,13 +238,29 @@ samtools index alignments/cerebellum-5238-batch2.bam
 
 ### 4. Visualisation
 
-Let's have a look at the alignments. Download the files `cerebellum-5238-batch2.bam` and `cerebellum-5238-batch2.bam.bai` to your local computer and load the `.bam` file into IGV (**File > Load from File...**).
+Let's have a look at the alignments. Download the files (in `~/project/project1/alignments`):
 
-**Exercise:** Have a look at the region `chr12:2,632,655-2,635,447` by typing it into the search box. Do you see any evidence for alternative splicing already?
+- `EV_2.bam`
+- `EV_2.bam.bai` 
+- `Cell_2.bam`
+- `Cell_2.bam.bai` 
+
+to your local computer and load the `.bam` files into IGV (**File > Load from File...**).
+
+**Exercise:** Have a look at the gene `ELOVL5` by typing the name into the search box. 
+
+- Do you see any evidence for alternative splicing already?
+- How is the difference in quality between the two samples? Would that have an effect on estimating differential splicing? 
+
+!!! hint "Check out the paper"
+    The authors found splice variants. Check figure 5B in [the paper](https://link.springer.com/article/10.1186/s12864-023-09552-6).
 
 ??? done "Answer"
-    The two exons seem to be mutually exclusive:
+    There is some observable exon skipping in Cell_2:
 
     <figure>
-      <img src="../../assets/images/IGV_alternative_splicing.png" width="300"/>
+      <img src="../../assets/images/igv_ELOVL5.png" width="500"/>
     </figure>
+
+    The coverage of EV_2 is quite low. Also, a lot of the reads do not fully cover the gene. This will make it difficult to estimate differential splicing.
+    

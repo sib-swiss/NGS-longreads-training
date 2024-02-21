@@ -25,5 +25,4 @@ In the afternoon of day 1, you will divide the initial tasks, and start on the p
 
 ## Working directories
 
-Each group has access to a shared working directory. It is mounted in the root directory (`/`). 
-
+Each group has access to a shared working directory. It is mounted in the root directory (`/group_work/groupX`). You can add the group work directory to the workspace in VScode by opening the menu on the top right (hamburger symbol), click **File** > **Add folder to workspace** and type the path to the group work directory.

@@ -11,3 +11,4 @@ workdir/
 .conda
 .cpanm/
 .bash_history
+project*/
