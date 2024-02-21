@@ -20,4 +20,4 @@ docker run \
 -e PGID=1000 \
 -e DEFAULT_WORKSPACE=/config/project \
 -v $PWD:/config/project \
-lr-vscode
+geertvangeest/ngs-longreads-vscode

@@ -55,6 +55,13 @@ The targets in gene1 and gene2 are described in `targets/targets.bed`. The colum
 
 ### Tasks & questions
 
+!!! info "Activate the conda environment"
+    The tools you will be needed for these exercises are in the conda environment `lr-tools`. Every time you open a new terminal, activate it with:
+
+    ```sh
+    conda activate lr-tools
+    ```
+
 * Load the bed files into IGV and navigate to the regions they annotate.
     * In which genes are the targets?
     * What kind of diseases are associated with these genes?

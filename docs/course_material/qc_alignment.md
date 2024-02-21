@@ -63,6 +63,13 @@ rm project1.tar.gz
 
 ### 2. Quality control
 
+!!! info "Activate the conda environment"
+    The tools you will be needed for these exercises are in the conda environment `lr-tools`. Every time you open a new terminal, activate it with:
+
+    ```sh
+    conda activate lr-tools
+    ```
+
 We will evaluate the read quality of two fastq files with `NanoPlot`.
 
 **Exercise:** Check out the manual of `NanoPlot` with the command `NanoPlot --help`. After that run `NanoPlot` on 

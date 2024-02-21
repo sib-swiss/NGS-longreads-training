@@ -53,9 +53,15 @@ You can start this project with dividing initial tasks. Because some intermediat
 
 ### Tasks & questions
 
-* Perform QC with `fastqc` and with `NanoPlot`.
-    * Do you see a difference between them?
-    * How is the read quality compared to the publication?
+!!! info "Activate the conda environment"
+    The tools you will be needed for these exercises are in the conda environment `flair`. Every time you open a new terminal, activate it with:
+
+    ```sh
+    conda activate flair
+    ```
+
+* Perform QC with `fastqc` and with `NanoPlot`. Is `fastqc` appropriate enough for long reads? Do you see a difference between the programs?
+
 * Align each sample separately with `minimap2` with default parameters. Set parameters `-x` and `-G` to the values we have used during the [QC and alignment exercises](../qc_alignment#3-read-alignment). You can use 4 threads (set the number of threads with `-t`)
 
 !!! danger "Start the alignment as soon as possible"
