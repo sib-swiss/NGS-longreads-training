@@ -11,3 +11,5 @@ workdir/
 .conda
 .cpanm/
 .bash_history
+/generate_data_main/
+slurm-*

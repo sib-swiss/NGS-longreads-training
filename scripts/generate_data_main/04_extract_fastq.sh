@@ -28,7 +28,14 @@ fastq_file=$(awk -F ',' 'NR>1 {print $1}' $PROJDIR/sample_info.csv | sed -n ${SL
 sample_type=$(awk -F ',' 'NR>1 {print $4}' $PROJDIR/sample_info.csv | sed -n ${SLURM_ARRAY_TASK_ID}p)
 replicate=$(awk -F ',' 'NR>1 {print $5}' $PROJDIR/sample_info.csv | sed -n ${SLURM_ARRAY_TASK_ID}p)
 input_file=$(basename $fastq_file .fastq.gz).chr5_6_X.bam
+int_file="$sample_type"_"$replicate".concatenated.fastq
 output_file="$sample_type"_"$replicate".fastq.gz
 
 # extract single end nanopore fastq files from bam files
-samtools fastq -n "$bam_dir"/"$input_file" | gzip >> "$fastq_dir"/"$output_file"
+# this concatenates the files with the same sample type and replicate
+# this can't run in parallel
+samtools fastq -n "$bam_dir"/"$input_file" >> "$fastq_dir"/"$int_file"
+# reverse the replacement of pipes with underscores in the fastq header.
+cat "$fastq_dir"/"$int_file" | sed -n '1~4s/|/ /g;p' | gzip > "$fastq_dir"/"$output_file"
+
+# make sure to remove intermediate files if re-running this script
