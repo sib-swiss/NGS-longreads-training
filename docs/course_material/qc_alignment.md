@@ -11,7 +11,7 @@
 
 ## Material
 
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/QC_alignment.pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/03_qc_file_formats.pdf){: .md-button }
 
 ## Exercises
 

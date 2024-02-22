@@ -13,11 +13,11 @@
 
 * The introduction presentation:
 
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/introduction.pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/01_introduction.pdf){: .md-button }
 
 * The sequencing technologies presentation:
 
-[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/sequencing_technologies.pdf){: .md-button }
+[:fontawesome-solid-file-pdf: Download the presentation](../assets/pdf/02_sequencing_technologies.pdf){: .md-button }
 
 * Nice [review](https://www.nature.com/articles/s41576-020-0236-x) on long read sequencing in humans (also relevant for other species)
 * [Review](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-1935-5) on long read sequencing data analysis
