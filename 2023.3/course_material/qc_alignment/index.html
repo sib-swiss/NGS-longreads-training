@@ -624,90 +624,131 @@
 <li>Visualise an alignment file in IGV on a local computer</li>
 </ul>
 <h2 id="material">Material</h2>
-<p><a class="md-button" href="../../assets/pdf/QC_alignment.pdf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16z"/></svg></span> Download the presentation</a></p>
+<p><a class="md-button" href="../../assets/pdf/03_qc_file_formats.pdf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16z"/></svg></span> Download the presentation</a></p>
 <h2 id="exercises">Exercises</h2>
 <h3 id="1-retrieve-data">1. Retrieve data</h3>
 <p>We will be working with data from:</p>
 <blockquote>
-<p>Clark, M. B. et al (2020). <strong>Long-read sequencing reveals the complex splicing profile of the psychiatric risk gene CACNA1C in human brain</strong>. Molecular Psychiatry, 25(1), 37–47. https://doi.org/10.1038/s41380-019-0583-1</p>
+<p>Padilla, Juan-Carlos A., Seda Barutcu, Ludovic Malet, Gabrielle Deschamps-Francoeur, Virginie Calderon, Eunjeong Kwon, and Eric Lécuyer. “Profiling the Polyadenylated Transcriptome of Extracellular Vesicles with Long-Read Nanopore Sequencing.” BMC Genomics 24, no. 1 (September 22, 2023): 564. https://doi.org/10.1186/s12864-023-09552-6.</p>
 </blockquote>
-<p>The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.</p>
-<p>For the exercises of today, we will work with a single sample of this study. Download and unpack the data files in your home directory.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
-wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/ngs-longreads-training.tar.gz
-tar<span class="w"> </span>-xvf<span class="w"> </span>ngs-longreads-training.tar.gz
-rm<span class="w"> </span>ngs-longreads-training.tar.gz
+<p>The authors used RNA sequencing with Oxford Nanopore Technology of both extracellular vesicles and whole cells from cell culture.</p>
+<p>For the exercises of today, we will work with two samples of this study. Download and unpack the data files in your home directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project
+wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>project1.tar.gz
+rm<span class="w"> </span>project1.tar.gz
 </code></pre></div>
-<p><strong>Exercise:</strong> This will create the directory <code>data</code>. Check out what&rsquo;s in there.</p>
+<p><strong>Exercise:</strong> This will create the directory called <code>project1</code>. Check out what&rsquo;s in there.</p>
 <details class="done">
 <summary>Answer</summary>
-<p>Go to the <code>~/workdir/data</code> folder:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/data
+<p>Go to the <code>~/project/project1</code> folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project/project1
 </code></pre></div>
 <p>The data folder contains the following:
-<div class="highlight"><pre><span></span><code>data/
+<div class="highlight"><pre><span></span><code>project1/
 ├── reads
-│   └── cerebellum-5238-batch2.fastq.gz
-└── reference
-    └── Homo_sapiens.GRCh38.dna.chromosome.12.fa
+│   ├── Cell_1.fastq.gz
+│   ├── Cell_2.fastq.gz
+│   ├── Cell_3.fastq.gz
+│   ├── EV_1.fastq.gz
+│   ├── EV_2.fastq.gz
+│   └── EV_3.fastq.gz
+├── reads_manifest.tsv
+└── references
+    ├── Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf
+    └── Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa
 
-2 directories, 2 files
+2 directories, 9 files
 </code></pre></div>
-In the reads folder a fastq file with reads, in the reference folder the reference sequence.</p>
+In the reads folder a fastq file with reads, which are described in <code>reads_manifest.csv</code>. EV means &lsquo;extracellular vesicle&rsquo;, Cell means &lsquo;entire cells&rsquo;. In the references folder you can find the reference sequence and annotation.</p>
 </details>
 <h3 id="2-quality-control">2. Quality control</h3>
-<p>We will evaluate the read quality with <code>NanoPlot</code>.</p>
-<p><strong>Exercise:</strong> Check out the manual of <code>NanoPlot</code> with the command <code>NanoPlot --help</code>, and run <code>NanoPlot</code> on <code>~/data/reads/cerebellum-5238-batch2.fastq.gz</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Activate the conda environment</p>
+<p>The tools you will be needed for these exercises are in the conda environment <code>lr-tools</code>. Every time you open a new terminal, activate it with:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>lr-tools
+</code></pre></div>
+</div>
+<p>We will evaluate the read quality of two fastq files with <code>NanoPlot</code>.</p>
+<p><strong>Exercise:</strong> Check out the manual of <code>NanoPlot</code> with the command <code>NanoPlot --help</code>. After that run <code>NanoPlot</code> on </p>
+<ul>
+<li><code>reads/Cell_2.fastq.gz</code></li>
+<li><code>reads/EV_2.fastq.gz</code>. </li>
+</ul>
+<p>Your fastq files are in the &lsquo;rich&rsquo; format, meaning they have additional information regarding the ONT run. </p>
 <details class="hint">
 <summary>Hint</summary>
-<p>For a basic output of <code>NanoPlot</code> on a <code>fastq.gz</code> file you can use the options <code>--outdir</code> and <code>--fastq</code>.</p>
+<p>For a basic output of <code>NanoPlot</code> on a <code>fastq.gz</code> file you can use the options <code>--outdir</code> and <code>--fastq_rich</code>.</p>
 </details>
 <details class="done">
 <summary>Answer</summary>
-<p>We have a <code>fastq</code> file, so based on the manual and the example we can run:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
+<p>We have a rich <code>fastq</code> file, so based on the manual and the example we can run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project/project1
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>nanoplot
+
 NanoPlot<span class="w"> </span><span class="se">\</span>
---fastq<span class="w"> </span>data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
---outdir<span class="w"> </span>nanoplot_output
+--fastq_rich<span class="w"> </span>reads/Cell_2.fastq.gz<span class="w"> </span><span class="se">\</span>
+--outdir<span class="w"> </span>nanoplot/Cell_2
+
+NanoPlot<span class="w"> </span><span class="se">\</span>
+--fastq_rich<span class="w"> </span>reads/EV_2.fastq.gz<span class="w"> </span><span class="se">\</span>
+--outdir<span class="w"> </span>nanoplot/EV_2
 </code></pre></div>
 </details>
-<p>You will now have a directory with the following files:</p>
-<div class="highlight"><pre><span></span><code>nanoplot_output
+<p>In both directories you will now have a directory with the following files:</p>
+<div class="highlight"><pre><span></span><code>.
+├── ActivePores_Over_Time.html
+├── ActivePores_Over_Time.png
+├── ActivityMap_ReadsPerChannel.html
+├── ActivityMap_ReadsPerChannel.png
+├── CumulativeYieldPlot_Gigabases.html
+├── CumulativeYieldPlot_Gigabases.png
+├── CumulativeYieldPlot_NumberOfReads.html
+├── CumulativeYieldPlot_NumberOfReads.png
 ├── LengthvsQualityScatterPlot_dot.html
 ├── LengthvsQualityScatterPlot_dot.png
 ├── LengthvsQualityScatterPlot_kde.html
 ├── LengthvsQualityScatterPlot_kde.png
+├── NanoPlot_20240221_1219.log
 ├── NanoPlot-report.html
-├── NanoPlot_20230309_1332.log
 ├── NanoStats.txt
 ├── Non_weightedHistogramReadlength.html
 ├── Non_weightedHistogramReadlength.png
 ├── Non_weightedLogTransformed_HistogramReadlength.html
 ├── Non_weightedLogTransformed_HistogramReadlength.png
+├── NumberOfReads_Over_Time.html
+├── NumberOfReads_Over_Time.png
+├── TimeLengthViolinPlot.html
+├── TimeLengthViolinPlot.png
+├── TimeQualityViolinPlot.html
+├── TimeQualityViolinPlot.png
 ├── WeightedHistogramReadlength.html
 ├── WeightedHistogramReadlength.png
 ├── WeightedLogTransformed_HistogramReadlength.html
 ├── WeightedLogTransformed_HistogramReadlength.png
 ├── Yield_By_Length.html
 └── Yield_By_Length.png
+
+0 directories, 31 files
 </code></pre></div>
-<p>The file <code>NanoPlot-report.html</code> contains a report with all the information stored in the other files.</p>
-<p><strong>Exercise:</strong> Download <code>NanoPlot-report.html</code> to your local computer and answer the following questions:</p>
-<p><strong>A.</strong> How many reads are in the file?</p>
-<p><strong>B.</strong> What is the average read length? Is there a wide distribution? Given that these sequences are generated from a long-range PCR, is that expected?</p>
+<p>The file <code>NanoPlot-report.html</code> contains a report with all the information stored in the other files, and <code>NanoStats.txt</code> in text format.</p>
+<p><strong>Exercise:</strong> Check out some of the .png plots and the contents of <code>NanoStats.txt</code>. Also, download <code>NanoPlot-report.html</code> for both files to your local computer and answer the following questions:</p>
+<p><strong>A.</strong> How many reads are in the files?</p>
+<p><strong>B.</strong> What are the average read lengths? What does this tell us about the quality of both runs?</p>
 <p><strong>C.</strong> What is the average base quality and what kind of accuracy do we therefore expect?</p>
 <div class="admonition hint">
 <p class="admonition-title">Download files from the notebook</p>
-<p>You can download files from the file browser, by right-clicking a file and selecting <strong>Download</strong>:</p>
+<p>You can download files from the file browser, by right-clicking a file and selecting <strong>Download&hellip;</strong>:</p>
 <p><figure>
-  <img src="../../assets/images/jupyter_download_file.png" width="400"/>
+  <img src="../../assets/images/download_file.gif" width="400"/>
 </figure></p>
 </div>
 <details class="done">
 <summary>Answer</summary>
-<p>A. 3735</p>
-<p>B. The average read length is 6,003.3 base pairs. From the read length histogram we can see that there is a very narrow distribution. As a PCR will generate sequences of approximately the same length, this is expected.</p>
-<p>C. The average base quality is 7.3. We have learned that <span class="arithmatex">\(p=10^{\frac{-baseQ}{10}}\)</span>, so the average probability that the base is wrong is <span class="arithmatex">\(10^{\frac{-7.3}{10}} = 0.186\)</span>. The expected accuracy is <span class="arithmatex">\(1-0.186=0.814\)</span> or 81.4%.</p>
+<p><strong>A.</strong> Cell_2: 49,808 reads; EV_2: 6,214 reads </p>
+<p><strong>B.</strong> Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite for EV_2. </p>
+<p><strong>C.</strong> The median base quality is for both around 12. This means that the error probability is about 10^(-12/10) = 0.06, so an accuracy of 94%. </p>
 </details>
 <h3 id="3-read-alignment">3. Read alignment</h3>
 <p>The sequence aligner <a href="https://github.com/lh3/minimap2"><code>minimap2</code></a> is specifically developed for (splice-aware) alignment of long reads.</p>
@@ -724,48 +765,26 @@ NanoPlot<span class="w"> </span><span class="se">\</span>
 </code></pre></div>
 We are working with ONT data so we could choose <code>map-ont</code>. However, our data is also spliced. Therefore, we should choose <code>splice</code>.</p>
 </details>
-<p>Introns can be quite long in mammals; up to a few hundred kb.</p>
-<p><strong>Exercise:</strong> Look up the CACNA1C gene in hg38 in IGV, and roughly estimate the length of the longest intron.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>First load hg38 in IGV, by clicking the topleft drop-down menu:</p>
-<p><figure>
-  <img src="../../assets/images/IGV_choose_hg38.png" width="200"/>
-</figure></p>
-<p>After that type <code>CACNA1C</code> in the search box:</p>
-<p><figure>
-  <img src="../../assets/images/IGV_choose_CACNA1C.png" width="300"/>
-</figure></p>
-</div>
-<details class="done">
-<summary>Answer</summary>
-<p>The longest intron is about 350 kilo bases (350,000 base pairs)</p>
-</details>
-<p><strong>Exercise:</strong> Check out the <code>-G</code> option of <code>minimap2</code>. How does this relate to the the largest intron size of CACNA1C?</p>
-<details class="done">
-<summary>Answer</summary>
-<p>This is what the manual says:</p>
-<div class="highlight"><pre><span></span><code>-G NUM       max intron length (effective with -xsplice; changing -r) [200k]
-</code></pre></div>
-<p>We found an intron size of approximately 350k, so the default is set too small. We should be increase it to at least 350k.</p>
-</details>
 <p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span><span class="w"> </span>~/workdir
+<span class="nb">cd</span><span class="w"> </span>~/project/project1
 
-minimap2<span class="w"> </span><span class="se">\</span>
--a<span class="w"> </span><span class="se">\</span>
--x<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
--G<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
--t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa<span class="w"> </span><span class="se">\</span>
-data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
-<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
-<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
+mkdir<span class="w"> </span>-p<span class="w"> </span>alignments
 
-<span class="c1">## indexing for IGV</span>
-samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
+<span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>EV_2<span class="w"> </span>Cell_2<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>minimap2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-x<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>reads/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+
+<span class="w">    </span><span class="c1">## indexing for IGV</span>
+<span class="w">    </span>samtools<span class="w"> </span>index<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+<span class="k">done</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -773,26 +792,26 @@ samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebell
 </div>
 <details class="done">
 <summary>Answer</summary>
-<p>Make a directory like this:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/workdir/alignments
-</code></pre></div>
-<p>Modify the script to set the <code>-x</code> and <code>-G</code> options:</p>
+<p>Modify the script to set the <code>-x</code> option:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
-<span class="nb">cd</span><span class="w"> </span>~/workdir
+<span class="nb">cd</span><span class="w"> </span>~/project/project1
 
-minimap2<span class="w"> </span><span class="se">\</span>
--a<span class="w"> </span><span class="se">\</span>
--x<span class="w"> </span>splice<span class="w"> </span><span class="se">\</span>
--G<span class="w"> </span>500k<span class="w"> </span><span class="se">\</span>
--t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa<span class="w"> </span><span class="se">\</span>
-data/reads/cerebellum-5238-batch2.fastq.gz<span class="w"> </span><span class="se">\</span>
-<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
-<span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
+mkdir<span class="w"> </span>-p<span class="w"> </span>alignments
 
-<span class="c1">## indexing for IGV</span>
-samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebellum-5238-batch2.bam
+<span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>EV_2<span class="w"> </span>Cell_2<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>minimap2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-x<span class="w"> </span>splice<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>reads/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+
+<span class="w">    </span><span class="c1">## indexing for IGV</span>
+<span class="w">    </span>samtools<span class="w"> </span>index<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+<span class="k">done</span>
 </code></pre></div>
 <p>And run it (e.g. if you named the script <code>ont_alignment.sh</code>):</p>
 <div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>u+x<span class="w"> </span>ont_alignment.sh
@@ -800,14 +819,30 @@ samtools<span class="w"> </span>index<span class="w"> </span>alignments/cerebell
 </code></pre></div>
 </details>
 <h3 id="4-visualisation">4. Visualisation</h3>
-<p>Let&rsquo;s have a look at the alignments. Download the files <code>cerebellum-5238-batch2.bam</code> and <code>cerebellum-5238-batch2.bam.bai</code> to your local computer and load the <code>.bam</code> file into IGV (<strong>File &gt; Load from File&hellip;</strong>).</p>
-<p><strong>Exercise:</strong> Have a look at the region <code>chr12:2,632,655-2,635,447</code> by typing it into the search box. Do you see any evidence for alternative splicing already?</p>
+<p>Let&rsquo;s have a look at the alignments. Download the files (in <code>~/project/project1/alignments</code>):</p>
+<ul>
+<li><code>EV_2.bam</code></li>
+<li><code>EV_2.bam.bai</code> </li>
+<li><code>Cell_2.bam</code></li>
+<li><code>Cell_2.bam.bai</code> </li>
+</ul>
+<p>to your local computer and load the <code>.bam</code> files into IGV (<strong>File &gt; Load from File&hellip;</strong>).</p>
+<p><strong>Exercise:</strong> Have a look at the gene <code>ELOVL5</code> by typing the name into the search box. </p>
+<ul>
+<li>Do you see any evidence for alternative splicing already?</li>
+<li>How is the difference in quality between the two samples? Would that have an effect on estimating differential splicing? </li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Check out the paper</p>
+<p>The authors found splice variants. Check figure 5B in <a href="https://link.springer.com/article/10.1186/s12864-023-09552-6">the paper</a>.</p>
+</div>
 <details class="done">
 <summary>Answer</summary>
-<p>The two exons seem to be mutually exclusive:</p>
+<p>There is some observable exon skipping in Cell_2:</p>
 <p><figure>
-  <img src="../../assets/images/IGV_alternative_splicing.png" width="300"/>
+  <img src="../../assets/images/igv_ELOVL5.png" width="500"/>
 </figure></p>
+<p>The coverage of EV_2 is quite low. Also, a lot of the reads do not fully cover the gene. This will make it difficult to estimate differential splicing.</p>
 </details>
 
 

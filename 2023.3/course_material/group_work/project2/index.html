@@ -432,13 +432,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#before-you-start" class="md-nav__link">
-    Before you start
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tasks-questions" class="md-nav__link">
     Tasks &amp; questions
   </a>
@@ -517,13 +510,6 @@
   
     <nav class="md-nav" aria-label=" Project 2: Repeat expansion analysis of PacBio data">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#before-you-start" class="md-nav__link">
-    Before you start
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#tasks-questions" class="md-nav__link">
@@ -617,20 +603,16 @@
 </tbody>
 </table>
 <p>You can get the reads and sequence targets with:</p>
-<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/groupwork_pacbio.tar.gz
-tar<span class="w"> </span>-xvf<span class="w"> </span>groupwork_pacbio.tar.gz
-rm<span class="w"> </span>groupwork_pacbio.tar.gz
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project2.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>project2.tar.gz
+rm<span class="w"> </span>project2.tar.gz
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code> or <code>~/&lt;group name&gt;</code>. Only one group member has to do this.</p>
+<p>Download the data file package in your shared working directory, i.e. : <code>/group_work/&lt;group name&gt;</code>. Only one group member has to do this.</p>
 </div>
 <p>It has the following directory structure:</p>
-<div class="highlight"><pre><span></span><code>groupwork_pacbio
-├── alignments
-│   ├── bc1020.aln.bam
-│   ├── bc1021.aln.bam
-│   └── bc1022.aln.bam
+<div class="highlight"><pre><span></span><code>project2
 ├── reads
 │   ├── 1015.fastq.gz
 │   ├── 1016.fastq.gz
@@ -640,30 +622,22 @@ rm<span class="w"> </span>groupwork_pacbio.tar.gz
 │   ├── 1020.fastq.gz
 │   ├── 1021.fastq.gz
 │   └── 1022.fastq.gz
+├── reference
+│   ├── Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa
+│   └── Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa.fai
 └── targets
-    ├── target_gene1_hg38.bed
-    └── target_gene2_hg38.bed
+    └── targets.bed
 
-3 directories, 13 files
+3 directories, 11 files
 </code></pre></div>
-<p>The targets in gene1 and gene2 are described in <code>targets/target_gene1_hg38.bed</code> and <code>targets/target_gene2_hg38.bed</code> respectively. The columns in these <code>.bed</code> files describe the chromosome, start, end, name, motifs, and whether the motifs are in reverse complement.</p>
-<p>You can download the reference genome like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>groupwork_pacbio
-mkdir<span class="w"> </span>reference
-<span class="nb">cd</span><span class="w"> </span>reference
-wget<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-101/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-gunzip<span class="w"> </span>Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-</code></pre></div>
-<h3 id="before-you-start">Before you start</h3>
-<p>You can start this project with dividing initial tasks. Because some intermediate files are already given, participants can develop scripts/analyses at different steps of the full analysis from the start. Possible starting points are:</p>
-<ul>
-<li>Browse IGV to find the genes</li>
-<li>Perform the QC with <code>NanoPlot</code></li>
-<li>Perform the alignment with <code>minimap2</code></li>
-<li>Do the repeat analysis with <code>makeReports.sh</code></li>
-</ul>
-<p>Alignment files to do an initial repeat analysis are in the <code>tar.gz</code> package. However, it contains only the files for individuals with disease2. You can develop scripts and analyses based on that. To do the full analysis, all the alignments will need to be run.</p>
+<p>The targets in gene1 and gene2 are described in <code>targets/targets.bed</code>. The columns in these <code>.bed</code> files describe the chromosome, start, end, and describe the motifs. To reduce computational load, the reference contains only chromosome 4 and X of the hg38 human reference genome. </p>
 <h3 id="tasks-questions">Tasks &amp; questions</h3>
+<div class="admonition info">
+<p class="admonition-title">Activate the conda environment</p>
+<p>The tools you will be needed for these exercises are in the conda environment <code>lr-tools</code>. Every time you open a new terminal, activate it with:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>lr-tools
+</code></pre></div>
+</div>
 <ul>
 <li>Load the bed files into IGV and navigate to the regions they annotate.<ul>
 <li>In which genes are the targets?</li>
@@ -675,38 +649,16 @@ gunzip<span class="w"> </span>Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 <li>How is the read length?</li>
 </ul>
 </li>
-<li>Align the reads to hg38 with <code>minimap2</code>. For the option <code>-x</code> you can use <code>asm20</code>. Generate separate alignment files for each individual.</li>
+<li>Align the reads to <code>reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa</code> with <code>minimap2</code>. For the option <code>-x</code> you can use <code>asm20</code>. Generate separate alignment files for each individual. Check out some of the bam files in IGV. How does that look? </li>
 </ul>
-<div class="admonition danger">
-<p class="admonition-title">Start the alignment as soon as possible</p>
-<p>The alignment takes quite some time. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:</p>
-<div class="highlight"><pre><span></span><code>minimap2<span class="w"> </span><span class="se">\</span>
--x<span class="w"> </span>asm20<span class="w"> </span><span class="se">\</span>
--d<span class="w"> </span>reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi<span class="w"> </span><span class="se">\</span>
-reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-</code></pre></div>
-<p>Refer to the generated index (<code>.mmi</code> file) as reference in the alignment command, e.g.:</p>
-<div class="highlight"><pre><span></span><code>minimap2 \
--a \
--x asm20 \
--t 4 \
-reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
-reads/&lt;my_reads.fastq.gz&gt;
-</code></pre></div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Alternatively use <a href="https://github.com/PacificBiosciences/pbmm2"><code>pbmm2</code></a></p>
 <p>Pacific Biosciences has developed a wrapper for <code>minimap2</code> that contains settings specific for PacBio reads, named <a href="https://github.com/PacificBiosciences/pbmm2"><code>pbmm2</code></a>. It might slightly improve your alignments. It is installed in the conda environment. Feel free to give it a try if you have time left.</p>
 </div>
 <ul>
-<li>Clone the PacBio <a href="https://github.com/PacificBiosciences/apps-scripts.git">apps-scripts repository</a> to the server. All dependencies are in the conda environment <code>pacbio</code>. Activate it with <code>conda activate pacbio</code>. The script apps-scripts/RepeatAnalysisTools/makeReports.sh generates repeat expansion reports. Check out the <a href="https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports">documentation</a>, and generate repeat expansion reports for all individuals on both gene1 and gene2.</li>
-<li>Check out the report output and read the further <a href="https://github.com/PacificBiosciences/apps-scripts/tree/master/RepeatAnalysisTools#auto-generate-all-reports">documentation of RepeatAnalysisTools</a>.<ul>
-<li>How is the enrichment?</li>
-<li>Does the clustering make sense? How does the clustering look in IGV?</li>
-<li>Which individual is affected with which disease?</li>
-<li>Based on the size of the expansions, can you say something about expected disease severity?</li>
-</ul>
-</li>
+<li>Use <code>trgt</code> to genotype the repeats. Basically, you want to know the expansion size of each repeat in each sample. Based on this, you can figure out which sample has abnormal expansions in which repeat. To run <code>trgt</code> read <a href="https://github.com/PacificBiosciences/trgt/blob/main/docs/tutorial.md">the manual</a>. After the alignment, all required input files should be there. </li>
+<li>To visualize the output, use samtools to sort and index the bam file with the reads spanning the repeats (this is also explained in the manual - no need to run <code>bcftools</code>).</li>
+<li>Run <code>trvz</code> to visualize the output. The allele plot should suffice. The visualization will give you a nice overview of the repeat expansions in the samples. Based on the different sizes of the repeat expansions, can you relate the repeat expansions to the disease phenotype?</li>
 </ul>
 <blockquote>
 <p>This tutorial is based on data provided by Pacific Biosciences at https://downloads.pacbcloud.com/public/dataset/RepeatExpansionDisorders_NoAmp/</p>

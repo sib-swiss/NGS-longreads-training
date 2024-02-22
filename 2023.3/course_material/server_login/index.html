@@ -333,13 +333,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#material" class="md-nav__link">
-    Material
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#exercises" class="md-nav__link">
     Exercises
   </a>
@@ -349,6 +342,33 @@
         
           <li class="md-nav__item">
   <a href="#first-login" class="md-nav__link">
+    First login
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    Material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises_1" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-login_1" class="md-nav__link">
     First login
   </a>
   
@@ -399,13 +419,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    Loops
-  </a>
   
 </li>
         
@@ -578,13 +591,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#material" class="md-nav__link">
-    Material
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#exercises" class="md-nav__link">
     Exercises
   </a>
@@ -594,6 +600,33 @@
         
           <li class="md-nav__item">
   <a href="#first-login" class="md-nav__link">
+    First login
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    Material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises_1" class="md-nav__link">
+    Exercises
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-login_1" class="md-nav__link">
     First login
   </a>
   
@@ -644,13 +677,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loops" class="md-nav__link">
-    Loops
-  </a>
   
 </li>
         
@@ -710,24 +736,26 @@
 <li>Docker</li>
 </ul>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cloud notebook</label><label for="__tabbed_1_2">Docker</label><label for="__tabbed_1_3">conda</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Cloud notebook</label><label for="__tabbed_1_2">Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: <code>http://12.345.789.10:10002</code>) in your browser. This should result in the following page:</p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="first-login">First login</h3>
+<p>If you are participating in this course with a teacher, you have received a link and a password. Copy-paste the link (including the port, e.g.: <code>http://12.345.678.91:10002</code>) in your browser. This should result in the following page:</p>
 <p><figure>
-    <img src="../../assets/images/jupyter_login_page.png" width="300"/>
+  <img src="../../assets/images/vscode_login_page.png" width="300"/>
 </figure></p>
-<p>Type your password, and proceed to the notebook home page. This page contains all the files in your working directory (if there are any). Most of the exercises will be executed through the command line. We use the terminal for this. Find it at <strong>New &gt; Terminal</strong>:</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The link gives you access to a web version of <a href="https://code.visualstudio.com">Visual Studio Code</a>. This is a powerful code editor that you can also use as a local application on your computer. </p>
+</div>
+<p>Type in the password that was provided to you by the teacher. Now let&rsquo;s open the terminal. You can do that with ++ctrl+grave++. Or by clicking <strong>Application menu</strong> &gt; <strong>Terminal</strong> &gt; <strong>New Terminal</strong>:</p>
 <p><figure>
-    <img src="../../assets/images/jupyter_choose_terminal.png" width="500"/>
+  <img src="../../assets/images/open_terminal.gif" width="800"/>
 </figure></p>
-<p>For a.o. efficiency and reproducibility it makes sense to execute your commands from a script. You can generate and edit scripts with <strong>New &gt; Text File</strong>:</p>
+<p>For a.o. efficiency and reproducibility it makes sense to execute your commands from a script. With use of the &lsquo;new file&rsquo; button:</p>
 <p><figure>
-    <img src="../../assets/images/jupyter_choose_text.png" width="500"/>
-</figure></p>
-<p>Once you have opened a script you can change the code highlighting. This is convenient for writing the code. The text editor will automatically change the highlighting based on the file extension (e.g. <code>.py</code> extension will result in python syntax highlighting). You can change or set the syntax highlighting by clicking the button on the bottom of the page. We will be using mainly shell scripting in this course, so here&rsquo;s an example for adjusting it to shell syntax highlighting:</p>
-<p><figure>
-    <img src="../../assets/images/jupyter_change_highlighting.png" width="300"/>
+  <img src="../../assets/images/new_file.gif" width="800"/>
 </figure></p>
 </div>
 <div class="tabbed-block">
@@ -736,8 +764,8 @@
 <li>Instructions to <a href="https://docs.docker.com/get-docker/">install docker</a></li>
 <li>Instructions to <a href="https://player.vimeo.com/video/481620477">set up to container</a></li>
 </ul>
-<h2 id="exercises">Exercises</h2>
-<h3 id="first-login">First login</h3>
+<h2 id="exercises_1">Exercises</h2>
+<h3 id="first-login_1">First login</h3>
 <p>Docker can be used to run an entire isolated environment in a container. This means that we can run the software with all its dependencies required for this course locally in your computer. Independent of your operating system.</p>
 <p>In the video below there&rsquo;s a tutorial on how to set up a docker container for this course. Note that you will need administrator rights, and that if you are using Windows, you need the latest version of Windows 10.</p>
 <p><iframe src="https://player.vimeo.com/video/481620477" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></p>
@@ -745,89 +773,47 @@
 <div class="admonition warning">
 <p class="admonition-title">Modify the script</p>
 <p>Modify the path after <code>-v</code> to the working directory on your computer before running it.</p>
+</div>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 --rm<span class="w"> </span><span class="se">\</span>
--e<span class="w"> </span><span class="nv">JUPYTER_ENABLE_LAB</span><span class="o">=</span>yes<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/path/to/workingdir/:/home/jovyan<span class="w"> </span><span class="se">\</span>
--p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span><span class="se">\</span>
-geertvangeest/ngs-longreads-jupyter:latest<span class="w"> </span><span class="se">\</span>
-start-notebook.sh
+-p<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">DEFAULT_WORKSPACE</span><span class="o">=</span>/config/project<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span><span class="nv">$PWD</span>:/config/project<span class="w"> </span><span class="se">\</span>
+geertvangeest/ngs-longreads-vscode:latest
 </code></pre></div>
-</div>
-<p>If this command has run successfully, you will find a link and token in the console, e.g.:</p>
-<div class="highlight"><pre><span></span><code>http://127.0.0.1:8888/?token<span class="o">=</span>4be8d916e89afad166923de5ce5th1s1san3xamp13
-</code></pre></div>
-<p>Copy this URL into your browser, and you will be able to use the jupyter notebook.</p>
-<p>The option <code>-v</code> mounts a local directory in your computer to the directory <code>/home/jovyan</code> in the docker container (&lsquo;jovyan&rsquo; is the default user for jupyter containers). In that way, you have files available both in the container and on your computer. Use this directory on your computer to e.g. visualise data with IGV. Change the first path to a path on your computer that you want to use as a working directory.</p>
+<p>If this command has run successfully, navigate in your browser to <a href="http://localhost:8443">http://localhost:8443</a>.</p>
+<p>The option <code>-v</code> mounts a local directory in your computer to the directory <code>/config/project</code> in the docker container. In that way, you have files available both in the container and on your computer. Use this directory on your computer to e.g. visualise data with IGV. Change the first path to a path on your computer that you want to use as a working directory.</p>
 <div class="admonition note">
 <p class="admonition-title">Don&rsquo;t mount directly in the home dir</p>
 <p>Don&rsquo;t directly mount your local directory to the home directory (<code>/root</code>). This will lead to unexpected behaviour.</p>
 </div>
-<p>The part <code>geertvangeest/ngs-longreads-jupyter:latest</code> is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it&rsquo;s on your computer, it will start immediately.</p>
-</div>
-<div class="tabbed-block">
-<p>If you have a conda installation on your local computer, you can install the required software using conda.</p>
-<p>You can build the environment from <a href="../../assets/yaml/ngs-longreads.yml">ngs-longreads.yml</a></p>
-<p>Generate the conda environment like this:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>ngs-longreads<span class="w"> </span>-f<span class="w"> </span>ngs-longreads.yml
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">The <code>yaml</code> file probably only works for Linux systems</p>
-<p>If you want to use the conda environment on a different OS, use:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>ngs-longreads<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
-
-conda<span class="w"> </span>activate<span class="w"> </span>ngs-longreads
-
-conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span><span class="se">\</span>
-samtools<span class="w"> </span><span class="se">\</span>
-minimap2<span class="w"> </span><span class="se">\</span>
-fastqc<span class="w"> </span><span class="se">\</span>
-pbmm2<span class="w"> </span><span class="se">\</span>
-
-conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>nanoplot
-</code></pre></div>
-<p>If the installation of <code>NanoPlot</code> fails, try to install it with <code>pip</code>:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>NanoPlot
-</code></pre></div>
-</div>
-<p>This will create the conda environment <code>ngs-longreads</code></p>
-<p>Activate it like so:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>ngs-longreads
-</code></pre></div>
-<p>After successful installation and activating the environment all the software required to do the exercises should be available.</p>
+<p>The part <code>geertvangeest/ngs-longreads-vscode:latest</code> is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it&rsquo;s on your computer, it will start immediately.</p>
 </div>
 </div>
 </div>
 <h3 id="a-unix-command-line-interface-cli-refresher">A UNIX command line interface (CLI) refresher</h3>
-<p>Most bioinformatics software are UNIX based and are executed through the CLI. When working with NGS data, it is therefore convenient to improve your knowledge on UNIX. For this course, we need basic understanding of UNIX CLI, so here are some exercises to refresh your memory.</p>
+<p>Most bioinformatics software are UNIX based and are executed through the CLI. When working with NGS data, it is therefore convenient to improve your knowledge on UNIX. For this course, we need basic understanding of UNIX CLI, so here are some exercises to refresh your memory. </p>
+<p>If you need some reminders of the commands, here&rsquo;s a link to a UNIX command line cheat sheet:</p>
+<p><a class="md-button" href="https://www.alexji.com/UNIXCheatSheet.pdf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM64 224h24c30.9 0 56 25.1 56 56s-25.1 56-56 56h-8v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16zm24 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8v48h8zm72-64c0-8.8 7.2-16 16-16h24c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-24c-8.8 0-16-7.2-16-16V240zm32 112h8c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-8v96zm96-128h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V240c0-8.8 7.2-16 16-16z"/></svg></span> UNIX cheat sheet</a></p>
 <h4 id="make-a-new-directory">Make a new directory</h4>
-<p>Login to the server and use the command line to make a directory called <code>workdir</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">If working with Docker</p>
-<p>If your are working with docker you are a root user. This means that your &ldquo;home&rdquo; directory is the root directory, i.e. <code>/root</code>, and not <code>/home/username</code>. If you have mounted your local directory to <code>/root/workdir</code>, this directory should already exist.</p>
-</div>
+<p>Make a directory <code>scripts</code> within <code>~/project</code> and make it your current directory.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span>
-mkdir<span class="w"> </span>workdir
-</code></pre></div>
-</details>
-<p>Make a directory <code>scripts</code> within <code>~/workdir</code> and make it your current directory.</p>
-<details class="done">
-<summary>Answer</summary>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>workdir
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project
 mkdir<span class="w"> </span>scripts
 <span class="nb">cd</span><span class="w"> </span>scripts
 </code></pre></div>
 </details>
 <h4 id="file-permissions">File permissions</h4>
-<p>Generate an empty script in your newly made directory <code>~/workdir/scripts</code> like this:</p>
+<p>Generate an empty script in your newly made directory <code>~/project/scripts</code> like this:</p>
 <div class="highlight"><pre><span></span><code>touch<span class="w"> </span>new_script.sh
 </code></pre></div>
 <p>Add a command to this script that writes &ldquo;SIB courses are great!&rdquo; (or something you can better relate to.. <img alt="😉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f609.svg" title=":wink:" />) to stdout, and try to run it.</p>
 <details class="done">
 <summary>Answer</summary>
-<p>The script should look like this:</p>
+<p>Generate a script as described above. The script should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SIB courses are great!&quot;</span>
@@ -868,10 +854,10 @@ mkdir<span class="w"> </span>scripts
 </details>
 <p>More on <code>chmod</code> and file permissions <a href="https://www.howtogeek.com/437958/how-to-use-the-chmod-command-on-linux/">here</a>.</p>
 <h4 id="redirection-and">Redirection: <code>&gt;</code> and <code>|</code></h4>
-<p>In the root directory (go there like this: <code>cd /</code>) there are a range of system directories and files. Write the names of all directories and files to a file called <code>system_dirs.txt</code> in your working directory (<code>~/workdir</code>; use <code>ls</code> and <code>&gt;</code>).</p>
+<p>In the root directory (go there like this: <code>cd /</code>) there are a range of system directories and files. Write the names of all directories and files to a file called <code>system_dirs.txt</code> in your working directory.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/<span class="w"> </span>&gt;<span class="w"> </span>~/workdir/system_dirs.txt
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/<span class="w"> </span>&gt;<span class="w"> </span>~/project/system_dirs.txt
 </code></pre></div>
 </details>
 <p>The command <code>wc -l</code> counts the number of lines, and can read from stdin. Make a one-liner with a pipe <code>|</code> symbol to find out how many system directories and files there are.</p>
@@ -884,8 +870,7 @@ mkdir<span class="w"> </span>scripts
 <p>Store <code>system_dirs.txt</code> as variable (like this: <code>VAR=variable</code>), and use <code>wc -l</code> on that variable to count the number of lines in the file.</p>
 <details class="done">
 <summary>Answer</summary>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/workdir
-<span class="nv">FILE</span><span class="o">=</span>system_dirs.txt
+<div class="highlight"><pre><span></span><code><span class="nv">FILE</span><span class="o">=</span>~/project/system_dirs.txt
 wc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$FILE</span>
 </code></pre></div>
 </details>
@@ -898,79 +883,6 @@ wc<span class="w"> </span>-l<span class="w"> </span><span class="nv">$FILE</span
 <span class="nb">cd</span><span class="w"> </span>/
 ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </code></pre></div></p>
-</details>
-<h3 id="loops">Loops</h3>
-<blockquote>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M232 120c0-13.3 10.7-24 24-24s24 10.7 24 24v123.2l85.3 56.8c11 7.4 14 22.3 5.8 33.3-6.5 11-21.4 14-32.4 5.8l-96-64c-6.7-3.6-10.7-11.1-10.7-20V120zM256 0c141.4 0 256 114.6 256 256S397.4 512 256 512 0 397.4 0 256 114.6 0 256 0zM48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256z"/></svg></span> 20 minutes</p>
-</blockquote>
-<p>If you want to run the same command on a range of arguments, it&rsquo;s not very convenient to type the command for each individual argument. For example, you could write <code>dog</code>, <code>fox</code>, <code>bird</code> to stdout in a script like this:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
-
-<span class="nb">echo</span><span class="w"> </span>dog
-<span class="nb">echo</span><span class="w"> </span>fox
-<span class="nb">echo</span><span class="w"> </span>bird
-</code></pre></div>
-<p>However, if you want to change the command (add an option for example), you would have to change it for all the three command calls. Amongst others for that reason, you want to write the command only once. You can do this with a for-loop, like this:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
-
-<span class="nv">ANIMALS</span><span class="o">=</span><span class="s2">&quot;dog fox bird&quot;</span>
-
-<span class="k">for</span><span class="w"> </span>animal<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$ANIMALS</span>
-<span class="k">do</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$animal</span>
-<span class="k">done</span>
-</code></pre></div>
-<p>Which results in:</p>
-<div class="highlight"><pre><span></span><code>dog
-fox
-bird
-</code></pre></div>
-<p>Write a shell script that removes all the letters &ldquo;e&rdquo; from a list of words.</p>
-<div class="admonition hint">
-<p class="admonition-title">Hint</p>
-<p>Removing the letter &ldquo;e&rdquo; from a string can be done with <code>tr</code> like this:
-<div class="highlight"><pre><span></span><code><span class="nv">word</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="nv">$word</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;e&quot;</span>
-</code></pre></div></p>
-<p>Which would result in:</p>
-<div class="highlight"><pre><span></span><code>tst
-</code></pre></div>
-</div>
-<details class="done">
-<summary>Answer</summary>
-<p>Your script should e.g. look like this (I&rsquo;ve added some awesome functionality):</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
-
-<span class="nv">WORDLIST</span><span class="o">=</span><span class="s2">&quot;here is a list of words resulting in a sentence&quot;</span>
-
-<span class="k">for</span><span class="w"> </span>word<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$WORDLIST</span>
-<span class="k">do</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&#39;</span><span class="nv">$word</span><span class="s2">&#39; with e&#39;s removed looks like:&quot;</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$word</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;e&quot;</span>
-<span class="k">done</span>
-</code></pre></div>
-<p>resulting in:</p>
-<div class="highlight"><pre><span></span><code>&#39;here&#39; with e&#39;s removed looks like:
-hr
-&#39;is&#39; with e&#39;s removed looks like:
-is
-&#39;a&#39; with e&#39;s removed looks like:
-a
-&#39;list&#39; with e&#39;s removed looks like:
-list
-&#39;of&#39; with e&#39;s removed looks like:
-of
-&#39;words&#39; with e&#39;s removed looks like:
-words
-&#39;resulting&#39; with e&#39;s removed looks like:
-rsulting
-&#39;in&#39; with e&#39;s removed looks like:
-in
-&#39;a&#39; with e&#39;s removed looks like:
-a
-&#39;sentence&#39; with e&#39;s removed looks like:
-sntnc
-</code></pre></div>
 </details>
 
 
