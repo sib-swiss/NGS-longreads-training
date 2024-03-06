@@ -148,6 +148,8 @@ The file `NanoPlot-report.html` contains a report with all the information store
 
 **C.** What is the average base quality and what kind of accuracy do we therefore expect?
 
+**D.** Browse through the report and check out the other plots. Was there a site dependency in the number of reads per channel? Would a longer sequencing run have been beneficial?
+
 !!! hint "Download files from the notebook"
     You can download files from the file browser, by right-clicking a file and selecting **Download...**:
 
@@ -158,9 +160,11 @@ The file `NanoPlot-report.html` contains a report with all the information store
 ??? done "Answer"
     **A.** Cell_2: 49,808 reads; EV_2: 6,214 reads 
 
-    **B.** Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite for EV_2. 
+    **B.** Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite short in sample EV_2. 
 
     **C.** The median base quality is for both around 12. This means that the error probability is about 10^(-12/10) = 0.06, so an accuracy of 94%. 
+
+    **D.** The number of reads per channel is variable (check out 'Number of reads generated per channel'). There is a spot in the middle of the flow cell with channels with very low activity. Both the cumulative yield plots and the number of reads over time plots show that the run was reaching saturation. A longer run would not have been beneficial.
 
 
 ### 3. Read alignment
@@ -182,7 +186,7 @@ The sequence aligner [`minimap2`](https://github.com/lh3/minimap2) is specifical
     ```
     We are working with ONT data so we could choose `map-ont`. However, our data is also spliced. Therefore, we should choose `splice`.
 
-**Exercise:** Make a directory called `alignments` in your working directory. After that, modify the command below for `minimap2` and run it from a script.
+**Exercise:** Make a directory called `alignments` in your working directory. After that, modify the command below for `minimap2` and run it from a script; i.e. replace [PARAMETER] with the correct option.
 
 ```sh
 #!/usr/bin/env bash
