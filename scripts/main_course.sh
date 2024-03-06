@@ -1,26 +1,35 @@
 #!/usr/bin/env bash
 
-mkdir ~/workdir
+# download data
+cd ~/project
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar -xvf project1.tar.gz
+rm project1.tar.gz
 
-cd ~/workdir
+cd ~/project/project1
+
+mkdir -p nanoplot
 
 NanoPlot \
---fastq data/reads/cerebellum-5238-batch2.fastq.gz \
---outdir nanoplot_output
+--fastq_rich reads/Cell_2.fastq.gz \
+--outdir nanoplot/Cell_2
 
-mkdir ~/workdir/alignments
+NanoPlot \
+--fastq_rich reads/EV_2.fastq.gz \
+--outdir nanoplot/EV_2
 
-cd ~/workdir
+mkdir -p alignments
 
-minimap2 \
--a \
--x splice \
--G 500k \
--t 4 \
-data/reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-data/reads/cerebellum-5238-batch2.fastq.gz \
-| samtools sort \
-| samtools view -bh > alignments/cerebellum-5238-batch2.bam
+for sample in EV_2 Cell_2; do
+    minimap2 \
+    -a \
+    -x splice \
+    -t 4 \
+    references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa \
+    reads/"$sample".fastq.gz \
+    | samtools sort \
+    | samtools view -bh > alignments/"$sample".bam
 
-## indexing for IGV
-samtools index alignments/cerebellum-5238-batch2.bam
+    ## indexing for IGV
+    samtools index alignments/"$sample".bam
+done
