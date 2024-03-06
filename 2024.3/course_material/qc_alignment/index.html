@@ -737,6 +737,7 @@ NanoPlot<span class="w"> </span><span class="se">\</span>
 <p><strong>A.</strong> How many reads are in the files?</p>
 <p><strong>B.</strong> What are the average read lengths? What does this tell us about the quality of both runs?</p>
 <p><strong>C.</strong> What is the average base quality and what kind of accuracy do we therefore expect?</p>
+<p><strong>D.</strong> Browse through the report and check out the other plots. Was there a site dependency in the number of reads per channel? Would a longer sequencing run have been beneficial?</p>
 <div class="admonition hint">
 <p class="admonition-title">Download files from the notebook</p>
 <p>You can download files from the file browser, by right-clicking a file and selecting <strong>Download&hellip;</strong>:</p>
@@ -747,8 +748,9 @@ NanoPlot<span class="w"> </span><span class="se">\</span>
 <details class="done">
 <summary>Answer</summary>
 <p><strong>A.</strong> Cell_2: 49,808 reads; EV_2: 6,214 reads </p>
-<p><strong>B.</strong> Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite for EV_2. </p>
+<p><strong>B.</strong> Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite short in sample EV_2. </p>
 <p><strong>C.</strong> The median base quality is for both around 12. This means that the error probability is about 10^(-12/10) = 0.06, so an accuracy of 94%. </p>
+<p><strong>D.</strong> The number of reads per channel is variable (check out &lsquo;Number of reads generated per channel&rsquo;). There is a spot in the middle of the flow cell with channels with very low activity. Both the cumulative yield plots and the number of reads over time plots show that the run was reaching saturation. A longer run would not have been beneficial.</p>
 </details>
 <h3 id="3-read-alignment">3. Read alignment</h3>
 <p>The sequence aligner <a href="https://github.com/lh3/minimap2"><code>minimap2</code></a> is specifically developed for (splice-aware) alignment of long reads.</p>
@@ -765,7 +767,7 @@ NanoPlot<span class="w"> </span><span class="se">\</span>
 </code></pre></div>
 We are working with ONT data so we could choose <code>map-ont</code>. However, our data is also spliced. Therefore, we should choose <code>splice</code>.</p>
 </details>
-<p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script.</p>
+<p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script; i.e. replace [PARAMETER] with the correct option.</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="nb">cd</span><span class="w"> </span>~/project/project1
