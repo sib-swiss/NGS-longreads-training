@@ -18,6 +18,7 @@ theme:
   name: material
   logo: assets/images/SIB_logo.svg
   favicon: assets/images/SIB_logo.svg
+  custom_dir: overrides
 
 # Repository
 repo_name: sib-swiss/NGS-longreads-training
@@ -41,8 +42,8 @@ markdown_extensions:
   - pymdownx.tabbed
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
       options:
         custom_icons:
           - overrides/.icons
@@ -55,6 +56,10 @@ extra_css:
 extra:
   version:
     provider: mike
+  analytics:
+    provider: matomo
+    base_url: https://matomo.sib.swiss/
+    site_id: 220
 
 extra_javascript:
   - javascripts/config.js
