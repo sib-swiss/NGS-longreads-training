@@ -14,4 +14,4 @@ workdir/
 /generate_data_main/
 slurm-*
 project*/
-
+env/
