@@ -1,4 +1,6 @@
 {
+    "upload_type": "lesson",
+    "license": "cc-by-4.0",
     "title": "Course material Long read sequencing analysis",
     "keywords": [
       "NGS",
@@ -11,11 +13,6 @@
         "name": "Geert van Geest",
         "affiliation": "SIB Swiss Institute of Bioinformatics",
         "orcid": "0000-0002-1561-078X"
-      },
-      {
-        "name": "Marco Kreuzer",
-        "affiliation": "Interfaculty Bioinformatics Unit, Unversity of Bern",
-        "orcid": "0000-0001-6784-0854"
       },
       {
         "name": "Patricia Palagi",
