@@ -61,40 +61,15 @@ You can start this project with dividing initial tasks. Because some intermediat
     ```
 
 * Perform QC with `fastqc` and with `NanoPlot`. Is `fastqc` appropriate enough for long reads? Do you see a difference between the programs?
-
-* Align each sample separately with `minimap2` with default parameters. Set parameters `-x` and `-G` to the values we have used during the [QC and alignment exercises](../qc_alignment#3-read-alignment). You can use 4 threads (set the number of threads with `-t`)
-
-!!! danger "Start the alignment as soon as possible"
-    The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:
-
-    ```sh
-    minimap2 \
-    -x splice \
-    -d reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
-    reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa
-    ```
-
-    Refer to the generated index (`.mmi` file) as reference in the alignment command, e.g.:
-
-    ```
-    minimap2 \
-    -a \
-    -x splice \
-    -G 500k \
-    -t 4 \
-    reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
-    reads/<my_reads.fastq.gz>
-    ```
-
 * Have a look at the [FLAIR documentation](https://flair.readthedocs.io/en/latest/index.html).
 * FLAIR and all its dependencies are in the the pre-installed conda environment named `flair`. You can activate it with `conda activate flair`.
-* Merge the separate alignments with `samtools merge`, index the merged bam file, and generate a `bed12` file with the command `bam2Bed12`
-* Run `flair correct` on the `bed12` file. Add the `gtf` to the options to improve the alignments.
+* Align the samples with `flair align`. This will create a single merged bam file and a bed file. The logs written to stdout should look familiar to you, because it is a wrapper for `minimap2`. 
+* Run `flair correct` on the `bed12` file created by `flair align`. Add the `gtf` to the options to improve the alignments.
 * Run `flair collapse` to generate isoforms from corrected reads. This steps takes ~1.5 hours to run.
-* Generate a count matrix with `flair quantify` by using the isoforms fasta and `reads_manifest.tsv` (takes ~45 mins to run).
+* Generate a count matrix with `flair quantify` by using the isoforms fasta and `reads_manifest.tsv`.
 
 !!! danger "Paths in `reads_manifest.tsv`"
-    The paths in `reads_manifest.tsv` are relative, e.g. `reads/striatum-5238-batch2.fastq.gz` points to a file relative to the directory from which you are running `flair quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
+    The paths in `reads_manifest.tsv` are relative and incorrect. Therefore, change them to a point to a file relative to the directory from which you are running `flair quantify`. So the directory from which you are running the command should contain the directory `reads`. If not, modify the paths in the file accordingly (use full paths if you are not sure).
 
 * Now you can do several things:
     * Do a differential expression analysis. In `scripts/` there's a basic R script to do the analysis. Go to your specified IP and port to login to RStudio server (the username is `rstudio`).

@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-cd ~/workdir/workdir/project2/groupwork_pacbio
+cd ~/project
 
-# generate reference for minimap2
-# takes ~10 mins - add to download?
-# minimap2 \
-# -x asm20 \
-# -d reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa.mmi \
-# reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project2.tar.gz
+tar -xvf project2.tar.gz
+rm project2.tar.gz
+
+cd ~/project/project2/
 
 mkdir alignments
 
@@ -30,7 +29,7 @@ mkdir -p trgt_output
 
 for sample in `seq 1015 1022`
 do
-  trgt --genome reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa \
+  trgt genotype --genome reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa \
         --repeats targets/targets.bed \
         --reads alignments/"$sample".bam \
         --output-prefix trgt_output/"$sample" \
@@ -44,7 +43,7 @@ for sample in `seq 1015 1022`
 do
   for gene in gene1 gene2
   do
-    trvz --genome reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa \
+    trgt plot --genome reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa \
           --repeats targets/targets.bed \
           --vcf trgt_output/"$sample".vcf.gz \
           --spanning-reads trgt_output/"$sample".spanning.sorted.bam \

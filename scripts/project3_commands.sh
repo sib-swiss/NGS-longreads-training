@@ -6,7 +6,11 @@
 # for issues with prokka:
 # cpanm Bio::SearchIO::hmmer --force
 
-cd ~/workdir/workdir/project3
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project3.tar.gz
+tar -xvf project3.tar.gz
+rm project3.tar.gz
+
+cd ~/project/project3
 
 # bash function for performing the assembly and annotation
 assembly_annotation () {

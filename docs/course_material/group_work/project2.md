@@ -21,7 +21,7 @@ You will be working with data from an experiment in which DNA of 8 individuals w
 You can get the reads and sequence targets with:
 
 ```sh
-wget wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project2.tar.gz
+wget https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project2.tar.gz
 tar -xvf project2.tar.gz
 rm project2.tar.gz
 ```

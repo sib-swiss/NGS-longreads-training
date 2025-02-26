@@ -1,5 +1,5 @@
 
-cd ~/workdir/workdir/project1/
+cd ~/project/project1/
 
 mkdir -p flair_align
 
