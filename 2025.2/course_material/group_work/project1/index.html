@@ -760,42 +760,17 @@ rm<span class="w"> </span>project1.tar.gz
 </code></pre></div>
 </div>
 <ul>
-<li>
-<p>Perform QC with <code>fastqc</code> and with <code>NanoPlot</code>. Is <code>fastqc</code> appropriate enough for long reads? Do you see a difference between the programs?</p>
-</li>
-<li>
-<p>Align each sample separately with <code>minimap2</code> with default parameters. Set parameters <code>-x</code> and <code>-G</code> to the values we have used during the <a href="../qc_alignment#3-read-alignment">QC and alignment exercises</a>. You can use 4 threads (set the number of threads with <code>-t</code>)</p>
-</li>
-</ul>
-<div class="admonition danger">
-<p class="admonition-title">Start the alignment as soon as possible</p>
-<p>The alignment takes about 6 minutes per sample, so in total about one hour to run. Try to start the alignment as soon as possible. You can speed up your alignment by first making an index, e.g.:</p>
-<div class="highlight"><pre><span></span><code>minimap2<span class="w"> </span><span class="se">\</span>
--x<span class="w"> </span>splice<span class="w"> </span><span class="se">\</span>
--d<span class="w"> </span>reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi<span class="w"> </span><span class="se">\</span>
-reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa
-</code></pre></div>
-<p>Refer to the generated index (<code>.mmi</code> file) as reference in the alignment command, e.g.:</p>
-<div class="highlight"><pre><span></span><code>minimap2 \
--a \
--x splice \
--G 500k \
--t 4 \
-reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa.mmi \
-reads/&lt;my_reads.fastq.gz&gt;
-</code></pre></div>
-</div>
-<ul>
+<li>Perform QC with <code>fastqc</code> and with <code>NanoPlot</code>. Is <code>fastqc</code> appropriate enough for long reads? Do you see a difference between the programs?</li>
 <li>Have a look at the <a href="https://flair.readthedocs.io/en/latest/index.html">FLAIR documentation</a>.</li>
 <li>FLAIR and all its dependencies are in the the pre-installed conda environment named <code>flair</code>. You can activate it with <code>conda activate flair</code>.</li>
-<li>Merge the separate alignments with <code>samtools merge</code>, index the merged bam file, and generate a <code>bed12</code> file with the command <code>bam2Bed12</code></li>
-<li>Run <code>flair correct</code> on the <code>bed12</code> file. Add the <code>gtf</code> to the options to improve the alignments.</li>
+<li>Align the samples with <code>flair align</code>. This will create a single merged bam file and a bed file. The logs written to stdout should look familiar to you, because it is a wrapper for <code>minimap2</code>. </li>
+<li>Run <code>flair correct</code> on the <code>bed12</code> file created by <code>flair align</code>. Add the <code>gtf</code> to the options to improve the alignments.</li>
 <li>Run <code>flair collapse</code> to generate isoforms from corrected reads. This steps takes ~1.5 hours to run.</li>
-<li>Generate a count matrix with <code>flair quantify</code> by using the isoforms fasta and <code>reads_manifest.tsv</code> (takes ~45 mins to run).</li>
+<li>Generate a count matrix with <code>flair quantify</code> by using the isoforms fasta and <code>reads_manifest.tsv</code>.</li>
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">Paths in <code>reads_manifest.tsv</code></p>
-<p>The paths in <code>reads_manifest.tsv</code> are relative, e.g. <code>reads/striatum-5238-batch2.fastq.gz</code> points to a file relative to the directory from which you are running <code>flair quantify</code>. So the directory from which you are running the command should contain the directory <code>reads</code>. If not, modify the paths in the file accordingly (use full paths if you are not sure).</p>
+<p>The paths in <code>reads_manifest.tsv</code> are relative and incorrect. Therefore, change them to a point to a file relative to the directory from which you are running <code>flair quantify</code>. So the directory from which you are running the command should contain the directory <code>reads</code>. If not, modify the paths in the file accordingly (use full paths if you are not sure).</p>
 </div>
 <ul>
 <li>Now you can do several things:<ul>
