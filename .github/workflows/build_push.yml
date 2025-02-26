@@ -28,11 +28,11 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           # list of Docker images to use as base name for tags
           images: |
-            geertvangeest/ngs-longreads-${{ matrix.ide }}
+            sibswiss/training-longreads-${{ matrix.ide }}
           # generate Docker tags based on the following events/attributes
           tags: |
             type=semver,pattern={{major}}.{{minor}}
