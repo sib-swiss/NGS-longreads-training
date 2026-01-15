@@ -8,6 +8,13 @@ on:
 jobs:
   build-push:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - context: Docker/vscode
+            ide: vscode
+          - context: Docker/rstudio
+            ide: rstudio
 
     steps:
 
