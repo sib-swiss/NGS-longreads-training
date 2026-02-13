@@ -1,7 +1,11 @@
 
-## Teachers
+## Teacher
 
-- Geert van Geest [:custom-orcid:](https://orcid.org/0000-0002-1561-078X)
+- Joana Carlevaro Fita [:custom-orcid:](https://orcid.org/0000-0002-1674-2055)
+
+## Helper
+
+- Alexander Nater [:custom-orcid:](https://orcid.org/0000-0002-4805-5575)
 
 ## Authors
 
@@ -44,14 +48,6 @@ Alternatively, (depending on your zoom version or OS) use the 'Reactions' button
 <figure>
   <img src="assets/images/reactions_zoom.png" width="200"/>
 </figure>
-
-A main source of communication will be our [slack channel](https://www.slack.com). Ask background questions that interest you personally at **#background**. During the exercises, e.g. if you are stuck or don't understand what is going on, use the slack channel **#q-and-a**.  This channel is not only meant for asking questions but also for answering questions of other participants. If you are replying to a question, use the "reply in thread" option:
-
-<figure>
-  <img src="assets/images/reply_in_thread.png" width="350"/>
-</figure>
-
-The teacher will review the answers, and add/modify if necessary. If you're really stuck and need specific tutor support, write the teachers or helpers personally.
 
 **To summarise:**
 

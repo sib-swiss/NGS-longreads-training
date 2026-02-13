@@ -2,10 +2,11 @@
 
 ## :fontawesome-solid-disease: Project 2: Repeat expansion analysis of PacBio data
 
-You will be working with data from an experiment in which DNA of 8 individuals was sequenced for five different targets by using Pacbio's no-Amp targeted sequencing system. Two of these targets contain repeat expansions that are related to a disease phenotype.
+You will be working with data from an experiment in which DNA of 8 individuals was sequenced for five different targets by using [Pacbio's no-Amp targeted sequencing system](https://www.pacb.com/wp-content/uploads/Ekholm-AMP-2020-Amplification-free-targeted-enrichment-powered-by-CRISPR-Cas9-and-long-read-Single-Molecule-Real-Time-Sequencing.pdf). Two of these targets contain repeat expansions that are related to a disease phenotype.
+[See more on targeted sequencing](https://www.pacb.com/products-and-services/applications/targeted-sequencing/)
 
 !!! info "Project aim"
-    Estimate variation in repeat expansions in two target regions, and relate them to a disease phenotype.
+    Estimate variation in repeat expansions in two target regions (located in gene1 and gene2), and relate them to a disease phenotype.
 
 | individual 	| disease1 	| disease2 	|
 |------------	|----------	|----------	|
@@ -51,7 +52,7 @@ project2
 3 directories, 11 files
 ```
 
-The targets in gene1 and gene2 are described in `targets/targets.bed`. The columns in these `.bed` files describe the chromosome, start, end, and describe the motifs. To reduce computational load, the reference contains only chromosome 4 and X of the hg38 human reference genome. 
+The targets in gene1 and gene2 are described in `targets/targets.bed`. The columns in these `.bed` files describe the *chromosome*, *start*, *end*, and *describe the motifs*. To reduce computational load, the genome reference contains only chromosome 4 and X of the hg38 human reference genome. 
 
 ### Tasks & questions
 
@@ -68,7 +69,7 @@ The targets in gene1 and gene2 are described in `targets/targets.bed`. The colum
 * Perform a quality control with `NanoPlot`.
     * How is the read quality? These are circular concensus sequences (ccs). Is this quality expected?
     * How is the read length?
-* Align the reads to `reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa` with `minimap2`. For the option `-x` you can use `asm20`. Generate separate alignment files for each individual. Check out some of the bam files in IGV. How does that look? 
+* Align the reads to `reference/Homo_sapiens.GRCh38.dna.primary_assembly.chrX.chr4.fa` with `minimap2`. For the option `-x` you can use `asm20` (See `minimap2 --help` or [manual](https://lh3.github.io/minimap2/minimap2.html)). Generate separate alignment files for each individual. Check out some of the bam files in IGV. How does that look? 
 
 !!! note "Alternatively use [`pbmm2`](https://github.com/PacificBiosciences/pbmm2)"
     Pacific Biosciences has developed a wrapper for `minimap2` that contains settings specific for PacBio reads, named [`pbmm2`](https://github.com/PacificBiosciences/pbmm2). It might slightly improve your alignments. It is installed in the conda environment. Feel free to give it a try if you have time left.
