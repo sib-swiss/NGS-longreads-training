@@ -1,7 +1,11 @@
 
-## Teachers
+## Teacher
 
 - Joana Carlevaro Fita [:custom-orcid:](https://orcid.org/0000-0002-1674-2055)
+
+## Helper
+
+- Alexander Nater [:custom-orcid:](https://orcid.org/0000-0002-4805-5575)
 
 ## Authors
 
