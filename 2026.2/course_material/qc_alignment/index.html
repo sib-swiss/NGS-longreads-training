@@ -1,0 +1,1167 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../server_login/">
+      
+      
+        <link rel="next" href="../applications/">
+      
+      
+      <link rel="icon" href="../../assets/images/SIB_logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>QC and alignment - Long-read sequence analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-outcomes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Long-read sequence analysis" class="md-header__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
+      
+  <img src="../../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Long-read sequence analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              QC and alignment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sib-swiss/NGS-longreads-training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/NGS-longreads-training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Long-read sequence analysis" class="md-nav__button md-logo" aria-label="Long-read sequence analysis" data-md-component="logo">
+      
+  <img src="../../assets/images/SIB_logo.svg" alt="logo">
+
+    </a>
+    Long-read sequence analysis
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sib-swiss/NGS-longreads-training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sib-swiss/NGS-longreads-training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../precourse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Precourse preparations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course schedule
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Course material
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Course material
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server_login/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Server login
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    QC and alignment
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    QC and alignment
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retrieve-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Retrieve data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quality control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Read alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-visualisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Visualisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Applications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Group work
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Group work
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group_work/group_work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group_work/project1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group_work/project2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group_work/project3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#material" class="md-nav__link">
+    <span class="md-ellipsis">
+      Material
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-retrieve-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Retrieve data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quality-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quality control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Read alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-visualisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Visualisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>QC and alignment</h1>
+
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<p><strong>After having completed this chapter you will be able to:</strong></p>
+<ul>
+<li>Explain how the fastq format stores sequence and base quality information and why this is limited for long-read sequencing data</li>
+<li>Calculate base accuracy and probability based on base quality</li>
+<li>Describe how alignment information is stored in a sequence alignment (<code>.sam</code>) file</li>
+<li>Perform a quality control on long-read data with <code>NanoPlot</code></li>
+<li>Perform a basic alignment of long reads with <code>minimap2</code></li>
+<li>Visualise an alignment file in IGV on a local computer</li>
+</ul>
+<h2 id="material">Material</h2>
+<p><a class="md-button" href="../../assets/pdf/03_qc_file_formats.pdf"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 64C0 28.7 28.7 0 64 0h160v128c0 17.7 14.3 32 32 32h128v144H176c-35.3 0-64 28.7-64 64v144H64c-35.3 0-64-28.7-64-64zm384 64H256V0zM176 352h32c30.9 0 56 25.1 56 56s-25.1 56-56 56h-16v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V368c0-8.8 7.2-16 16-16m32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-16v48zm96-80h32c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48h-32c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16m32 128c8.8 0 16-7.2 16-16v-64c0-8.8-7.2-16-16-16h-16v96zm80-112c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V368"/></svg></span> Download the presentation</a></p>
+<h2 id="exercises">Exercises</h2>
+<h3 id="1-retrieve-data">1. Retrieve data</h3>
+<p>We will be working with data from:</p>
+<blockquote>
+<p>Padilla, Juan-Carlos A., Seda Barutcu, Ludovic Malet, Gabrielle Deschamps-Francoeur, Virginie Calderon, Eunjeong Kwon, and Eric Lécuyer. “Profiling the Polyadenylated Transcriptome of Extracellular Vesicles with Long-Read Nanopore Sequencing.” BMC Genomics 24, no. 1 (September 22, 2023): 564. https://doi.org/10.1186/s12864-023-09552-6.</p>
+</blockquote>
+<p>The authors used RNA sequencing with Oxford Nanopore Technology of both extracellular vesicles and whole cells from cell culture.</p>
+<p>For the exercises of today, we will work with two samples of this study. Download and unpack the data files in your home directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project
+wget<span class="w"> </span>https://ngs-longreads-training.s3.eu-central-1.amazonaws.com/project1.tar.gz
+tar<span class="w"> </span>-xvf<span class="w"> </span>project1.tar.gz
+rm<span class="w"> </span>project1.tar.gz
+</code></pre></div>
+<p><strong>Exercise:</strong> This will create the directory called <code>project1</code>. Check out what&rsquo;s in there.</p>
+<details class="done">
+<summary>Answer</summary>
+<p>Go to the <code>~/project/project1</code> folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project/project1
+</code></pre></div>
+<p>The data folder contains the following:
+<div class="highlight"><pre><span></span><code>project1/
+├── reads
+│   ├── Cell_1.fastq.gz
+│   ├── Cell_2.fastq.gz
+│   ├── Cell_3.fastq.gz
+│   ├── EV_1.fastq.gz
+│   ├── EV_2.fastq.gz
+│   └── EV_3.fastq.gz
+├── reads_manifest.tsv
+└── references
+    ├── Homo_sapiens.GRCh38.111.chr5.chr6.chrX.gtf
+    └── Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa
+
+2 directories, 9 files
+</code></pre></div>
+In the reads folder a fastq file with reads, which are described in <code>reads_manifest.csv</code>. EV means &lsquo;extracellular vesicle&rsquo;, Cell means &lsquo;entire cells&rsquo;. In the references folder you can find the reference sequence and annotation.</p>
+</details>
+<h3 id="2-quality-control">2. Quality control</h3>
+<div class="admonition info">
+<p class="admonition-title">Activate the conda environment</p>
+<p>The tools you will be needed for these exercises are in the conda environment <code>lr-tools</code>. Every time you open a new terminal, activate it with:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>lr-tools
+</code></pre></div>
+</div>
+<p>We will evaluate the read quality of two fastq files with <code>NanoPlot</code>.</p>
+<p><strong>Exercise:</strong> Check out the manual of <code>NanoPlot</code> with the command <code>NanoPlot --help</code>. After that run <code>NanoPlot</code> on </p>
+<ul>
+<li><code>reads/Cell_2.fastq.gz</code></li>
+<li><code>reads/EV_2.fastq.gz</code>. </li>
+</ul>
+<p>Your fastq files are in the &lsquo;rich&rsquo; format, meaning they have additional information regarding the ONT run. </p>
+<details class="hint">
+<summary>Hint</summary>
+<p>For a basic output of <code>NanoPlot</code> on a <code>fastq.gz</code> file you can use the options <code>--outdir</code> and <code>--fastq_rich</code>.</p>
+</details>
+<details class="done">
+<summary>Answer</summary>
+<p>We have a rich <code>fastq</code> file, so based on the manual and the example we can run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/project/project1
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>nanoplot
+
+NanoPlot<span class="w"> </span><span class="se">\</span>
+--fastq_rich<span class="w"> </span>reads/Cell_2.fastq.gz<span class="w"> </span><span class="se">\</span>
+--outdir<span class="w"> </span>nanoplot/Cell_2
+
+NanoPlot<span class="w"> </span><span class="se">\</span>
+--fastq_rich<span class="w"> </span>reads/EV_2.fastq.gz<span class="w"> </span><span class="se">\</span>
+--outdir<span class="w"> </span>nanoplot/EV_2
+</code></pre></div>
+</details>
+<p>In both directories you will now have a directory with the following files:</p>
+<div class="highlight"><pre><span></span><code>.
+├── ActivePores_Over_Time.html
+├── ActivePores_Over_Time.png
+├── ActivityMap_ReadsPerChannel.html
+├── ActivityMap_ReadsPerChannel.png
+├── CumulativeYieldPlot_Gigabases.html
+├── CumulativeYieldPlot_Gigabases.png
+├── CumulativeYieldPlot_NumberOfReads.html
+├── CumulativeYieldPlot_NumberOfReads.png
+├── LengthvsQualityScatterPlot_dot.html
+├── LengthvsQualityScatterPlot_dot.png
+├── LengthvsQualityScatterPlot_kde.html
+├── LengthvsQualityScatterPlot_kde.png
+├── NanoPlot_20240221_1219.log
+├── NanoPlot-report.html
+├── NanoStats.txt
+├── Non_weightedHistogramReadlength.html
+├── Non_weightedHistogramReadlength.png
+├── Non_weightedLogTransformed_HistogramReadlength.html
+├── Non_weightedLogTransformed_HistogramReadlength.png
+├── NumberOfReads_Over_Time.html
+├── NumberOfReads_Over_Time.png
+├── TimeLengthViolinPlot.html
+├── TimeLengthViolinPlot.png
+├── TimeQualityViolinPlot.html
+├── TimeQualityViolinPlot.png
+├── WeightedHistogramReadlength.html
+├── WeightedHistogramReadlength.png
+├── WeightedLogTransformed_HistogramReadlength.html
+├── WeightedLogTransformed_HistogramReadlength.png
+├── Yield_By_Length.html
+└── Yield_By_Length.png
+
+0 directories, 31 files
+</code></pre></div>
+<p>The file <code>NanoPlot-report.html</code> contains a report with all the information stored in the other files, and <code>NanoStats.txt</code> in text format.</p>
+<p><strong>Exercise:</strong> Check out some of the .png plots and the contents of <code>NanoStats.txt</code>. Also, download <code>NanoPlot-report.html</code> for both files to your local computer and answer the following questions:</p>
+<p><strong>A.</strong> How many reads are in the files?</p>
+<p><strong>B.</strong> What are the average read lengths? What does this tell us about the quality of both runs?</p>
+<p><strong>C.</strong> What is the average base quality and what kind of accuracy do we therefore expect?</p>
+<p><strong>D.</strong> Browse through the report and check out the other plots. Was there a site dependency in the number of reads per channel? Would a longer sequencing run have been beneficial?</p>
+<div class="admonition hint">
+<p class="admonition-title">Download files from the notebook</p>
+<p>You can download files from the file browser, by right-clicking a file and selecting <strong>Download&hellip;</strong>:</p>
+<p><figure>
+  <img src="../../assets/images/download_file.gif" width="400"/>
+</figure></p>
+</div>
+<details class="done">
+<summary>Answer</summary>
+<p><strong>A.</strong> Cell_2: 49,808 reads; EV_2: 6,214 reads </p>
+<p><strong>B.</strong> Cell_2: 1186.7 EV_2: 607.9. Both runs are form cDNA. Transcripts are usually around 1-2kb. The average read length is therefore quite short in sample EV_2. </p>
+<p><strong>C.</strong> The median base quality is for both around 12. This means that the error probability is about 10^(-12/10) = 0.06, so an accuracy of 94%. </p>
+<p><strong>D.</strong> The number of reads per channel is variable (check out &lsquo;Number of reads generated per channel&rsquo;). There is a spot in the middle of the flow cell with channels with very low activity. Both the cumulative yield plots and the number of reads over time plots show that the run was reaching saturation. A longer run would not have been beneficial.</p>
+</details>
+<h3 id="3-read-alignment">3. Read alignment</h3>
+<p>The sequence aligner <a href="https://github.com/lh3/minimap2"><code>minimap2</code></a> is specifically developed for (splice-aware) alignment of long reads.</p>
+<p><strong>Exercise:</strong> Checkout the helper <code>minimap2 --help</code> and/or the <a href="https://github.com/lh3/minimap2">github readme</a>. We are working with reads generated from cDNA. Considering we are aligning to a reference genome (DNA), what would be the most logical parameter for our dataset to the option <code>-x</code>?</p>
+<details class="done">
+<summary>Answer</summary>
+<p>The option <code>-x</code> can take the following arguments:</p>
+<p><div class="highlight"><pre><span></span><code>-x STR       preset (always applied before other options; see minimap2.1 for details) []
+           - map-pb/map-ont: PacBio/Nanopore vs reference mapping
+           - ava-pb/ava-ont: PacBio/Nanopore read overlap
+           - asm5/asm10/asm20: asm-to-ref mapping, for ~0.1/1/5% sequence divergence
+           - splice: long-read spliced alignment
+           - sr: genomic short-read mapping
+</code></pre></div>
+We are working with ONT data so we could choose <code>map-ont</code>. However, our data is also spliced. Therefore, we should choose <code>splice</code>.</p>
+</details>
+<p><strong>Exercise:</strong> Make a directory called <code>alignments</code> in your working directory. After that, modify the command below for <code>minimap2</code> and run it from a script; i.e. replace [PARAMETER] with the correct option.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">cd</span><span class="w"> </span>~/project/project1
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>alignments
+
+<span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>EV_2<span class="w"> </span>Cell_2<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>minimap2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-x<span class="w"> </span><span class="o">[</span>PARAMETER<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>reads/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+
+<span class="w">    </span><span class="c1">## indexing for IGV</span>
+<span class="w">    </span>samtools<span class="w"> </span>index<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+<span class="k">done</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once your script is running, it will take a while to finish. Have a ☕. </p>
+</div>
+<details class="done">
+<summary>Answer</summary>
+<p>Modify the script to set the <code>-x</code> option:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">cd</span><span class="w"> </span>~/project/project1
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>alignments
+
+<span class="k">for</span><span class="w"> </span>sample<span class="w"> </span><span class="k">in</span><span class="w"> </span>EV_2<span class="w"> </span>Cell_2<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>minimap2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-x<span class="w"> </span>splice<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>references/Homo_sapiens.GRCh38.dna.primary_assembly.chr5.chr6.chrX.fa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>reads/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>samtools<span class="w"> </span>view<span class="w"> </span>-bh<span class="w"> </span>&gt;<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+
+<span class="w">    </span><span class="c1">## indexing for IGV</span>
+<span class="w">    </span>samtools<span class="w"> </span>index<span class="w"> </span>alignments/<span class="s2">&quot;</span><span class="nv">$sample</span><span class="s2">&quot;</span>.bam
+<span class="k">done</span>
+</code></pre></div>
+<p>And run it (e.g. if you named the script <code>ont_alignment.sh</code>):</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>u+x<span class="w"> </span>ont_alignment.sh
+./ont_alignment.sh
+</code></pre></div>
+</details>
+<h3 id="4-visualisation">4. Visualisation</h3>
+<p>Let&rsquo;s have a look at the alignments. Download the files (in <code>~/project/project1/alignments</code>):</p>
+<ul>
+<li><code>EV_2.bam</code></li>
+<li><code>EV_2.bam.bai</code> </li>
+<li><code>Cell_2.bam</code></li>
+<li><code>Cell_2.bam.bai</code> </li>
+</ul>
+<p>to your local computer and load the <code>.bam</code> files into IGV (<strong>File &gt; Load from File&hellip;</strong>).</p>
+<p><strong>Exercise:</strong> Have a look at the gene <code>ELOVL5</code> by typing the name into the search box. </p>
+<ul>
+<li>Do you see any evidence for alternative splicing already?</li>
+<li>How is the difference in quality between the two samples? Would that have an effect on estimating differential splicing? </li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Check out the paper</p>
+<p>The authors found splice variants. Check figure 5B in <a href="https://link.springer.com/article/10.1186/s12864-023-09552-6">the paper</a>.</p>
+</div>
+<details class="done">
+<summary>Answer</summary>
+<p>There is some observable exon skipping in Cell_2:</p>
+<p><figure>
+  <img src="../../assets/images/igv_ELOVL5.png" width="500"/>
+</figure></p>
+<p>The coverage of EV_2 is quite low. Also, a lot of the reads do not fully cover the gene. This will make it difficult to estimate differential splicing.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our trainig material and whether users find what they're searching for. With your consent, you're helping us to make our training material better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="matomo" checked>
+      <span class="task-list-indicator"></span>
+      Matomo Analytics
+    </label>
+  </li>
+
+      
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../javascripts/consent.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
