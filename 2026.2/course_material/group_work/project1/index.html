@@ -778,7 +778,7 @@ rm<span class="w"> </span>project1.tar.gz
 <li>FLAIR and all its dependencies are in the the pre-installed conda environment named <code>flair</code>. You can activate it with <code>conda activate flair</code>.</li>
 <li>Align the samples with <code>flair align</code>. This will create a single merged bam file and a bed file. The logs written to stdout should look familiar to you, because it is a wrapper for <code>minimap2</code>. </li>
 <li>Run <code>flair correct</code> on the <code>bed12</code> file created by <code>flair align</code>. Add the <code>gtf</code> to the options to improve the alignments.</li>
-<li>Run <code>flair collapse</code> to generate isoforms from corrected reads. This steps takes ~1.5 hours to run.</li>
+<li>Run <code>flair collapse</code> to generate isoforms from corrected reads. </li>
 <li>Generate a count matrix with <code>flair quantify</code> by using the isoforms fasta and <code>reads_manifest.tsv</code>.</li>
 </ul>
 <div class="admonition danger">
@@ -787,9 +787,10 @@ rm<span class="w"> </span>project1.tar.gz
 </div>
 <ul>
 <li>Now you can do several things:<ul>
-<li>Do a differential expression analysis. In <code>scripts/</code> there&rsquo;s a basic R script to do the analysis. Go to your specified IP and port to login to RStudio server (the username is <code>rstudio</code>).</li>
-<li>Investigate the isoform usage with the flair script <code>plot_isoform_usage.py</code></li>
-<li>Investigate productivity of the different isoforms.</li>
+<li>Do a differential expression analysis with <code>flair diffexp</code> and investigate the results. Do you find differentially expressed genes? </li>
+<li>Do you find differentially expressed isoforms?</li>
+<li>Investigate the isoform usage and productivity with flair additional programs. If you pick one of the genes shown in Figure 5 from <a href="https://link.springer.com/article/10.1186/s12864-023-09552-6">the paper</a>, do you find the same isoforms as they do? </li>
+<li>Compare the isoforms you find for some genes with the annotation. Do you find novel isoforms?</li>
 </ul>
 </li>
 </ul>

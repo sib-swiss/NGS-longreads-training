@@ -817,7 +817,7 @@ rm<span class="w"> </span>project2.tar.gz
 <ul>
 <li>Use <code>trgt</code> to genotype the repeats. Basically, you want to know the expansion size of each repeat in each sample. Based on this, you can figure out which sample has abnormal expansions in which repeat. To run <code>trgt</code> read <a href="https://github.com/PacificBiosciences/trgt/blob/main/docs/tutorial.md">the manual</a>. After the alignment, all required input files should be there. </li>
 <li>To visualize the output, use samtools to sort and index the bam file with the reads spanning the repeats (this is also explained in the manual - no need to run <code>bcftools</code>).</li>
-<li>Run <code>trvz</code> to visualize the output. The allele plot should suffice. The visualization will give you a nice overview of the repeat expansions in the samples. Based on the different sizes of the repeat expansions, can you relate the repeat expansions to the disease phenotype?</li>
+<li>Run <code>trgt plot</code> to visualize the output. The allele plot should suffice. The visualization will give you a nice overview of the repeat expansions in the samples. Based on the different sizes of the repeat expansions, can you relate the repeat expansions to the disease phenotype?</li>
 </ul>
 <blockquote>
 <p>This tutorial is based on data provided by Pacific Biosciences at https://downloads.pacbcloud.com/public/dataset/RepeatExpansionDisorders_NoAmp/</p>
