@@ -76,6 +76,6 @@ The targets in gene1 and gene2 are described in `targets/targets.bed`. The colum
 
 * Use `trgt` to genotype the repeats. Basically, you want to know the expansion size of each repeat in each sample. Based on this, you can figure out which sample has abnormal expansions in which repeat. To run `trgt` read [the manual](https://github.com/PacificBiosciences/trgt/blob/main/docs/tutorial.md). After the alignment, all required input files should be there. 
 * To visualize the output, use samtools to sort and index the bam file with the reads spanning the repeats (this is also explained in the manual - no need to run `bcftools`).
-*  Run `trvz` to visualize the output. The allele plot should suffice. The visualization will give you a nice overview of the repeat expansions in the samples. Based on the different sizes of the repeat expansions, can you relate the repeat expansions to the disease phenotype?
+*  Run `trgt plot` to visualize the output. The allele plot should suffice. The visualization will give you a nice overview of the repeat expansions in the samples. Based on the different sizes of the repeat expansions, can you relate the repeat expansions to the disease phenotype?
 
 > This tutorial is based on data provided by Pacific Biosciences at https://downloads.pacbcloud.com/public/dataset/RepeatExpansionDisorders_NoAmp/
